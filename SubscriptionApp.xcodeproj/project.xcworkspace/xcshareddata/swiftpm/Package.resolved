@@ -1,0 +1,15 @@
+{
+  "originHash" : "ae27d62caf52e71821a74566582af0b0ec56a1ec675c269140772dc1b04b7060",
+  "pins" : [
+    {
+      "identity" : "swiftsvg",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mchoe/SwiftSVG.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "88b9ee086b29019e35f6f49c8e30e5552eb8fa9d"
+      }
+    }
+  ],
+  "version" : 3
+}

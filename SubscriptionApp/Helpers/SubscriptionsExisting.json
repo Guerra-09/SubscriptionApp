@@ -1,18 +1,17 @@
 [
 
     {
-        "name": "netflix",
+        "name": "Netflix",
         "nameColor" : "FFFFFF",
         "logo": "netflix_logo.svg",
         "logoColor" : "FFFFFF",
         "backgroundColor": "D82929"
     },
     {
-        "name": "spotify",
+        "name": "Spotify",
         "nameColor" : "FFFFFF",
         "logo": "spotify_logo.svg",
-        "logoColor" : "FFFFFF",
+        "logoColor" : "1ED760",
         "backgroundColor": "26AC5C"
     }
-    
 ]

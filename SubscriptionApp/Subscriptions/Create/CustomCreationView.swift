@@ -14,7 +14,7 @@ struct CustomCreationView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Text("Creating an existing subscription")
+                Text("Creating a custom subscription")
                     .foregroundStyle(.white)
             }
         }

@@ -21,6 +21,11 @@ struct ProfileView: View {
                     NavigationLink("To personal info"){
                       PersonalInformationView()
                     }
+                    
+                    NavigationLink("Preferences"){
+                      PreferencesView()
+                    }
+                    
                     NavigationLink("To notifications set up"){
                       NotificationsView()
                     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SubscriptionView: View {
     
+    @State private var showingSheet = false
     
     var body: some View {
         NavigationStack {
@@ -22,14 +23,16 @@ struct SubscriptionView: View {
                     Text("Subscription View")
                         .foregroundStyle(Color(.white))
                     
+                    
                   
                 }
 
                 
                 
                 .overlay {
-                    NavigationLink {
-                        NewSubscriptionView()
+                    Button {
+//                        NewSubscriptionView()
+                        showingSheet.toggle()
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 35))
@@ -64,6 +67,11 @@ struct SubscriptionView: View {
             }
         }
         
+        .sheet(isPresented: $showingSheet, content: {
+            NavigationStack {
+                NewSubscriptionView()
+            }
+        })
         
         
     }

@@ -9,7 +9,10 @@ import SwiftUI
 
 struct NewSubscriptionView: View {
     
-    @ObservedObject var subscriptionsExisting = SubscriptionViewModel()
+    @Binding var showingSheet: Bool
+    
+    @ObservedObject var viewModel: SubscriptionsViewModel
+    @ObservedObject var subscriptionsExisting = NewSubscriptionViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -42,11 +45,9 @@ struct NewSubscriptionView: View {
                                 Spacer()
                                 
                                 NavigationLink {
-                                    
-                                    // Poner un safe unwrapping
-                                    
-//                                    ExistingCreationView(logoImage: value.logo, subscriptionName: value.name)
-                                    
+                              
+                                    ExistingCreationView(viewModel: viewModel, showingSheet: $showingSheet, susbcriptionModel: SubscriptionModel(name: value.name, logo: value.logo, logoColor: value.logoColor, backgroundColor: value.backgroundColor), subscriptionName: value.name)
+                                
                                 } label: {
                                     
                                     // If its added instead of plus should be a checkmark. This info its gotten from vm
@@ -67,39 +68,40 @@ struct NewSubscriptionView: View {
 
                     }
                 }
+                // Modificando el Navigation bar, titulo y botones.
+                .navigationBarBackButtonHidden(true)
+                .navigationTitle("New Subscription")
+                .navigationBarTitleTextColor(.white)
+                .navigationBarTitleDisplayMode(.inline)
+                
+                
+                .toolbar(content: {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Text("Cancel")
+                        })
+                    }
+                    
+                    ToolbarItem(placement: .primaryAction) {
+                        NavigationLink {
+                            CustomCreationView()
+                        } label: {
+                            Text("Custom")
+                        }
+
+                    }
+                })
             }
         
-            // Modificando el Navigation bar, titulo y botones.
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("New Subscription")
-            .navigationBarTitleTextColor(.white)
-            .navigationBarTitleDisplayMode(.inline)
             
-            
-            .toolbar(content: {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Text("Cancel")
-                    })
-                }
-                
-                ToolbarItem(placement: .primaryAction) {
-                    NavigationLink {
-                        CustomCreationView()
-                    } label: {
-                        Text("Custom")
-                    }
-
-                }
-            })
         
     }
 }
 
-#Preview {
-    NavigationStack {
-        NewSubscriptionView()
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        NewSubscriptionView()
+//    }
+//}

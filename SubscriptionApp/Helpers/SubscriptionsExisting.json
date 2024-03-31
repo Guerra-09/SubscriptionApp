@@ -3,14 +3,14 @@
     {
         "name": "Netflix",
         "nameColor" : "FFFFFF",
-        "logo": "netflix_logo.svg",
+        "logo": "netflix_logo",
         "logoColor" : "FFFFFF",
         "backgroundColor": "D82929"
     },
     {
         "name": "Spotify",
         "nameColor" : "FFFFFF",
-        "logo": "spotify_logo.svg",
+        "logo": "spotify_logo",
         "logoColor" : "1ED760",
         "backgroundColor": "26AC5C"
     }

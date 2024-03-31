@@ -9,11 +9,18 @@ import SwiftUI
 
 struct ExistingCreationView: View {
     
-    let logoImage: String
+//    @Environment(ExistingCreationViewModel.self) var viewModel
+    @ObservedObject var viewModel: SubscriptionsViewModel
+
+    @Binding var showingSheet: Bool
+    
+    let susbcriptionModel: SubscriptionModel
+    
+    
     let subscriptionCycle: [String] = ["weekly", "monthly", "each 3 months", "each 6 months", "yearly"]
     let reminderOptions: [String] = ["The same day","1 day before", "2 days before", "3 days before", "1 week before", "2 weeks befores"]
     
-    @State var subscriptionName: String
+    @State var subscriptionName: String 
     @State var subscriptionPrice: String = ""
     @State var subscriptionStartDay: Date = Date()
     @State var subscriptionCycleSelected: String = "monthly"
@@ -22,13 +29,14 @@ struct ExistingCreationView: View {
     @State var subscriptionReminderSelected: String = "The same day"
     @State var subcriptionIsDisable: Bool = false
     
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
                 .ignoresSafeArea()
             
             ScrollView {
-                    Image(logoImage)
+                Image(susbcriptionModel.logo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 70, height: 70)
@@ -115,7 +123,26 @@ struct ExistingCreationView: View {
 
                 
                 Button {
+                
                     
+                    let metaData = SubscriptionMetadata(id: .init(), logo: susbcriptionModel.logo, logoColor: susbcriptionModel.logoColor, backgroundColor: susbcriptionModel.backgroundColor)
+                    
+                    let newSub = Subscription(id: .init(), 
+                                              name: subscriptionName,
+                                              price: Int(subscriptionPrice) ?? 0,
+                                              startDay: subscriptionStartDay,
+                                              cycle: subscriptionCycleSelected,
+                                              descriptionText: subscriptionDescription,
+                                              reminder: subscriptionReminderToggle,
+                                              reminderTime: subscriptionReminderSelected,
+                                              disableService: subcriptionIsDisable,
+                                              subscriptionMetadata: metaData)
+                    
+                    viewModel.addSubscription(subscription: newSub)
+                    
+                    showingSheet.toggle()
+
+     
                 } label: {
                     Text("Save")
                         .frame(width: 350, height: 46)
@@ -123,15 +150,11 @@ struct ExistingCreationView: View {
                         .clipShape(Rectangle())
                         .cornerRadius(18)
                         .foregroundStyle(.white)
-                        
-            
                 }
+                
                 
             }
         }
     }
 }
 
-#Preview {
-    ExistingCreationView(logoImage: "spotify_logo.svg", subscriptionName: "Spotify")
-}

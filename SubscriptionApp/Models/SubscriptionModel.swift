@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Subscription: Codable, Identifiable {
+struct SubscriptionModel: Codable, Identifiable {
     
     let id = UUID()
     let name: String

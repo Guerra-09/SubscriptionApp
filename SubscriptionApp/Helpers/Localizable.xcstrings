@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "$%lld/month" : {
+
+    },
     "Add reminder" : {
       "localizations" : {
         "es" : {
@@ -33,6 +36,9 @@
           }
         }
       }
+    },
+    "Create" : {
+
     },
     "Creating a custom subscription" : {
 
@@ -96,6 +102,9 @@
       }
     },
     "Home View" : {
+
+    },
+    "Inactive" : {
 
     },
     "Languages" : {
@@ -217,9 +226,6 @@
           }
         }
       }
-    },
-    "Subscription View" : {
-
     },
     "Susbcription Cycle" : {
       "localizations" : {

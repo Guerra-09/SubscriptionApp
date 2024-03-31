@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct SubscriptionAppApp: App {
     var body: some Scene {
         WindowGroup {
             TabBar()
+                .environmentObject(SubscriptionsViewModel())
         }
     }
 }

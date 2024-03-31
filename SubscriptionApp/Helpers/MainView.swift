@@ -25,7 +25,7 @@ struct TabBar: View {
             }
                 
             NavigationView {
-                SubscriptionView()
+                SubscriptionsView()
             }
             .tabItem {
                 Image(systemName: "creditcard")
@@ -38,10 +38,7 @@ struct TabBar: View {
                 Image(systemName: "person.fill")
             }
             
-        
         }
-        
-        
         
     }
 }

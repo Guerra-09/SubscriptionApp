@@ -23,7 +23,6 @@ struct NewSubscriptionView: View {
                 
                     ScrollView {
                         
-                        
                         // Iterating subscriptions
                         ForEach(subscriptionsExisting.subscriptions) { value in
                                 

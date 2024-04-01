@@ -17,10 +17,7 @@ struct SubscriptionViewComponent: View {
     var price: Int
     
     var startDay: Date
-    var cycle: String
-    var descriptionText: String
     var reminder: Bool
-    var reminderTime: String
     var disableService: Bool
     
     
@@ -41,7 +38,7 @@ struct SubscriptionViewComponent: View {
                     
                     VStack(alignment: .leading) {
                         Text(name)
-                            .font(.title)
+                            .font(.system(size: 21))
                         
                         Text("$\(price)/month")
                             .font(.callout)
@@ -50,8 +47,15 @@ struct SubscriptionViewComponent: View {
                     
                     Spacer()
                     
-                    Text("Inactive")
-                        .fontWeight(.bold)
+                    
+                    if disableService {
+                        Text("Inactive")
+                            .fontWeight(.bold)
+                    } else {
+                        Text("Active")
+                            .fontWeight(.bold)
+                    }
+                    
                 }
                 .padding(10)
                 .frame(width: 370, height: 80)
@@ -60,20 +64,11 @@ struct SubscriptionViewComponent: View {
                 .cornerRadius(15)
                 
                     
-                
-//                Text("$\(String(price))")
-//                
+                    
 //                Text(startDay.formatted(.dateTime))
-//                
-//                Text(cycle)
-//                
-//                Text(descriptionText)
-//                
+
 //                Text("\(reminder)")
-//                
-//                Text(reminderTime)
-//                
-//                Text("\(disableService)")
+
             }
             .foregroundStyle(.white)
         }
@@ -81,5 +76,5 @@ struct SubscriptionViewComponent: View {
 }
 
 #Preview {
-    SubscriptionViewComponent(logo: "spotify_logo.svg", logoColor: "FFFFFF", backgroundColor: "26AC5C", name: "Netflix", price: 12, startDay: Date(), cycle: "Monthly", descriptionText: "For my son", reminder: true, reminderTime: "the same day", disableService: false)
+    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", name: "Netflix", price: 12, startDay: Date(), reminder: true, disableService: false)
 }

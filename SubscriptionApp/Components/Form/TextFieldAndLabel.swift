@@ -12,7 +12,7 @@ struct TextFieldAndLabel: View {
     let labelName: String
     
     @State var placeholder: String
-    @State var textVariable: String
+    @Binding var textVariable: String
     
     let bigContainer: Bool
     
@@ -42,5 +42,5 @@ struct TextFieldAndLabel: View {
 }
 
 #Preview {
-    TextFieldAndLabel(labelName: "Name", placeholder: "Enter a description", textVariable: "", bigContainer: true)
+    TextFieldAndLabel(labelName: "Name", placeholder: "Enter a description", textVariable: .constant("Sex"), bigContainer: true)
 }

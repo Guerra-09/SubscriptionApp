@@ -48,10 +48,10 @@ struct ExistingCreationView: View {
                     
                 
                 
-                TextFieldAndLabel(labelName: "Name", placeholder: "Subscription Name", textVariable: subscriptionName, bigContainer: false)
+                TextFieldAndLabel(labelName: "Name", placeholder: "Subscription Name", textVariable: $subscriptionName, bigContainer: false)
 
                 
-                TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: subscriptionPrice, bigContainer: false)
+                TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: $subscriptionPrice, bigContainer: false)
                 
                 
                 DatePickerComponent(subscriptionStartDay: subscriptionStartDay)
@@ -79,7 +79,7 @@ struct ExistingCreationView: View {
                 }
                 
                 
-                TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: subscriptionDescription, bigContainer: true)
+                TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: $subscriptionDescription, bigContainer: true)
                 
                 
 
@@ -123,7 +123,6 @@ struct ExistingCreationView: View {
 
                 
                 Button {
-                
                     
                     let metaData = SubscriptionMetadata(id: .init(), logo: susbcriptionModel.logo, logoColor: susbcriptionModel.logoColor, backgroundColor: susbcriptionModel.backgroundColor)
                     
@@ -137,6 +136,8 @@ struct ExistingCreationView: View {
                                               reminderTime: subscriptionReminderSelected,
                                               disableService: subcriptionIsDisable,
                                               subscriptionMetadata: metaData)
+                    
+                    print(newSub)
                     
                     viewModel.addSubscription(subscription: newSub)
                     

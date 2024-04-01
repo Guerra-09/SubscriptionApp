@@ -9,31 +9,43 @@ import SwiftUI
 import SwiftData
 
 struct SubscriptionsView: View {
-    
+
     @State private var showingSheet = false
-    
     @Environment(SubscriptionsViewModel.self) var viewModel
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack {
                 Color("backgroundColor")
                     .ignoresSafeArea()
                 
                 ScrollView {
                     
-                    ForEach(viewModel.subscriptions) { sub in
+                    ForEach(viewModel.subscriptions) { subscription in
+
+                        NavigationLink(value: subscription) {
+                            SubscriptionViewComponent(
+                                logo: subscription.subscriptionMetadata!.logo,
+                                logoColor: subscription.subscriptionMetadata!.logoColor,
+                                backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
+                                name: subscription.name,
+                                price: Int(subscription.price),
+                                startDay: subscription.startDay,
+                                reminder: subscription.reminder,
+                                disableService: subscription.disableService
+                            )
+                        }
                         
-                        SubscriptionViewComponent(logo: sub.subscriptionMetadata!.logo, logoColor: sub.subscriptionMetadata!.logoColor, backgroundColor: sub.subscriptionMetadata!.backgroundColor, name: sub.name, price: Int(sub.price), startDay: sub.startDay, cycle: sub.cycle, descriptionText: sub.descriptionText, reminder: sub.reminder, reminderTime: sub.reminderTime, disableService: sub.disableService)
                         
                     }
-                    
-
+                }
+                .navigationDestination(for: Subscription.self) { sub in
+                    SubscriptionUpdateView(subscription: sub)
                 }
                 
 //                .overlay {
 //                    Button {
-////                        NewSubscriptionView()
+//                        NewSubscriptionView()
 //    
 //                        showingSheet.toggle()
 //                    } label: {

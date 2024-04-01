@@ -7,6 +7,9 @@
     "$%lld/month" : {
 
     },
+    "Active" : {
+
+    },
     "Add reminder" : {
       "localizations" : {
         "es" : {
@@ -79,6 +82,9 @@
           }
         }
       }
+    },
+    "Editing: %@" : {
+
     },
     "Enter a description" : {
       "extractionState" : "manual",

@@ -22,8 +22,8 @@
 		6653BC632B9FE3C700BB9207 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC622B9FE3C700BB9207 /* Persistence.swift */; };
 		6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */; };
 		6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC6E2B9FE59300BB9207 /* HomeView.swift */; };
-		667C88462BB5B9CA008E9728 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 667C88452BB5B9CA008E9728 /* SwiftSVG */; };
 		667C88482BB5C7A5008E9728 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C88472BB5C7A5008E9728 /* ColorExtension.swift */; };
+		669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */; };
 		66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E502B9FEBC800EE91BC /* MainView.swift */; };
 		66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */; };
 		66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E562B9FF0D300EE91BC /* ProfileView.swift */; };
@@ -53,8 +53,9 @@
 		6653BC622B9FE3C700BB9207 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6653BC652B9FE3C700BB9207 /* SubscriptionApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionApp.xcdatamodel; sourceTree = "<group>"; };
 		6653BC6E2B9FE59300BB9207 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
-		665EF80E2BB9EB230034975C /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		665EF80E2BB9EB230034975C /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SubscriptionApp.app; path = "/Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app"; sourceTree = "<absolute>"; };
 		667C88472BB5C7A5008E9728 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpdateView.swift; sourceTree = "<group>"; };
 		66D78E502B9FEBC800EE91BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		66D78E562B9FF0D300EE91BC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				667C88462BB5B9CA008E9728 /* SwiftSVG in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				6653BC582B9FE3C500BB9207 /* SubscriptionApp */,
-				665EF80E2BB9EB230034975C /* SubscriptionApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +196,7 @@
 		66D78E5B2B9FF68500EE91BC /* Update */ = {
 			isa = PBXGroup;
 			children = (
+				669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */,
 			);
 			path = Update;
 			sourceTree = "<group>";
@@ -235,7 +235,6 @@
 			);
 			name = SubscriptionApp;
 			packageProductDependencies = (
-				667C88452BB5B9CA008E9728 /* SwiftSVG */,
 			);
 			productName = SubscriptionApp;
 			productReference = 665EF80E2BB9EB230034975C /* SubscriptionApp.app */;
@@ -299,6 +298,7 @@
 			files = (
 				66E57C192BB892E800B89EF0 /* SubscriptionsViewModel.swift in Sources */,
 				663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */,
+				669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */,
 				66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */,
 				66D78E5D2B9FF6B200EE91BC /* CustomCreationView.swift in Sources */,
 				663036012BB79AB600A0071B /* Subscription.swift in Sources */,
@@ -538,14 +538,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		667C88452BB5B9CA008E9728 /* SwiftSVG */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 667C88442BB5B9CA008E9728 /* XCRemoteSwiftPackageReference "SwiftSVG" */;
-			productName = SwiftSVG;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */ = {

@@ -2,16 +2,23 @@
 
     {
         "name": "Netflix",
-        "nameColor" : "FFFFFF",
+        "textColor" : "FFFFFF",
         "logo": "netflix_logo",
         "logoColor" : "FFFFFF",
         "backgroundColor": "D82929"
     },
     {
         "name": "Spotify",
-        "nameColor" : "FFFFFF",
+        "textColor" : "FFFFFF",
         "logo": "spotify_logo",
         "logoColor" : "1ED760",
         "backgroundColor": "26AC5C"
+    },
+    {
+        "name": "Crunchyroll",
+        "textColor" : "000000",
+        "logo": "crunchyroll_logo",
+        "logoColor" : "F78D1D",
+        "backgroundColor": "FFFFFF"
     }
 ]

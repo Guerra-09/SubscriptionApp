@@ -14,6 +14,7 @@ struct TextFieldAndLabel: View {
     @State var placeholder: String
     @Binding var textVariable: String
     
+    
     let bigContainer: Bool
     
     

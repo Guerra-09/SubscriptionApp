@@ -14,33 +14,48 @@ struct SubscriptionsView: View {
     @Environment(SubscriptionsViewModel.self) var viewModel
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             ZStack {
                 Color("backgroundColor")
                     .ignoresSafeArea()
                 
                 ScrollView {
                     
-                    ForEach(viewModel.subscriptions) { subscription in
-
-                        NavigationLink(value: subscription) {
-                            SubscriptionViewComponent(
-                                logo: subscription.subscriptionMetadata!.logo,
-                                logoColor: subscription.subscriptionMetadata!.logoColor,
-                                backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
-                                name: subscription.name,
-                                price: Int(subscription.price),
-                                startDay: subscription.startDay,
-                                reminder: subscription.reminder,
-                                disableService: subscription.disableService
-                            )
+                    if viewModel.subscriptions.count == 0 {
+                        Text("There aren't any subscription created")
+                            .font(.title2)
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                        
+                        Text("Press on Create to start filling this side!")
+                            .font(.subheadline)
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                    } else {
+                        ForEach(viewModel.subscriptions) { subscription in
+                            
+                            NavigationLink(value: subscription) {
+                                SubscriptionViewComponent(
+                                    logo: subscription.subscriptionMetadata!.logo,
+                                    logoColor: subscription.subscriptionMetadata!.logoColor,
+                                    backgroundColor: subscription.subscriptionMetadata!.backgroundColor, 
+                                    textColor: subscription.subscriptionMetadata!.textColor!,
+                                    name: subscription.name,
+                                    price: Float(subscription.price),
+                                    startDay: subscription.startDay,
+                                    reminder: subscription.reminder,
+                                    disableService: subscription.disableService
+                                )
+                            }
+                            
+                            
                         }
-                        
-                        
                     }
+                    
+                    
                 }
                 .navigationDestination(for: Subscription.self) { sub in
-                    SubscriptionUpdateView(subscription: sub)
+                    SubscriptionUpdateView(subscription: sub, viewModel: viewModel)
                 }
                 
 //                .overlay {

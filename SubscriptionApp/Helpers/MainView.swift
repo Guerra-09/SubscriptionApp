@@ -13,7 +13,6 @@ struct TabBar: View {
         UITabBar.appearance().backgroundColor = UIColor(Color("SecondaryBackgroundColor"))
     }
     
-    
     var body: some View {
         TabView {
             

@@ -13,7 +13,7 @@ class Subscription {
     
     @Attribute(.unique) var id: UUID
     var name: String
-    var price: Int
+    var price: Float
     var startDay: Date
     var cycle: String
     var descriptionText: String
@@ -25,7 +25,7 @@ class Subscription {
     @Relationship(.unique) var subscriptionMetadata: SubscriptionMetadata?
     
     
-    init(id: UUID, name: String, price: Int, startDay: Date, cycle: String, descriptionText: String, reminder: Bool, reminderTime: String, disableService: Bool, subscriptionMetadata: SubscriptionMetadata) {
+    init(id: UUID, name: String, price: Float, startDay: Date, cycle: String, descriptionText: String, reminder: Bool, reminderTime: String, disableService: Bool, subscriptionMetadata: SubscriptionMetadata) {
         self.id = id
         self.name = name
         self.price = price
@@ -45,11 +45,13 @@ class SubscriptionMetadata {
     var logo: String
     var logoColor: String
     var backgroundColor: String
+    var textColor: String?
     
-    init(id: UUID, logo: String, logoColor: String, backgroundColor: String) {
+    init(id: UUID, logo: String, logoColor: String, backgroundColor: String, textColor: String?) {
         self.logo = logo
         self.logoColor = logoColor
         self.backgroundColor = backgroundColor
+        self.textColor = textColor
     }
     
 }

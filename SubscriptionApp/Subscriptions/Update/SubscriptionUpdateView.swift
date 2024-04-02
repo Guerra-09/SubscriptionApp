@@ -9,24 +9,86 @@ import SwiftUI
 
 struct SubscriptionUpdateView: View {
     
+    let subscriptionCycle: [String] = ["weekly", "monthly", "each 3 months", "each 6 months", "yearly"]
+    let reminderOptions: [String] = ["The same day","1 day before", "2 days before", "3 days before", "1 week before", "2 weeks befores"]
+    
+    @Bindable var subscription: Subscription
+    @ObservedObject var viewModel: SubscriptionsViewModel
+    
+    
+    @State var subscriptionPrice: String = ""
+    
+    @Environment(\.dismiss) var dismiss
+    
 
-    var subscription: Subscription
     
     var body: some View {
         ZStack {
             Color("backgroundColor")
                 .ignoresSafeArea()
             
-            VStack {
-                Text("Update view")
-                    .font(.title)
+            
+            ScrollView {
                 
-                Text("Editing: \(subscription.name)")
+                Image(subscription.subscriptionMetadata?.logo ?? "")
+                    .resizable()
+                    .modifier(ImageWithLogoModifier())
+                
+                
+                // Name
+                TextFieldAndLabel(labelName: "Name", placeholder: "Editar", textVariable: $subscription.name, bigContainer: false)
+                
+                // Price
+                VStack {
+                    Text("Price")
+                        .modifier(TextFieldLabelCommonModifier())
+                    
+                    TextField("Price", text: $subscriptionPrice)
+                        .modifier(TextFieldCommonModifier(bigContainer: false))
+                        .onChange(of: subscriptionPrice) { oldValue, newValue in
+                            subscription.price = Float(newValue) ?? 0.0
+                        }
+                }
+                
+                // Start day
+                DatePickerComponent(subscriptionStartDay: $subscription.startDay)
+                
+                // Susbcription Cycle
+                PickerComponent(optionSelected: $subscription.cycle, title: "Subscription Cycle", options: subscriptionCycle)
+                
+                // Notes
+                TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: $subscription.descriptionText, bigContainer: true)
+                
+                // Reminder - Reminder time
+                ToggleComponent(title: "Add Reminder", toggleOption: $subscription.reminder)
+                
+                PickerComponent(optionSelected: $subscription.reminderTime, title: "Reminder Time", options: reminderOptions)
+                    .disabled(!subscription.reminder)
+                
+                // Disable
+                ToggleComponent(title: "Disable",toggleOption: $subscription.disableService)
+                    .tint(.red)
+                
+                Button {
+                    dismiss()
+                } label: {
+                    ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
+                }
+                
+                Button {
+                    dismiss()
+                    viewModel.deleteSubscription(subscription: subscription)
+                } label: {
+                    ButtonCustom(title: "Delete", color: Color(.red))
+                }
             }
-            .foregroundStyle(.white)
+
             
-            
-        }        
+        }
+        .onAppear {
+            self.subscriptionPrice = String(subscription.price)
+            print("METADATA: \(subscription.subscriptionMetadata!.logo)")
+        }
     }
 }
 

@@ -12,9 +12,10 @@ struct SubscriptionViewComponent: View {
     var logo: String
     var logoColor: String
     var backgroundColor: String
+    var textColor: String
     
     var name: String
-    var price: Int
+    var price: Float
     
     var startDay: Date
     var reminder: Bool
@@ -40,7 +41,8 @@ struct SubscriptionViewComponent: View {
                         Text(name)
                             .font(.system(size: 21))
                         
-                        Text("$\(price)/month")
+//                        Text("$\(String(format: "%.2f", price))/month")
+                        Text("$\(price.decimals(2))")
                             .font(.callout)
                     }
                     .padding(.leading, 10)
@@ -70,11 +72,11 @@ struct SubscriptionViewComponent: View {
 //                Text("\(reminder)")
 
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(Color(hex: textColor))
         }
     }
 }
 
 #Preview {
-    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", name: "Netflix", price: 12, startDay: Date(), reminder: true, disableService: false)
+    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", textColor: "FFFFFF", name: "Netflix", price: 12.5, startDay: Date(), reminder: true, disableService: false)
 }

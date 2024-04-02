@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DatePickerComponent: View {
     
-    @State var subscriptionStartDay: Date = Date()
+    @Binding var subscriptionStartDay: Date 
     
     var body: some View {
         
@@ -50,6 +50,6 @@ struct DatePickerComponent: View {
     }
 }
 
-#Preview {
-    DatePickerComponent()
-}
+//#Preview {
+//    DatePickerComponent()
+//}

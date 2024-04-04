@@ -50,7 +50,8 @@ struct NewSubscriptionView: View {
                             
                             Spacer()
                             
-                            if (!subscriptionsExistingUsed().contains(value.logo)) {
+//                            if (!subscriptionsExistingUsed().contains(value.logo)) {
+                                
                                 NavigationLink {
                                     
                                     ExistingCreationView(viewModel: viewModel, showingSheet: $showingSheet, susbcriptionModel: SubscriptionModel(name: value.name, textColor: value.textColor, logo: value.logo, logoColor: value.logoColor, backgroundColor: value.backgroundColor), subscriptionName: value.name)
@@ -68,26 +69,26 @@ struct NewSubscriptionView: View {
                                     
                                     
                                 }
-                            } else {
-                                Button {
-
-                                    for subscription in viewModel.subscriptions {
-                                        if subscription.subscriptionMetadata?.logo == value.logo {
-                                            subscriptionToDelete = subscription
-                                        }
-                                    }
-                                    showingAlertDelete.toggle()
-                                    
-                                } label: {
-                                    Image(systemName: "minus")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(hex: "5C6362"))
-                                }
-                                
-                            }
+//                            } else {
+//                                Button {
+//
+//                                    for subscription in viewModel.subscriptions {
+//                                        if subscription.subscriptionMetadata?.logo == value.logo {
+//                                            subscriptionToDelete = subscription
+//                                        }
+//                                    }
+//                                    showingAlertDelete.toggle()
+//                                    
+//                                } label: {
+//                                    Image(systemName: "minus")
+//                                        .resizable()
+//                                        .aspectRatio(contentMode: .fit)
+//                                        .frame(width: 30)
+//                                        .fontWeight(.bold)
+//                                        .foregroundStyle(Color(hex: "5C6362"))
+//                                }
+//                                
+//                            }
                             
                             
                             
@@ -105,10 +106,11 @@ struct NewSubscriptionView: View {
             .navigationBarTitleTextColor(.white)
             .navigationBarTitleDisplayMode(.inline)
             
-            .alert("Important message", isPresented: $showingAlertDelete) {
+            .alert("Are you sure you want to delete the subscription?", isPresented: $showingAlertDelete) {
                 Button("Cancel", role: .cancel) { print("Cancelling") }
                 
                 Button("Delete", role: .destructive) {
+                    dismiss()
                     print("Deleting \(subscriptionToDelete!.name)")
                     viewModel.deleteSubscription(subscription: subscriptionToDelete!)
                 }

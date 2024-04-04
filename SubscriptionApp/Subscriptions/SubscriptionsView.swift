@@ -47,7 +47,7 @@ struct SubscriptionsView: View {
                                     disableService: subscription.disableService
                                 )
                             }
-                            
+                            .padding(.vertical, 1.5)
                             
                         }
                     }

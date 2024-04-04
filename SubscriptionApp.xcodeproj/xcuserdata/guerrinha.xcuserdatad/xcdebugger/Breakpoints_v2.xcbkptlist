@@ -3,4 +3,66 @@
    uuid = "07FFD6E0-B8DB-42DF-958B-EE8931F6A238"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B551E177-E5C4-4F12-9139-AF59FDD7853B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SubscriptionApp/Persistence.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "PersistenceController"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B551E177-E5C4-4F12-9139-AF59FDD7853B - 441667bdd4e718e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for preview"
+                  moduleName = "SubscriptionApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/SubscriptionApp/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13">
+               </Location>
+               <Location
+                  uuid = "B551E177-E5C4-4F12-9139-AF59FDD7853B - 350d358a8ffadd57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SubscriptionApp.PersistenceController in variable initialization expression of static SubscriptionApp.PersistenceController.preview : SubscriptionApp.PersistenceController"
+                  moduleName = "SubscriptionApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/SubscriptionApp/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "B551E177-E5C4-4F12-9139-AF59FDD7853B - 5e83aa48b0c73047"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SubscriptionApp.PersistenceController.preview.unsafeMutableAddressor : SubscriptionApp.PersistenceController"
+                  moduleName = "SubscriptionApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/SubscriptionApp/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

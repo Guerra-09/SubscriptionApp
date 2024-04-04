@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "spotify.svg",
+      "filename" : "Spotify_logo.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -19,8 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "localizable" : true,
-    "preserves-vector-representation" : true,
     "template-rendering-intent" : "template"
   }
 }

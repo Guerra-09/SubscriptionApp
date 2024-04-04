@@ -41,7 +41,7 @@ struct SubscriptionViewComponent: View {
                         Text(name)
                             .font(.system(size: 21))
                         
-//                        Text("$\(String(format: "%.2f", price))/month")
+
                         Text("$\(price.decimals(2))")
                             .font(.callout)
                     }

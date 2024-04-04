@@ -57,6 +57,13 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IDELogRedirectionPolicy oslogToStdio&#10;&#10;IDELogRedirectionPolicy oslogToStdio&#10;&#10;IDELogRedirectionPolicy oslogToStdio&#10;&#10;IDELogRedirectionPolicy oslogToStdio&#10;&#10;IDELogRedirectionPolicy oslogToStdio&#10;&#10;"
+            value = "OS_ACTIVITY_MODE disable&#10;&#10;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

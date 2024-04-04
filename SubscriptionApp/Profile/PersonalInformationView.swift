@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct PersonalInformationView: View {
+    
+    @AppStorage("profileName") var profileName: String = "Guest"
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -15,15 +19,39 @@ struct PersonalInformationView: View {
             
             VStack {
                 
-                Text("Personal Information View")
+                TextFieldAndLabel(labelName: "Display name", placeholder: "\(profileName)", textVariable: $profileName, bigContainer: false)
+                    .padding(.bottom, 20)
+                
+                Spacer()
+                
+                Button {
+                    // Aqui deberia guardar los datos
+                    dismiss()
+                } label: {
+                    ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
+                }
+                .padding(.bottom, 10)
+
+                
+                Text("Soon more options...")
+                    .font(.caption)
                     .foregroundStyle(.white)
+
+                
+               
                 
             }
+            .padding(.top, 15)
+            .navigationTitle("Personal information")
+            .toolbarTitleDisplayMode(.inline)
+            .navigationBarTitleTextColor(.white)
             
         }
     }
 }
 
 #Preview {
-    PersonalInformationView()
+    NavigationStack {
+        PersonalInformationView()
+    }
 }

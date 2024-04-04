@@ -9,10 +9,17 @@ import SwiftUI
 
 struct PreferencesView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
+    let currencies: [String] = ["USD", "CLP", "EUR", "CAD", "AUD"]
     let languages: [String] = ["English", "Spanish"]
+
     
-    @State var selectedLanguage = "English"
     
+    // Luego con un init deberia poner los datos de la DB
+    @AppStorage("currencySelected") var currencySelected = "USD"
+    @AppStorage("languageSelected") var selectedLanguage = "English"
+    @AppStorage("notifications") var notificationsActive = false
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -20,22 +27,19 @@ struct PreferencesView: View {
             
             VStack {
                 
-                Picker("Languages", selection: $selectedLanguage) {
-                    ForEach(languages, id: \.self) { value in
-                        Text(value)
-                    }
-                }
+                PickerComponent(optionSelected: $currencySelected, title: "Currency", options: currencies)
                 
+                PickerComponent(optionSelected: $selectedLanguage, title: "Language", options: languages)
+                
+                ToggleComponent(title: "Notifications", toggleOption: $notificationsActive)
+                    
+                Spacer()
                 
                 Button {
-                    
+                    // Aqui deberia guardar los datos
+                    dismiss()
                 } label: {
-                    Text("Save")
-                        .frame(width: 350, height: 46)
-                        .background(Color("buttonBackgroundColor"))
-                        .clipShape(Rectangle())
-                        .cornerRadius(18)
-                        .foregroundStyle(.white)
+                    ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
                         
             
                 }

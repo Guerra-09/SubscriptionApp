@@ -4,7 +4,13 @@
     "" : {
 
     },
+    "%@" : {
+
+    },
     "$%@" : {
+
+    },
+    "Account Settings" : {
 
     },
     "Active" : {
@@ -30,6 +36,9 @@
           }
         }
       }
+    },
+    "Are you sure you want to delete the subscription?" : {
+
     },
     "Cancel" : {
       "localizations" : {
@@ -112,13 +121,11 @@
     "Home View" : {
 
     },
-    "Important message" : {
-
-    },
     "Inactive" : {
 
     },
     "Languages" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -171,10 +178,7 @@
         }
       }
     },
-    "Notifications View" : {
-
-    },
-    "Personal Information View" : {
+    "Personal information" : {
 
     },
     "Preferences" : {
@@ -201,7 +205,11 @@
         }
       }
     },
+    "Profile" : {
+
+    },
     "Profile View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -212,6 +220,7 @@
       }
     },
     "Save" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -230,6 +239,9 @@
           }
         }
       }
+    },
+    "Soon more options..." : {
+
     },
     "Start day" : {
       "localizations" : {
@@ -256,6 +268,7 @@
 
     },
     "To notifications set up" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -266,6 +279,7 @@
       }
     },
     "To personal info" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

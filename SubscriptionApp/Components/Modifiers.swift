@@ -39,7 +39,6 @@ struct ImageWithLogoModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-//            .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 70, height: 70)
             .font(.system(size: 70))

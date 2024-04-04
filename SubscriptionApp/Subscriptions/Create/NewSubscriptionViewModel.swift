@@ -29,4 +29,9 @@ class NewSubscriptionViewModel: ObservableObject {
                 print("No se encontró el archivo JSON")
             }
         }
+    
+    
+//    func filterAdded(subscriptionsAdded: [String]) -> Void  {
+//        
+//    }
 }

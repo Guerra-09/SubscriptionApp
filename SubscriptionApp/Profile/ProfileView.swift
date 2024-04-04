@@ -11,16 +11,15 @@ import Photos
 
 struct ProfileView: View {
 
-    //
     @State private var selectedImage: UIImage?
-    @ObservedObject var vm = ProfileViewModel()
     @State var imageSelection: PhotosPickerItem? = nil
     
     private var url: URL {
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             return paths[0].appendingPathComponent("image.jpg")
     }
-    //
+    
+    
     @AppStorage("profileName") var profileName: String = "Guest"
     
     
@@ -114,6 +113,7 @@ struct ProfileView: View {
         .navigationBarTitleTextColor(.white)
     }
     
+    // Vista que es un PhotosPicker que muestra la imagen seleccionada.
     var profilePic: some View {
         PhotosPicker(
           selection: $imageSelection,
@@ -131,15 +131,11 @@ struct ProfileView: View {
                       Image(systemName: "person")
                           .resizable()
                           .modifier(ImageWithLogoModifier())
-                  }
-                  
-                  
-                  
-              }
-                
-          }
-      }
+                 }
 
+              }
+        }
+    }
 }
 
 #Preview {

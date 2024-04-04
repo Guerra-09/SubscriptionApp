@@ -16,7 +16,6 @@
 		663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035FA2BB7610C00A0071B /* PreferencesView.swift */; };
 		663035FD2BB762BB00A0071B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 663035FC2BB762BB00A0071B /* Localizable.xcstrings */; };
 		663036012BB79AB600A0071B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
-		664FFD202BBED05500E4146B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD1F2BBED05500E4146B /* ProfileViewModel.swift */; };
 		664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD212BBF2B9A00E4146B /* URLExtension.swift */; };
 		6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */; };
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
@@ -53,7 +52,6 @@
 		663035FA2BB7610C00A0071B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		663035FC2BB762BB00A0071B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		663036002BB79AB600A0071B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		664FFD1F2BBED05500E4146B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		664FFD212BBF2B9A00E4146B /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppApp.swift; sourceTree = "<group>"; };
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				66D78E562B9FF0D300EE91BC /* ProfileView.swift */,
-				664FFD1F2BBED05500E4146B /* ProfileViewModel.swift */,
 				66D78E602B9FF86800EE91BC /* PersonalInformationView.swift */,
 				663035FA2BB7610C00A0071B /* PreferencesView.swift */,
 			);
@@ -325,7 +322,6 @@
 			files = (
 				66E57C192BB892E800B89EF0 /* SubscriptionsViewModel.swift in Sources */,
 				663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */,
-				664FFD202BBED05500E4146B /* ProfileViewModel.swift in Sources */,
 				669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */,
 				66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */,
 				664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */,

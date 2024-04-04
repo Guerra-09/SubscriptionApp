@@ -20,7 +20,7 @@ struct NewSubscriptionView: View {
     
     var alreadySelected: [String] = []
     
-    
+    @State var query: String = ""
     
     var body: some View {
         NavigationStack {
@@ -28,10 +28,23 @@ struct NewSubscriptionView: View {
                 Color("backgroundColor")
                     .ignoresSafeArea()
                 
+                
                 ScrollView {
                     
+                    TextField("Buscar un resultado...", text: $query)
+                        .padding()
+                        .foregroundStyle(.white)
+                        .frame(width: 370, height: 50)
+                        .background(Color("subViewsBackgroundColor"))
+                        .clipShape(Rectangle())
+                        .cornerRadius(15)
+                    
+
+
+                    
+                    
                     // Iterating subscriptions
-                    ForEach(subscriptionsExisting.subscriptions) { value in
+                    ForEach(subscriptionsExisting.subscriptions.filter{$0.name.hasPrefix(query) || query == ""}) { value in
                         
                         HStack {
                             
@@ -50,7 +63,6 @@ struct NewSubscriptionView: View {
                             
                             Spacer()
                             
-//                            if (!subscriptionsExistingUsed().contains(value.logo)) {
                                 
                                 NavigationLink {
                                     
@@ -60,38 +72,26 @@ struct NewSubscriptionView: View {
                                     
                                     // If its added instead of plus should be a checkmark. This info its gotten from vm
                                     
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(hex: "5C6362"))
+                                    if (subscriptionsExistingUsed(subscription: value.logo)) {
+                                        Image(systemName: "plus")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(Color(hex: "5C6362"))
+                                    } else {
+                                        Image(systemName: "minus")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(Color(hex: "5C6362"))
+                                    }
+                                    
+                                    
                                     
                                     
                                 }
-//                            } else {
-//                                Button {
-//
-//                                    for subscription in viewModel.subscriptions {
-//                                        if subscription.subscriptionMetadata?.logo == value.logo {
-//                                            subscriptionToDelete = subscription
-//                                        }
-//                                    }
-//                                    showingAlertDelete.toggle()
-//                                    
-//                                } label: {
-//                                    Image(systemName: "minus")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .frame(width: 30)
-//                                        .fontWeight(.bold)
-//                                        .foregroundStyle(Color(hex: "5C6362"))
-//                                }
-//                                
-//                            }
-                            
-                            
-                            
                         }
                         .padding(20)
                         
@@ -140,10 +140,12 @@ struct NewSubscriptionView: View {
         
         
     }
+
     
-    // Cambiar a un .contains() para no tener un for dentro de otro
-    func subscriptionsExistingUsed() -> [String] {
+    /// CHECK: Complexity!!!
+    func subscriptionsExistingUsed(subscription: String) -> Bool {
         
+        // Array de objetos que YA estan ingresados
         var array = [String]()
 
         for json in subscriptionsExisting.subscriptions {
@@ -153,6 +155,8 @@ struct NewSubscriptionView: View {
                 }
             }
         }
-        return array
+        
+        if array.contains(subscription) { return false } else { return true }
+
     }
 }

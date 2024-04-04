@@ -121,6 +121,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		664FFD232BBF615800E4146B /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				66D78E5C2B9FF6B200EE91BC /* CustomCreationView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		6653BC4D2B9FE3C500BB9207 = {
 			isa = PBXGroup;
 			children = (
@@ -200,8 +208,8 @@
 			children = (
 				66D78E582B9FF4C900EE91BC /* NewSubscriptionView.swift */,
 				66247D7B2BB48C8F002BFF62 /* NewSubscriptionViewModel.swift */,
-				66D78E5C2B9FF6B200EE91BC /* CustomCreationView.swift */,
 				66E57C1A2BB8A5A800B89EF0 /* Existing */,
+				664FFD232BBF615800E4146B /* Custom */,
 			);
 			path = Create;
 			sourceTree = "<group>";

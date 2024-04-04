@@ -10,8 +10,10 @@ import SwiftData
 
 struct SubscriptionsView: View {
 
+    @State var showingSubscriptionsBy: Bool = false
     @State private var showingSheet = false
     @Environment(SubscriptionsViewModel.self) var viewModel
+    @AppStorage("showInactive") var showInactive: Bool = true
     
     var body: some View {
         NavigationStack {
@@ -34,72 +36,68 @@ struct SubscriptionsView: View {
                     } else {
                         ForEach(viewModel.subscriptions) { subscription in
                             
-                            NavigationLink(value: subscription) {
-                                SubscriptionViewComponent(
-                                    logo: subscription.subscriptionMetadata!.logo,
-                                    logoColor: subscription.subscriptionMetadata!.logoColor,
-                                    backgroundColor: subscription.subscriptionMetadata!.backgroundColor, 
-                                    textColor: subscription.subscriptionMetadata!.textColor!,
-                                    name: subscription.name,
-                                    price: Float(subscription.price),
-                                    startDay: subscription.startDay,
-                                    reminder: subscription.reminder,
-                                    disableService: subscription.disableService
-                                )
+                            if !showInactive && subscription.disableService {
+                                //()
+                            } else {
+                                NavigationLink(value: subscription) {
+                                    SubscriptionViewComponent(
+                                        logo: subscription.subscriptionMetadata!.logo,
+                                        logoColor: subscription.subscriptionMetadata!.logoColor,
+                                        backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
+                                        textColor: subscription.subscriptionMetadata!.textColor!,
+                                        name: subscription.name,
+                                        price: Float(subscription.price),
+                                        startDay: subscription.startDay,
+                                        reminder: subscription.reminder,
+                                        disableService: subscription.disableService
+                                    )
+                                }
+                                .padding(.vertical, 1.5)
                             }
-                            .padding(.vertical, 1.5)
-                            
+                                
                         }
                     }
                     
                     
                 }
+                .padding(.top, 25)
                 .navigationDestination(for: Subscription.self) { sub in
                     SubscriptionUpdateView(subscription: sub, viewModel: viewModel)
                 }
-                
-//                .overlay {
-//                    Button {
-//                        NewSubscriptionView()
-//    
-//                        showingSheet.toggle()
-//                    } label: {
-//                        Image(systemName: "plus")
-//                            .font(.system(size: 35))
-//                            .frame(width: 70, height: 150)
-//                            .background(Color("buttonBackgroundColor"))
-//                            .foregroundStyle(.white)
-//                            .clipShape(Circle())
-//                            
-//                    }
-//                    .position(CGPoint(x: 210.0, y: 275.0))
-//                }
+            
             }
             .onAppear {
                 viewModel.getSubscriptions()
             }
         }
+        .navigationTitle("Subscriptions")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleTextColor(.white)
         
         .toolbar {
             
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
-                    viewModel.deleteAllSubscriptions()
+                    showingSubscriptionsBy.toggle()
                 }, label: {
-                    Image(systemName: "trash")
+                    Image(systemName: "gear")
                 })
             }
             
-            ToolbarItem(placement: .principal) {
-                
-                Button(action: {}, label: {
-                    Text("All Subscriptions   \(Image(systemName: "chevron.down"))")
-                        .frame(width: 250, height: 35)
-                        .foregroundStyle(.white)
-                        .background(Color("SecondaryBackgroundColor"))
-                        .clipShape(.capsule)
-                })
-            }
+//            ToolbarItem(placement: .principal) {
+//                
+//                Button(action: {
+//                    
+//                    showingSubscriptionsBy.toggle()
+//                    
+//                }, label: {
+//                    Text("All Subscriptions   \(Image(systemName: "chevron.down"))")
+//                        .frame(width: 250, height: 35)
+//                        .foregroundStyle(.white)
+//                        .background(Color("SecondaryBackgroundColor"))
+//                        .clipShape(.capsule)
+//                })
+//            }
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
@@ -117,13 +115,61 @@ struct SubscriptionsView: View {
             
         })
         
+        .sheet(isPresented: $showingSubscriptionsBy) {
+            NavigationStack {
+                SubscriptionsBySheet(viewModel: viewModel)
+            }
+        }
+        
         
     }
 
 }
 
-//#Preview {
-//    NavigationStack {
-//        SubscriptionsView()
-//    }
-//}
+
+struct SubscriptionsBySheet: View {
+    
+    @ObservedObject var viewModel: SubscriptionsViewModel // Solo para pruebas, despues deberia borrarse el viewmodel y la opcion de borrar todo
+    @AppStorage("showInactive") var showInactive: Bool = true
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        ZStack {
+            Color("backgroundColor")
+                .ignoresSafeArea()
+            
+            VStack {
+                
+                Toggle(isOn: $showInactive, label: {
+                    Text("Show inactives")
+                        .foregroundStyle(.white)
+                })
+                .padding()
+                
+                
+                Spacer()
+                
+                Button(action: {
+                    dismiss()
+                    viewModel.deleteAllSubscriptions()
+                }, label: {
+                    Text("DELETE ALL DEVELOPER OPTION")
+                        .foregroundStyle(.red)
+                })
+                
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    ButtonCustom(title: "Save", color: .buttonBackground)
+                })
+            }
+            .padding(.top, 30)
+
+        }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleTextColor(.white)
+        
+    }
+}
+

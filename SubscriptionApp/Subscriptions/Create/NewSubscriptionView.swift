@@ -16,7 +16,7 @@ struct NewSubscriptionView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var showingAlertDelete: Bool = false
-    @State var subscriptionToDelete: Subscription?
+    @State var subscriptionToDelete: SubscriptionModel?
     
     var alreadySelected: [String] = []
     
@@ -38,10 +38,7 @@ struct NewSubscriptionView: View {
                         .background(Color("subViewsBackgroundColor"))
                         .clipShape(Rectangle())
                         .cornerRadius(15)
-                    
 
-
-                    
                     
                     // Iterating subscriptions
                     ForEach(subscriptionsExisting.subscriptions.filter{$0.name.hasPrefix(query) || query == ""}) { value in
@@ -63,35 +60,40 @@ struct NewSubscriptionView: View {
                             
                             Spacer()
                             
+                            
+                            if (subscriptionsExistingUsed(subscription: value.logo)) {
+                                
                                 
                                 NavigationLink {
                                     
                                     ExistingCreationView(viewModel: viewModel, showingSheet: $showingSheet, susbcriptionModel: SubscriptionModel(name: value.name, textColor: value.textColor, logo: value.logo, logoColor: value.logoColor, backgroundColor: value.backgroundColor), subscriptionName: value.name)
                                     
                                 } label: {
-                                    
-                                    // If its added instead of plus should be a checkmark. This info its gotten from vm
-                                    
-                                    if (subscriptionsExistingUsed(subscription: value.logo)) {
-                                        Image(systemName: "plus")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 30)
-                                            .fontWeight(.bold)
-                                            .foregroundStyle(Color(hex: "5C6362"))
-                                    } else {
-                                        Image(systemName: "minus")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 30)
-                                            .fontWeight(.bold)
-                                            .foregroundStyle(Color(hex: "5C6362"))
-                                    }
-                                    
-                                    
-                                    
-                                    
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 30)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(hex: "5C6362"))
                                 }
+                            
+                
+                            } else {
+                                Button {
+                                    subscriptionToDelete = value
+                                    showingAlertDelete.toggle()
+                                } label: {
+                                    Image(systemName: "minus")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 30)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color(hex: "5C6362"))
+                                }
+
+                                
+                            }
+  
                         }
                         .padding(20)
                         
@@ -111,8 +113,8 @@ struct NewSubscriptionView: View {
                 
                 Button("Delete", role: .destructive) {
                     dismiss()
-                    print("Deleting \(subscriptionToDelete!.name)")
-                    viewModel.deleteSubscription(subscription: subscriptionToDelete!)
+                
+                    viewModel.deleteSubscriptionByLogo(subscription: subscriptionToDelete!)
                 }
                 
             }
@@ -128,6 +130,7 @@ struct NewSubscriptionView: View {
                 
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
+                        
                         CustomCreationView()
                     } label: {
                         Text("Custom")
@@ -142,21 +145,15 @@ struct NewSubscriptionView: View {
     }
 
     
-    /// CHECK: Complexity!!!
     func subscriptionsExistingUsed(subscription: String) -> Bool {
-        
-        // Array de objetos que YA estan ingresados
-        var array = [String]()
-
-        for json in subscriptionsExisting.subscriptions {
-            for sub in viewModel.subscriptions {
-                if sub.subscriptionMetadata!.logo == json.logo {
-                    array.append(json.logo)
-                }
-            }
+      var logos = Dictionary<String, Bool>()
+      
+      for sub in viewModel.subscriptions.filter({ $0.subscriptionMetadata?.logo != nil }) {
+        if let logo = sub.subscriptionMetadata?.logo {
+          logos[logo] = false
         }
-        
-        if array.contains(subscription) { return false } else { return true }
-
+      }
+      
+      return logos[subscription] ?? true
     }
 }

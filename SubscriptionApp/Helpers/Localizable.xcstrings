@@ -28,6 +28,7 @@
       }
     },
     "All Subscriptions   %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -70,6 +71,9 @@
       }
     },
     "Delete" : {
+
+    },
+    "DELETE ALL DEVELOPER OPTION" : {
 
     },
     "Description" : {
@@ -243,6 +247,12 @@
         }
       }
     },
+    "Settings" : {
+
+    },
+    "Show inactives" : {
+
+    },
     "Soon more options..." : {
 
     },
@@ -255,6 +265,9 @@
           }
         }
       }
+    },
+    "Subscriptions" : {
+
     },
     "Susbcription Cycle" : {
       "extractionState" : "stale",

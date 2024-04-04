@@ -44,7 +44,23 @@ final class SubscriptionsViewModel: ObservableObject {
     
     @MainActor
     func deleteSubscription(subscription: Subscription) {
+        
         modelContext.delete(subscription)
         getSubscriptions()
+    }
+    
+    @MainActor
+    func deleteSubscriptionByLogo(subscription: SubscriptionModel) {
+
+        for sub in subscriptions {
+            
+            if sub.subscriptionMetadata?.logo == subscription.logo {
+                modelContext.delete(sub)
+                getSubscriptions()
+                return
+            }
+        }
+        
+        
     }
 }

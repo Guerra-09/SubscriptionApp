@@ -139,9 +139,7 @@ struct NewSubscriptionView: View {
                 }
             })
         }
-        
-        
-        
+
     }
 
     

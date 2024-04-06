@@ -40,6 +40,8 @@
 		66E57C192BB892E800B89EF0 /* SubscriptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */; };
 		66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1B2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift */; };
 		66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */; };
+		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
+		66ECA1E32BC09DE500FF9D0B /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 66ECA1E22BC09DE500FF9D0B /* SwiftDate */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,7 @@
 		66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewModel.swift; sourceTree = "<group>"; };
 		66E57C1B2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingCreationViewModel.swift; sourceTree = "<group>"; };
 		66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewComponent.swift; sourceTree = "<group>"; };
+		66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66ECA1E32BC09DE500FF9D0B /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				66247D752BB4622D002BFF62 /* ViewExtensions.swift */,
+				66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */,
 				667C88472BB5C7A5008E9728 /* ColorExtension.swift */,
 				66906ACC2BBC9B420000CFE6 /* FloatExtension.swift */,
 				664FFD212BBF2B9A00E4146B /* URLExtension.swift */,
@@ -267,6 +272,7 @@
 			);
 			name = SubscriptionApp;
 			packageProductDependencies = (
+				66ECA1E22BC09DE500FF9D0B /* SwiftDate */,
 			);
 			productName = SubscriptionApp;
 			productReference = 66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */;
@@ -299,6 +305,7 @@
 			mainGroup = 6653BC4D2B9FE3C500BB9207;
 			packageReferences = (
 				667C88442BB5B9CA008E9728 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
+				66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = 6653BC4D2B9FE3C500BB9207;
 			projectDirPath = "";
@@ -339,6 +346,7 @@
 				6653BC632B9FE3C700BB9207 /* Persistence.swift in Sources */,
 				6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */,
 				663035F92BB75F6E00A0071B /* DatePickerComponent.swift in Sources */,
+				66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */,
 				6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */,
 				6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */,
 				66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */,
@@ -574,7 +582,23 @@
 				kind = branch;
 			};
 		};
+		66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66ECA1E22BC09DE500FF9D0B /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */ = {

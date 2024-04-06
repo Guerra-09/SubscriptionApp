@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftData
+import SwiftDate
+
 
 @Observable
 final class SubscriptionsViewModel: ObservableObject {
+    
     let container = try! ModelContainer(for: Subscription.self, SubscriptionMetadata.self)
     
     @MainActor
@@ -63,4 +66,6 @@ final class SubscriptionsViewModel: ObservableObject {
         
         
     }
+
+
 }

@@ -84,20 +84,6 @@ struct SubscriptionsView: View {
                 })
             }
             
-//            ToolbarItem(placement: .principal) {
-//                
-//                Button(action: {
-//                    
-//                    showingSubscriptionsBy.toggle()
-//                    
-//                }, label: {
-//                    Text("All Subscriptions   \(Image(systemName: "chevron.down"))")
-//                        .frame(width: 250, height: 35)
-//                        .foregroundStyle(.white)
-//                        .background(Color("SecondaryBackgroundColor"))
-//                        .clipShape(.capsule)
-//                })
-//            }
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
@@ -130,8 +116,14 @@ struct SubscriptionsView: View {
 struct SubscriptionsBySheet: View {
     
     @ObservedObject var viewModel: SubscriptionsViewModel // Solo para pruebas, despues deberia borrarse el viewmodel y la opcion de borrar todo
-    @AppStorage("showInactive") var showInactive: Bool = true
     @Environment(\.dismiss) var dismiss
+    
+    var tags: [String] = ["all", "music", "streaming", "gaming"]
+    
+    @AppStorage("showInactive") var showInactive: Bool = true
+    @AppStorage("whiteTheme") var whiteTheme: Bool = false
+    @AppStorage("showAproximateDate") var showAproximateDate: Bool = false
+    @AppStorage("tag") var tag: String = "all"
     
     var body: some View {
         ZStack {
@@ -145,6 +137,25 @@ struct SubscriptionsBySheet: View {
                         .foregroundStyle(.white)
                 })
                 .padding()
+                
+                Toggle(isOn: $showAproximateDate, label: {
+                    Text("Show aproximate date")
+                        .foregroundStyle(.white)
+                    Text("Example: instead of 8 days -> next week")
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                })
+                .padding()
+                
+                Toggle(isOn: $whiteTheme, label: {
+                    Text("Show white theme")
+                        .foregroundStyle(.white)
+                })
+                .disabled(true)
+                .padding()
+                
+                PickerComponent(optionSelected: $tag, title: "Tag Filtering", options: tags)
+                    .disabled(true)
                 
                 
                 Spacer()

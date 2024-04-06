@@ -13,9 +13,6 @@
     "Account Settings" : {
 
     },
-    "Active" : {
-
-    },
     "Add reminder" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -115,6 +112,9 @@
         }
       }
     },
+    "Example: insted of 8 days -> next week" : {
+
+    },
     "Home" : {
       "localizations" : {
         "es" : {
@@ -126,9 +126,6 @@
       }
     },
     "Home View" : {
-
-    },
-    "Inactive" : {
 
     },
     "Languages" : {
@@ -250,7 +247,13 @@
     "Settings" : {
 
     },
+    "Show aproximate date" : {
+
+    },
     "Show inactives" : {
+
+    },
+    "Show white theme" : {
 
     },
     "Soon more options..." : {
@@ -281,6 +284,9 @@
       }
     },
     "There aren't any subscription created" : {
+
+    },
+    "To next payment" : {
 
     },
     "To notifications set up" : {

@@ -26,21 +26,5 @@ extension Date {
     var lastDateOfPreviousMonth: Date? {
         DateComponents(calendar: .iso8601, year: year, month: month, day: 0).date
     }
-    
-    var lastDateOfNextMonth: Date? {
-        DateComponents(calendar: .iso8601, year: year, month: month, day: 0).date
-    }
-
-    
 
 }
-
-//extension Date {
-//    func startOfMonth() -> Date {
-//        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: Calendar.current.startOfDay(for: self)))!
-//    }
-//    
-//    func endOfMonth() -> Date {
-//        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
-//    }
-//}

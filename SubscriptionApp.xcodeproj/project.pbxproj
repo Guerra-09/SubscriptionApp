@@ -30,6 +30,7 @@
 		669BF8472BBB3AD30030A9D0 /* PickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8462BBB3AD30030A9D0 /* PickerComponent.swift */; };
 		669BF8492BBB3D040030A9D0 /* ToggleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */; };
 		669BF84D2BBB3FC10030A9D0 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */; };
+		66A057992BC3376E00305054 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A057982BC3376E00305054 /* DateCalculator.swift */; };
 		66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E502B9FEBC800EE91BC /* MainView.swift */; };
 		66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */; };
 		66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E562B9FF0D300EE91BC /* ProfileView.swift */; };
@@ -68,6 +69,7 @@
 		669BF8462BBB3AD30030A9D0 /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
 		669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleComponent.swift; sourceTree = "<group>"; };
 		669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
+		66A057982BC3376E00305054 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		66D78E502B9FEBC800EE91BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		66D78E562B9FF0D300EE91BC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				663035FC2BB762BB00A0071B /* Localizable.xcstrings */,
 				66247D772BB489F9002BFF62 /* SubscriptionsExisting.json */,
 				66D78E502B9FEBC800EE91BC /* MainView.swift */,
+				66A057982BC3376E00305054 /* DateCalculator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */,
 				669BF8452BBB38910030A9D0 /* Modifiers.swift in Sources */,
 				669BF8492BBB3D040030A9D0 /* ToggleComponent.swift in Sources */,
+				66A057992BC3376E00305054 /* DateCalculator.swift in Sources */,
 				669BF8472BBB3AD30030A9D0 /* PickerComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

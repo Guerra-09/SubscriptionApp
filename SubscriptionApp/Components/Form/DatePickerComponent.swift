@@ -28,7 +28,9 @@ struct DatePickerComponent: View {
                 
                 HStack {
                     
-                    DatePicker("", selection: $subscriptionStartDay, displayedComponents: .date)
+                    DatePicker("", selection: $subscriptionStartDay,
+                               in: ...Date(),
+                               displayedComponents: .date)
                         .padding()
                         .datePickerStyle(.compact)
                         .colorInvert()

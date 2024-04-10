@@ -16,6 +16,7 @@ struct SubscriptionViewComponent: View {
     
     var name: String
     var price: Float
+    var cycle: String
     
     var startDay: Date
     var reminder: Bool
@@ -55,7 +56,7 @@ struct SubscriptionViewComponent: View {
                     VStack {
 
                             
-                        Text("\(dateCalculator.getPaymentDay(startDay: startDay, cycle: "monthly", aproximateDate: showAproximateDate))")
+                        Text("\(dateCalculator.getPaymentDay(startDay: startDay, cycle: self.cycle, aproximateDate: showAproximateDate))")
                         Text("To next payment")
                             .font(.caption)
                         
@@ -79,5 +80,5 @@ struct SubscriptionViewComponent: View {
 }
 
 #Preview {
-    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", textColor: "FFFFFF", name: "Netflix", price: 12.5, startDay: Date(), reminder: true, disableService: false)
+    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", textColor: "FFFFFF", name: "Netflix", price: 12.5, cycle: "monthly", startDay: Date(), reminder: true, disableService: false)
 }

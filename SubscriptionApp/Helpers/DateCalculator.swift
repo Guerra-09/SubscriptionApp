@@ -17,12 +17,17 @@ class DateCalculator {
     
     func getPaymentDay(startDay: Date, cycle: String, aproximateDate: Bool) -> String {
     
+//        print("[D] cycle: \(cycle)")
         
         var daysUntilPayment: Int = 0
         
         // Si el ciclo es mensual
         if cycle == "monthly" {
             daysUntilPayment = daysUntilMonthly(startDate: startDay)
+            
+        } else if cycle == "each three months" {
+            daysUntilPayment = daysUntilThreeMonths(startDate: startDay)
+            
         } else {
             return "Aun no esta hecho xD"
         }
@@ -50,16 +55,45 @@ class DateCalculator {
     }
     
     
+    func daysUntilThreeMonths(startDate: Date) -> Int {
+
+
+        
+        let calendar = Calendar.current
+        // Obtener la cantidad de meses entre el primer pago hasta hoy
+        let components = calendar.dateComponents([.month], from: startDate, to: Date())
+        
+        let nextPaymentDate = Date()
+
+        // Si entra en este caso significa que toca pagar este mes
+        if components.month! % 3 == 0 && components.month == Date().month {
+            print("[D] faltan 3 meses para pagar!")
+            
+        } else if components.month! % 3 == 0 {
+            print("[D] toca pagar!!")
+            
+        } else if components.month! % 3 == 1 {
+            print("[D] Faltan 2 meses para pagar")
+            
+        } else if components.month! % 3 == 2 {
+            print("[D] el proximo mes se paga")
+        }
+            
+        
+        print("[D] components: \(components.month!)")
+        print("[D] restos: \(components.month! % 3)")
+        
+
+        return 0
+    }
+    
+    
 //     Esta funcion retorna los dias cuando el ciclo es mensual
     func daysUntilMonthly(startDate: Date) -> Int {
         
         // StartDate
-        let firstPaymentDate = startDate
         let firstPaymentDay = startDate.day
-        let firstPaymentMonth = startDate.month
-        let firstPaymentYear = startDate.year
-        
-        
+
         // Current
         let actualDay = Date().day
         let actualMonth = Date().month

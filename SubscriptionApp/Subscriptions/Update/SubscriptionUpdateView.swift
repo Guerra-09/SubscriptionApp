@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SubscriptionUpdateView: View {
     
-    let subscriptionCycle: [String] = ["weekly", "monthly", "each 3 months", "each 6 months", "yearly"]
-    let reminderOptions: [String] = ["The same day","1 day before", "2 days before", "3 days before", "1 week before", "2 weeks befores"]
+    let subscriptionCycle: [String] = ["weekly", "monthly", "each three months", "each six months", "yearly"]
+    let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before", "Two weeks before"]
     
     @Bindable var subscription: Subscription
     @ObservedObject var viewModel: SubscriptionsViewModel

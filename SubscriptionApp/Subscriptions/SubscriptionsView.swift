@@ -46,7 +46,8 @@ struct SubscriptionsView: View {
                                         backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
                                         textColor: subscription.subscriptionMetadata!.textColor!,
                                         name: subscription.name,
-                                        price: Float(subscription.price),
+                                        price: Float(subscription.price), 
+                                        cycle: subscription.cycle,
                                         startDay: subscription.startDay,
                                         reminder: subscription.reminder,
                                         disableService: subscription.disableService

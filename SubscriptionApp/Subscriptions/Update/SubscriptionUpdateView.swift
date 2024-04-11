@@ -37,7 +37,7 @@ struct SubscriptionUpdateView: View {
                 
                 // Name
                 TextFieldAndLabel(labelName: "Name", placeholder: "Editar", textVariable: $subscription.name, bigContainer: false)
-                
+                 
                 // Price
                 VStack {
                     Text("Price")

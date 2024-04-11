@@ -16,6 +16,7 @@
 		663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035FA2BB7610C00A0071B /* PreferencesView.swift */; };
 		663035FD2BB762BB00A0071B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 663035FC2BB762BB00A0071B /* Localizable.xcstrings */; };
 		663036012BB79AB600A0071B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
+		663E736D2BC70FBB003DFB6D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
 		664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD212BBF2B9A00E4146B /* URLExtension.swift */; };
 		6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */; };
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
@@ -41,9 +42,21 @@
 		66E57C192BB892E800B89EF0 /* SubscriptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */; };
 		66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1B2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift */; };
 		66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */; };
+		66E89A792BC7131800CF051D /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
+		66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
 		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
 		66ECA1E32BC09DE500FF9D0B /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 66ECA1E22BC09DE500FF9D0B /* SwiftDate */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		663E736E2BC70FBB003DFB6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6653BC4E2B9FE3C500BB9207 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6653BC552B9FE3C500BB9207;
+			remoteInfo = SubscriptionApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		66247D752BB4622D002BFF62 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -55,6 +68,8 @@
 		663035FA2BB7610C00A0071B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		663035FC2BB762BB00A0071B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		663036002BB79AB600A0071B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		663E736A2BC70FBB003DFB6D /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SubscriptionAppTests.xctest; path = "/Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app/PlugIns/SubscriptionAppTests.xctest"; sourceTree = "<absolute>"; };
+		663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppTests.swift; sourceTree = "<group>"; };
 		664FFD212BBF2B9A00E4146B /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppApp.swift; sourceTree = "<group>"; };
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +100,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		663E73672BC70FBB003DFB6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6653BC532B9FE3C500BB9207 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +149,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		663E736B2BC70FBB003DFB6D /* SubscriptionAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */,
+			);
+			path = SubscriptionAppTests;
+			sourceTree = "<group>";
+		};
 		664FFD232BBF615800E4146B /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +170,7 @@
 			children = (
 				6653BC582B9FE3C500BB9207 /* SubscriptionApp */,
 				66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */,
+				663E736B2BC70FBB003DFB6D /* SubscriptionAppTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +292,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		663E73692BC70FBB003DFB6D /* SubscriptionAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 663E73722BC70FBB003DFB6D /* Build configuration list for PBXNativeTarget "SubscriptionAppTests" */;
+			buildPhases = (
+				663E73662BC70FBB003DFB6D /* Sources */,
+				663E73672BC70FBB003DFB6D /* Frameworks */,
+				663E73682BC70FBB003DFB6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				663E736F2BC70FBB003DFB6D /* PBXTargetDependency */,
+			);
+			name = SubscriptionAppTests;
+			productName = SubscriptionAppTests;
+			productReference = 663E736A2BC70FBB003DFB6D /* SubscriptionAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6653BC552B9FE3C500BB9207 /* SubscriptionApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6653BC692B9FE3C700BB9207 /* Build configuration list for PBXNativeTarget "SubscriptionApp" */;
@@ -288,9 +337,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					663E73692BC70FBB003DFB6D = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 6653BC552B9FE3C500BB9207;
+					};
 					6653BC552B9FE3C500BB9207 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -315,11 +368,19 @@
 			projectRoot = "";
 			targets = (
 				6653BC552B9FE3C500BB9207 /* SubscriptionApp */,
+				663E73692BC70FBB003DFB6D /* SubscriptionAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		663E73682BC70FBB003DFB6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6653BC542B9FE3C500BB9207 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,6 +395,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		663E73662BC70FBB003DFB6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E89A792BC7131800CF051D /* Subscription.swift in Sources */,
+				663E736D2BC70FBB003DFB6D /* SubscriptionAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6653BC522B9FE3C500BB9207 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +422,7 @@
 				66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */,
 				6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */,
 				6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */,
+				66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */,
 				66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */,
 				667C88482BB5C7A5008E9728 /* ColorExtension.swift in Sources */,
 				66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */,
@@ -374,7 +445,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		663E736F2BC70FBB003DFB6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6653BC552B9FE3C500BB9207 /* SubscriptionApp */;
+			targetProxy = 663E736E2BC70FBB003DFB6D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		663E73702BC70FBB003DFB6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKKAM4GN94;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubscriptionApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SubscriptionApp";
+			};
+			name = Debug;
+		};
+		663E73712BC70FBB003DFB6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKKAM4GN94;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubscriptionApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SubscriptionApp";
+			};
+			name = Release;
+		};
 		6653BC672B9FE3C700BB9207 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -557,6 +674,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		663E73722BC70FBB003DFB6D /* Build configuration list for PBXNativeTarget "SubscriptionAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				663E73702BC70FBB003DFB6D /* Debug */,
+				663E73712BC70FBB003DFB6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6653BC512B9FE3C500BB9207 /* Build configuration list for PBXProject "SubscriptionApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

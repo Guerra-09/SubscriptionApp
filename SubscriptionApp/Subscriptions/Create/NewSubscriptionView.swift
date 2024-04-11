@@ -41,7 +41,12 @@ struct NewSubscriptionView: View {
 
                     
                     // Iterating subscriptions
-                    ForEach(subscriptionsExisting.subscriptions.filter{$0.name.hasPrefix(query) || query == ""}) { value in
+                    ForEach(subscriptionsExisting.subscriptions.filter{
+
+                        let lowercasedQuery = query.lowercased()
+                        let lowercasedName = $0.name.lowercased()
+                        return lowercasedName.hasPrefix(lowercasedQuery) || lowercasedQuery == ""
+                    }) { value in
                         
                         HStack {
                             

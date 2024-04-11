@@ -46,6 +46,26 @@ struct ExistingCreationView: View {
 
                 // Price
                 TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: $subscriptionPrice, bigContainer: false)
+                    .keyboardType(.decimalPad)
+                    .onChange(of: subscriptionPrice) { oldValue, newValue in
+                        
+                        var filteredText = newValue.filter { "0123456789,".contains($0) }
+                        
+                        let decimalCount = filteredText.components(separatedBy: ",").count - 1
+                        if decimalCount > 1 {
+                            filteredText = String(filteredText.dropLast())
+                        }
+                        
+                        if let dotIndex = filteredText.firstIndex(of: ",") {
+                            let decimalPortion = filteredText.suffix(from: dotIndex)
+                            if decimalPortion.count > 3 {
+                                filteredText = String(filteredText.dropLast())
+                            }
+                        }
+                        
+                        subscriptionPrice = "$" + filteredText
+                    }
+                    
                 
                 // Start day
                 DatePickerComponent(subscriptionStartDay: $subscriptionStartDay)
@@ -78,9 +98,25 @@ struct ExistingCreationView: View {
                         textColor: susbcriptionModel.textColor
                     )
                     
+                    var formattedPrice: Float {
+                      
+                        let removingMoneySign = subscriptionPrice.replacingOccurrences(of: "$", with: "")
+                        
+                        let replacingCommas = removingMoneySign.replacingOccurrences(of: ",", with: ".")
+                        
+                        // Convertir el texto limpio a un valor Float
+                        if let floatValue = Float(replacingCommas) {
+                            return floatValue
+                        } else {
+                            return 0.0
+                        }
+                    }
+                    
+                    
+                    
                     let newSub = Subscription(id: .init(), 
                                               name: subscriptionName,
-                                              price: Float(subscriptionPrice) ?? 0.0,
+                                              price: Float(formattedPrice),
                                               startDay: subscriptionStartDay,
                                               cycle: subscriptionCycleSelected,
                                               descriptionText: subscriptionDescription,
@@ -102,6 +138,14 @@ struct ExistingCreationView: View {
                 
             }
         }
+    }
+    
+    
+    func moneySignBeforePrice(_ priceString: String) -> String {
+        
+        
+        
+        return ""
     }
 }
 

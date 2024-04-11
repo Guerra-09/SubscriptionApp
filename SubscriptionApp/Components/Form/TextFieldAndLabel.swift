@@ -27,7 +27,9 @@ struct TextFieldAndLabel: View {
                 .fontWeight(.bold)
                 .font(.system(size: 20))
             
-            TextField(placeholder, text: $textVariable)
+            TextField("", text: $textVariable, prompt: Text("\(placeholder)")
+                .foregroundColor(Color(hex: "a39e9e")))
+            
                 .padding()
                 .padding(.bottom, bigContainer == true ? 70 : 0)
                 .foregroundStyle(.white)
@@ -43,5 +45,5 @@ struct TextFieldAndLabel: View {
 }
 
 #Preview {
-    TextFieldAndLabel(labelName: "Name", placeholder: "Enter a description", textVariable: .constant("Sex"), bigContainer: true)
+    TextFieldAndLabel(labelName: "Name", placeholder: "Enter a description", textVariable: .constant(""), bigContainer: false)
 }

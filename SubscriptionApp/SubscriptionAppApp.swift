@@ -12,7 +12,7 @@ import SwiftData
 struct SubscriptionAppApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBar()
+            MainView()
                 .environmentObject(SubscriptionsViewModel())
         }
     }

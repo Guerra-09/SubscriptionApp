@@ -133,6 +133,7 @@ struct ExistingCreationView: View {
      
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
+                        .padding(.bottom, 30)
                 }
                 
                 
@@ -140,12 +141,5 @@ struct ExistingCreationView: View {
         }
     }
     
-    
-    func moneySignBeforePrice(_ priceString: String) -> String {
-        
-        
-        
-        return ""
-    }
 }
 

@@ -104,7 +104,7 @@ struct SubscriptionsView: View {
         
         .sheet(isPresented: $showingSubscriptionsBy) {
             NavigationStack {
-                SubscriptionsBySheet(viewModel: viewModel)
+                SubscriptionsSettingsSheet(viewModel: viewModel)
             }
         }
         
@@ -114,7 +114,7 @@ struct SubscriptionsView: View {
 }
 
 
-struct SubscriptionsBySheet: View {
+struct SubscriptionsSettingsSheet: View {
     
     @ObservedObject var viewModel: SubscriptionsViewModel // Solo para pruebas, despues deberia borrarse el viewmodel y la opcion de borrar todo
     @Environment(\.dismiss) var dismiss

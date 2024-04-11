@@ -15,8 +15,10 @@ struct SubscriptionUpdateView: View {
     @Bindable var subscription: Subscription
     @ObservedObject var viewModel: SubscriptionsViewModel
     
+    @State var showingAlertDelete: Bool = false
     
     @State var subscriptionPrice: String = ""
+    @State var subscriptionToDelete: Subscription?
     
     @Environment(\.dismiss) var dismiss
     
@@ -39,16 +41,26 @@ struct SubscriptionUpdateView: View {
                 TextFieldAndLabel(labelName: "Name", placeholder: "Editar", textVariable: $subscription.name, bigContainer: false)
                  
                 // Price
-                VStack {
-                    Text("Price")
-                        .modifier(TextFieldLabelCommonModifier())
-                    
-                    TextField("Price", text: $subscriptionPrice)
-                        .modifier(TextFieldCommonModifier(bigContainer: false))
-                        .onChange(of: subscriptionPrice) { oldValue, newValue in
-                            subscription.price = Float(newValue) ?? 0.0
+                TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: $subscriptionPrice, bigContainer: false)
+                    .keyboardType(.decimalPad)
+                    .onChange(of: subscriptionPrice) { oldValue, newValue in
+                        
+                        var filteredText = newValue.filter { "0123456789,".contains($0) }
+                        
+                        let decimalCount = filteredText.components(separatedBy: ",").count - 1
+                        if decimalCount > 1 {
+                            filteredText = String(filteredText.dropLast())
                         }
-                }
+                        
+                        if let dotIndex = filteredText.firstIndex(of: ",") {
+                            let decimalPortion = filteredText.suffix(from: dotIndex)
+                            if decimalPortion.count > 3 {
+                                filteredText = String(filteredText.dropLast())
+                            }
+                        }
+                        
+                        subscriptionPrice = "$" + filteredText
+                    }
                 
                 // Start day
                 DatePickerComponent(subscriptionStartDay: $subscription.startDay)
@@ -71,27 +83,55 @@ struct SubscriptionUpdateView: View {
                 
                 Button {
                     dismiss()
+                    
+                    var formattedPrice: Float {
+                      
+                        let removingMoneySign = subscriptionPrice.replacingOccurrences(of: "$", with: "")
+                        
+                        let replacingCommas = removingMoneySign.replacingOccurrences(of: ",", with: ".")
+                        
+                        // Convertir el texto limpio a un valor Float
+                        if let floatValue = Float(replacingCommas) {
+                            return floatValue
+                        } else {
+                            return 0.0
+                        }
+                    }
+                    
+                    subscription.price = formattedPrice
+                    
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
                 }
                 
                 Button {
-                    dismiss()
-                    viewModel.deleteSubscription(subscription: subscription)
+                    subscriptionToDelete = self.subscription
+                    showingAlertDelete.toggle()
                 } label: {
-                    ButtonCustom(title: "Delete", color: Color(.red))
+                    Text("Delete")
+                        .font(.system(size: 18))
+                        .underline()
+                        .foregroundStyle(.red)
+                        .padding(.top, 15)
+                        .padding(.bottom, 30)
                 }
             }
 
             
         }
         .onAppear {
-            self.subscriptionPrice = String(subscription.price)
+            self.subscriptionPrice = String(subscription.price).replacingOccurrences(of: ".", with: ",")
             print("METADATA: \(subscription.subscriptionMetadata!.logo)")
+        }
+        
+        .alert("Are you sure you want to delete?", isPresented: $showingAlertDelete) {
+            Button("Cancel", role: .cancel) { print("Cancelling") }
+            
+            Button("Delete", role: .destructive) {
+                dismiss()
+                viewModel.deleteSubscription(subscription: subscriptionToDelete!)
+            }
+            
         }
     }
 }
-
-//#Preview {
-//    SubscriptionUpdateView()
-//}

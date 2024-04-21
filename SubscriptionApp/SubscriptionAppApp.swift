@@ -7,9 +7,25 @@
 
 import SwiftUI
 import SwiftData
+import UserNotifications
+
 
 @main
 struct SubscriptionAppApp: App {
+
+    
+    let persistentController = PersistenceController()
+    let center = UNUserNotificationCenter.current()
+    
+    init() {
+        center.requestAuthorization(options: [.sound, .badge, .alert]) { granted, error in
+            if let error = error {
+                print("[D] ERROR REQUESTING NOTIFICATIONS SubscriptionAppApp \(error)")
+            }
+        }
+
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()

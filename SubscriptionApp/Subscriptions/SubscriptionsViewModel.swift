@@ -14,10 +14,12 @@ import SwiftDate
 final class SubscriptionsViewModel: ObservableObject {
     
     let container = try! ModelContainer(for: Subscription.self, SubscriptionMetadata.self)
+
     
     @MainActor
     var modelContext: ModelContext {
         container.mainContext
+        
     }
     
     var subscriptions: [Subscription] = []

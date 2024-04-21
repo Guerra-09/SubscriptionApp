@@ -20,6 +20,8 @@ struct NewSubscriptionView: View {
     
     var alreadySelected: [String] = []
     
+    
+    
     @State var query: String = ""
     
     var body: some View {

@@ -9,19 +9,25 @@ import SwiftUI
 
 struct SubscriptionUpdateView: View {
     
-    let subscriptionCycle: [String] = ["weekly", "monthly", "each three months", "each six months", "yearly"]
+    let subscriptionCycle: [String] = ["monthly", "each three months", "each six months", "yearly"]
     let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before", "Two weeks before"]
     
-    @Bindable var subscription: Subscription
+    
     @ObservedObject var viewModel: SubscriptionsViewModel
     
     @State var showingAlertDelete: Bool = false
     
     @State var subscriptionPrice: String = ""
     @State var subscriptionToDelete: Subscription?
+    @FocusState var priceFocus: Bool
+    @Binding var showToolbar: Bool
     
     @Environment(\.dismiss) var dismiss
     
+    @AppStorage("currencySelected") var currencySelected: String = "USD"
+
+    @Bindable var subscription: Subscription
+
 
     
     var body: some View {
@@ -39,27 +45,36 @@ struct SubscriptionUpdateView: View {
                 
                 // Name
                 TextFieldAndLabel(labelName: "Name", placeholder: "Editar", textVariable: $subscription.name, bigContainer: false)
-                 
+                                    
+                
                 // Price
                 TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: $subscriptionPrice, bigContainer: false)
-                    .keyboardType(.decimalPad)
+                    .focused($priceFocus)
+                    // Por ahora como solo soporta USD y CLP, dejo esto asi, luego deberia incluir un enum o algo asi
+                    .keyboardType(currencySelected == "USD" ? .decimalPad : .numberPad)
                     .onChange(of: subscriptionPrice) { oldValue, newValue in
                         
-                        var filteredText = newValue.filter { "0123456789,".contains($0) }
+                        print("[D] old Value \(oldValue)")
+                        print("[D] new Value \(newValue)")
                         
-                        let decimalCount = filteredText.components(separatedBy: ",").count - 1
-                        if decimalCount > 1 {
-                            filteredText = String(filteredText.dropLast())
+                        
+                        var filteredText: String = ""
+                        
+                        if currencySelected == "USD" {
+                            filteredText = decimalPriceFormat(newValue: newValue)
+                            
+                        } else if currencySelected == "CLP" {
+                            
+                            filteredText = wholeNumberPriceFormat(newValue: newValue)
+                            
+                        } else {
+                            filteredText = "ERROR"
                         }
                         
-                        if let dotIndex = filteredText.firstIndex(of: ",") {
-                            let decimalPortion = filteredText.suffix(from: dotIndex)
-                            if decimalPortion.count > 3 {
-                                filteredText = String(filteredText.dropLast())
-                            }
-                        }
-                        
+                       
                         subscriptionPrice = "$" + filteredText
+                        
+
                     }
                 
                 // Start day
@@ -70,6 +85,8 @@ struct SubscriptionUpdateView: View {
                 
                 // Notes
                 TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: $subscription.descriptionText, bigContainer: true)
+                
+               
                 
                 // Reminder - Reminder time
                 ToggleComponent(title: "Add Reminder", toggleOption: $subscription.reminder)
@@ -84,21 +101,19 @@ struct SubscriptionUpdateView: View {
                 Button {
                     dismiss()
                     
-                    var formattedPrice: Float {
-                      
-                        let removingMoneySign = subscriptionPrice.replacingOccurrences(of: "$", with: "")
+                    var valueToSave: Float {
+
+                        let replacingMoneySing = self.subscriptionPrice.replacingOccurrences(of: "$", with: "")
                         
-                        let replacingCommas = removingMoneySign.replacingOccurrences(of: ",", with: ".")
+                        let newValue = replacingMoneySing.replacingOccurrences(of: ",", with: ".")
                         
-                        // Convertir el texto limpio a un valor Float
-                        if let floatValue = Float(replacingCommas) {
-                            return floatValue
-                        } else {
-                            return 0.0
-                        }
+                        return Float(newValue) ?? 0.0
                     }
+
+                                        
+                    print("[D] ValueToSave : \(valueToSave)")
                     
-                    subscription.price = formattedPrice
+                    self.subscription.price = valueToSave
                     
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
@@ -116,13 +131,27 @@ struct SubscriptionUpdateView: View {
                         .padding(.bottom, 30)
                 }
             }
+            .scrollDismissesKeyboard(.immediately)
+            .toolbar {
+                Button("Save") {
+                    dismiss()
+                }
+                
+            }
 
             
         }
         .onAppear {
+            
+            showToolbar = false
+            
             self.subscriptionPrice = String(subscription.price).replacingOccurrences(of: ".", with: ",")
+            formatPrice()
+            
+            print("[D] self.subscriptionPrice \(self.subscriptionPrice)")
             print("METADATA: \(subscription.subscriptionMetadata!.logo)")
         }
+
         
         .alert("Are you sure you want to delete?", isPresented: $showingAlertDelete) {
             Button("Cancel", role: .cancel) { print("Cancelling") }
@@ -134,4 +163,53 @@ struct SubscriptionUpdateView: View {
             
         }
     }
+    
+    func formatPrice() -> Void {
+        
+        let removingMoneySign = subscriptionPrice.replacingOccurrences(of: "$", with: "")
+
+        var replacingCommas = removingMoneySign
+        
+        replacingCommas = replacingCommas.replacingOccurrences(of: ",", with: ".")
+       
+
+        // Convertir el texto limpio a un valor Float
+        if let floatValue = Float(replacingCommas) {
+            self.subscription.price = floatValue
+        } else {
+            self.subscription.price = 0.0
+        }
+    }
+    
+    func decimalPriceFormat(newValue: String) -> String {
+        
+        var filteredText = newValue.filter { "0123456789,".contains($0) }
+        
+        let decimalCount = filteredText.components(separatedBy: ",").count - 1
+        if decimalCount > 1 {
+            filteredText = String(filteredText.dropLast())
+        }
+        
+        if let dotIndex = filteredText.firstIndex(of: ",") {
+            let decimalPortion = filteredText.suffix(from: dotIndex)
+            if decimalPortion.count > 3 {
+                filteredText = String(filteredText.dropLast())
+            }
+        }
+        
+        return filteredText
+    }
+    
+    
+    func wholeNumberPriceFormat(newValue: String) -> String {
+        var filteredText = newValue.filter { "0123456789,".contains($0) }
+        
+        if let commaIndex = filteredText.firstIndex(of: ",") {
+            filteredText = String(filteredText.prefix(upTo: commaIndex))
+        }
+
+        return filteredText
+        
+    }
+
 }

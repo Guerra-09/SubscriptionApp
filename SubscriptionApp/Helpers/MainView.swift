@@ -15,8 +15,7 @@ enum Tabs: Int {
 
 struct MainView: View {
     
-    
-    
+    @Environment(SubscriptionsViewModel.self) var viewModel
     @AppStorage("lastUsedView") var selectedTab: Tabs = .home
     
     init() {
@@ -24,16 +23,19 @@ struct MainView: View {
     }
     
     var body: some View {
+        
+        
         TabView(selection: $selectedTab) {
             
             NavigationStack {
                 HomeView()
-                    
             }
             .tag(Tabs.home)
             .tabItem {
                 Image(systemName: "house")
             }
+            
+            
                 
             NavigationStack {
                 SubscriptionsView()
@@ -43,6 +45,8 @@ struct MainView: View {
                 Image(systemName: "creditcard")
             }
             
+            
+            
             NavigationStack {
                 ProfileView()
             }
@@ -51,10 +55,11 @@ struct MainView: View {
                 Image(systemName: "person.fill")
             }
             
+            
+            
         }
-        .onAppear {
-            print("[D] selectedTab: \(selectedTab)")
-        }
+        
+
         
     }
         

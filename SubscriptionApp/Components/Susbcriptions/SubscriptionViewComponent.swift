@@ -22,9 +22,13 @@ struct SubscriptionViewComponent: View {
     var reminder: Bool
     var disableService: Bool
     
+    
+    @State var priceFormat = ""
     @State var dateCalculator = DateCalculator()
     
     @AppStorage("showAproximateDate") var showAproximateDate: Bool = false
+    @AppStorage("currencySelected") var currencySelected: String = "USD"
+    
     
     var body: some View {
         ZStack {
@@ -45,9 +49,10 @@ struct SubscriptionViewComponent: View {
                         Text(name)
                             .font(.system(size: 21))
                         
-
-                        Text("$\(price.decimals(2))")
-                            .font(.callout)
+                        Text("\(price.formatPriceFromFloatToString(currency: "\(currencySelected)"))")
+                                .font(.callout)
+                        
+                        
                     }
                     .padding(.leading, 10)
                     
@@ -73,12 +78,12 @@ struct SubscriptionViewComponent: View {
             }
             .foregroundStyle(Color(hex: textColor))
         }
+        .onAppear {
+            print("\(price.formatPriceFromFloatToString(currency: "CLP"))")
+        }
     }
-    
-    
+        
+
     
 }
 
-#Preview {
-    SubscriptionViewComponent(logo: "netflix_logo", logoColor: "FFFFFF", backgroundColor: "D82929", textColor: "FFFFFF", name: "Netflix", price: 12.5, cycle: "monthly", startDay: Date(), reminder: true, disableService: false)
-}

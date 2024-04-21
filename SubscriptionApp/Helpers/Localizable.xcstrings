@@ -7,9 +7,6 @@
     "%@" : {
 
     },
-    "$%@" : {
-
-    },
     "Account Settings" : {
 
     },
@@ -39,6 +36,12 @@
 
     },
     "Are you sure you want to delete?" : {
+
+    },
+    "Average Monthly Expenses: %@" : {
+
+    },
+    "Average Yearly Expenses: %@" : {
 
     },
     "Buscar un resultado..." : {
@@ -119,6 +122,7 @@
 
     },
     "Home" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -127,9 +131,6 @@
           }
         }
       }
-    },
-    "Home View" : {
-
     },
     "Languages" : {
       "extractionState" : "stale",
@@ -227,7 +228,6 @@
       }
     },
     "Save" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -313,6 +313,9 @@
           }
         }
       }
+    },
+    "Welcome %@" : {
+
     }
   },
   "version" : "1.0"

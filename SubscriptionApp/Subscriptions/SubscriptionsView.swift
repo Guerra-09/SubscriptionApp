@@ -12,7 +12,8 @@ struct SubscriptionsView: View {
 
     @State var showingSubscriptionsBy: Bool = false
     @State private var showingSheet = false
-    @Environment(SubscriptionsViewModel.self) var viewModel
+    @State var showToolbar: Bool = true
+    @EnvironmentObject var viewModel: SubscriptionsViewModel
     @AppStorage("showInactive") var showInactive: Bool = true
     
     var body: some View {
@@ -33,12 +34,15 @@ struct SubscriptionsView: View {
                             .font(.subheadline)
                             .foregroundStyle(.white)
                             .multilineTextAlignment(.center)
+                        
                     } else {
+                        
                         ForEach(viewModel.subscriptions) { subscription in
                             
                             if !showInactive && subscription.disableService {
                                 //()
                             } else {
+                                
                                 NavigationLink(value: subscription) {
                                     SubscriptionViewComponent(
                                         logo: subscription.subscriptionMetadata!.logo,
@@ -52,29 +56,37 @@ struct SubscriptionsView: View {
                                         reminder: subscription.reminder,
                                         disableService: subscription.disableService
                                     )
+                                    
                                 }
                                 .padding(.vertical, 1.5)
+                                
+                                
+
+                                
+                                                                
                             }
                                 
                         }
+
                     }
                     
                     
                 }
                 .padding(.top, 25)
                 .navigationDestination(for: Subscription.self) { sub in
-                    SubscriptionUpdateView(subscription: sub, viewModel: viewModel)
+                    SubscriptionUpdateView(viewModel: viewModel, showToolbar: $showToolbar, subscription: sub)
                 }
             
             }
             .onAppear {
                 viewModel.getSubscriptions()
+                showToolbar = true
             }
         }
         .navigationTitle("Subscriptions")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitleTextColor(.white)
-        
+        .toolbar(showToolbar ? .visible : .hidden, for: .tabBar)
         .toolbar {
             
             ToolbarItem(placement: .topBarLeading) {

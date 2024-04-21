@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ExistingCreationView: View {
     
@@ -17,18 +18,21 @@ struct ExistingCreationView: View {
     let susbcriptionModel: SubscriptionModel
     
     
-    let subscriptionCycle: [String] = ["weekly", "monthly", "each 3 months", "each 6 months", "yearly"]
-    let reminderOptions: [String] = ["The same day","1 day before", "2 days before", "3 days before", "1 week before", "2 weeks befores"]
+    let subscriptionCycle: [String] = ["monthly", "each three months", "each six months", "yearly"]
+    let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before"]
     
     @State var subscriptionName: String 
     @State var subscriptionPrice: String = ""
     @State var subscriptionStartDay: Date = Date()
     @State var subscriptionCycleSelected: String = "monthly"
     @State var subscriptionDescription: String = ""
-    @State var subscriptionReminderToggle: Bool = true
+    @AppStorage("notifications") var subscriptionReminderToggle = false
     @State var subscriptionReminderSelected: String = "The same day"
     @State var subcriptionIsDisable: Bool = false
     
+    
+    let notificationCenter = NotificationCenter()
+    let dateCalculator = DateCalculator()
     
     var body: some View {
         ZStack {
@@ -78,7 +82,7 @@ struct ExistingCreationView: View {
                 
                 
                 ToggleComponent(title: "Add Reminder", toggleOption: $subscriptionReminderToggle)
-                
+                    
                 
                 PickerComponent(optionSelected: $subscriptionReminderSelected, title: "Reminder Time", options: reminderOptions)
                     .disabled(!subscriptionReminderToggle)
@@ -128,6 +132,8 @@ struct ExistingCreationView: View {
                     
                     viewModel.addSubscription(subscription: newSub)
                     
+                    // Creando notificacion
+                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected)
                     showingSheet.toggle()
 
      
@@ -139,6 +145,7 @@ struct ExistingCreationView: View {
                 
             }
         }
+        
     }
     
 }

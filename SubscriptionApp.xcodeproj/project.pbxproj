@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6604D77B2BCEB21C004835FD /* SubscriptionsExisting.json in Resources */ = {isa = PBXBuildFile; fileRef = 6604D77A2BCEB21C004835FD /* SubscriptionsExisting.json */; };
 		66247D762BB4622D002BFF62 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66247D752BB4622D002BFF62 /* ViewExtensions.swift */; };
 		66247D7A2BB48BFB002BFF62 /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66247D792BB48BFB002BFF62 /* SubscriptionModel.swift */; };
 		66247D7C2BB48C8F002BFF62 /* NewSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66247D7B2BB48C8F002BFF62 /* NewSubscriptionViewModel.swift */; };
-		66247D7D2BB4A345002BFF62 /* SubscriptionsExisting.json in Resources */ = {isa = PBXBuildFile; fileRef = 66247D772BB489F9002BFF62 /* SubscriptionsExisting.json */; };
 		663035F62BB6F63E00A0071B /* TextFieldAndLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035F52BB6F63D00A0071B /* TextFieldAndLabel.swift */; };
 		663035F92BB75F6E00A0071B /* DatePickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035F82BB75F6E00A0071B /* DatePickerComponent.swift */; };
 		663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035FA2BB7610C00A0071B /* PreferencesView.swift */; };
 		663035FD2BB762BB00A0071B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 663035FC2BB762BB00A0071B /* Localizable.xcstrings */; };
 		663036012BB79AB600A0071B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
 		663E736D2BC70FBB003DFB6D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
+		6640C1E52BCEB3A600D32DDD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 6640C1E42BCEB3A600D32DDD /* SwiftDate */; };
 		664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD212BBF2B9A00E4146B /* URLExtension.swift */; };
 		6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */; };
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
@@ -25,13 +26,14 @@
 		6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */; };
 		6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC6E2B9FE59300BB9207 /* HomeView.swift */; };
 		667C88482BB5C7A5008E9728 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C88472BB5C7A5008E9728 /* ColorExtension.swift */; };
-		66906ACD2BBC9B420000CFE6 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906ACC2BBC9B420000CFE6 /* FloatExtension.swift */; };
+		66906ACD2BBC9B420000CFE6 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */; };
 		669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */; };
 		669BF8452BBB38910030A9D0 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8442BBB38910030A9D0 /* Modifiers.swift */; };
 		669BF8472BBB3AD30030A9D0 /* PickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8462BBB3AD30030A9D0 /* PickerComponent.swift */; };
 		669BF8492BBB3D040030A9D0 /* ToggleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */; };
 		669BF84D2BBB3FC10030A9D0 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */; };
 		66A057992BC3376E00305054 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A057982BC3376E00305054 /* DateCalculator.swift */; };
+		66AF09A22BCB0151003B6A84 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */; };
 		66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E502B9FEBC800EE91BC /* MainView.swift */; };
 		66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */; };
 		66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E562B9FF0D300EE91BC /* ProfileView.swift */; };
@@ -45,7 +47,6 @@
 		66E89A792BC7131800CF051D /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
 		66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
 		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
-		66ECA1E32BC09DE500FF9D0B /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 66ECA1E22BC09DE500FF9D0B /* SwiftDate */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6604D77A2BCEB21C004835FD /* SubscriptionsExisting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SubscriptionsExisting.json; sourceTree = "<group>"; };
 		66247D752BB4622D002BFF62 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		66247D772BB489F9002BFF62 /* SubscriptionsExisting.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = SubscriptionsExisting.json; path = /Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/SubscriptionApp/Helpers/SubscriptionsExisting.json; sourceTree = "<absolute>"; };
 		66247D792BB48BFB002BFF62 /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		66247D7B2BB48C8F002BFF62 /* NewSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionViewModel.swift; sourceTree = "<group>"; };
 		663035F52BB6F63D00A0071B /* TextFieldAndLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAndLabel.swift; sourceTree = "<group>"; };
@@ -68,8 +69,8 @@
 		663035FA2BB7610C00A0071B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		663035FC2BB762BB00A0071B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		663036002BB79AB600A0071B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		663E736A2BC70FBB003DFB6D /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SubscriptionAppTests.xctest; path = "/Users/guerrinha/Desktop/Scripts/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app/PlugIns/SubscriptionAppTests.xctest"; sourceTree = "<absolute>"; };
 		663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppTests.swift; sourceTree = "<group>"; };
+		6640C1E22BCEB38800D32DDD /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SubscriptionAppTests.xctest; path = "/Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app/PlugIns/SubscriptionAppTests.xctest"; sourceTree = "<absolute>"; };
 		664FFD212BBF2B9A00E4146B /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppApp.swift; sourceTree = "<group>"; };
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,13 +79,14 @@
 		6653BC652B9FE3C700BB9207 /* SubscriptionApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionApp.xcdatamodel; sourceTree = "<group>"; };
 		6653BC6E2B9FE59300BB9207 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
 		667C88472BB5C7A5008E9728 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		66906ACC2BBC9B420000CFE6 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
+		66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
 		669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpdateView.swift; sourceTree = "<group>"; };
 		669BF8442BBB38910030A9D0 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		669BF8462BBB3AD30030A9D0 /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
 		669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleComponent.swift; sourceTree = "<group>"; };
 		669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		66A057982BC3376E00305054 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
+		66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		66D78E502B9FEBC800EE91BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		66D78E562B9FF0D300EE91BC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -111,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66ECA1E32BC09DE500FF9D0B /* SwiftDate in Frameworks */,
+				6640C1E52BCEB3A600D32DDD /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +159,13 @@
 			path = SubscriptionAppTests;
 			sourceTree = "<group>";
 		};
+		6640C1E32BCEB3A600D32DDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		664FFD232BBF615800E4146B /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +180,7 @@
 				6653BC582B9FE3C500BB9207 /* SubscriptionApp */,
 				66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */,
 				663E736B2BC70FBB003DFB6D /* SubscriptionAppTests */,
+				6640C1E32BCEB3A600D32DDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,10 +222,11 @@
 		66D78E4F2B9FEBB600EE91BC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6604D77A2BCEB21C004835FD /* SubscriptionsExisting.json */,
 				663035FC2BB762BB00A0071B /* Localizable.xcstrings */,
-				66247D772BB489F9002BFF62 /* SubscriptionsExisting.json */,
 				66D78E502B9FEBC800EE91BC /* MainView.swift */,
 				66A057982BC3376E00305054 /* DateCalculator.swift */,
+				66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -283,7 +294,7 @@
 				66247D752BB4622D002BFF62 /* ViewExtensions.swift */,
 				66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */,
 				667C88472BB5C7A5008E9728 /* ColorExtension.swift */,
-				66906ACC2BBC9B420000CFE6 /* FloatExtension.swift */,
+				66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */,
 				664FFD212BBF2B9A00E4146B /* URLExtension.swift */,
 			);
 			path = Extension;
@@ -307,7 +318,7 @@
 			);
 			name = SubscriptionAppTests;
 			productName = SubscriptionAppTests;
-			productReference = 663E736A2BC70FBB003DFB6D /* SubscriptionAppTests.xctest */;
+			productReference = 6640C1E22BCEB38800D32DDD /* SubscriptionAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		6653BC552B9FE3C500BB9207 /* SubscriptionApp */ = {
@@ -324,7 +335,7 @@
 			);
 			name = SubscriptionApp;
 			packageProductDependencies = (
-				66ECA1E22BC09DE500FF9D0B /* SwiftDate */,
+				6640C1E42BCEB3A600D32DDD /* SwiftDate */,
 			);
 			productName = SubscriptionApp;
 			productReference = 66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */;
@@ -360,8 +371,7 @@
 			);
 			mainGroup = 6653BC4D2B9FE3C500BB9207;
 			packageReferences = (
-				667C88442BB5B9CA008E9728 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
-				66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				6604D77C2BCEB2CE004835FD /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = 6653BC4D2B9FE3C500BB9207;
 			projectDirPath = "";
@@ -385,8 +395,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66247D7D2BB4A345002BFF62 /* SubscriptionsExisting.json in Resources */,
 				6653BC612B9FE3C700BB9207 /* Preview Assets.xcassets in Resources */,
+				6604D77B2BCEB21C004835FD /* SubscriptionsExisting.json in Resources */,
 				663035FD2BB762BB00A0071B /* Localizable.xcstrings in Resources */,
 				6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */,
 			);
@@ -413,7 +423,7 @@
 				669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */,
 				66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */,
 				664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */,
-				66906ACD2BBC9B420000CFE6 /* FloatExtension.swift in Sources */,
+				66906ACD2BBC9B420000CFE6 /* FloatExtensions.swift in Sources */,
 				66D78E5D2B9FF6B200EE91BC /* CustomCreationView.swift in Sources */,
 				663036012BB79AB600A0071B /* Subscription.swift in Sources */,
 				6653BC632B9FE3C700BB9207 /* Persistence.swift in Sources */,
@@ -421,6 +431,7 @@
 				663035F92BB75F6E00A0071B /* DatePickerComponent.swift in Sources */,
 				66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */,
 				6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */,
+				66AF09A22BCB0151003B6A84 /* NotificationCenter.swift in Sources */,
 				6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */,
 				66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */,
 				66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */,
@@ -466,6 +477,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -485,6 +499,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -622,12 +639,13 @@
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Geld;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,6 +653,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -652,12 +673,13 @@
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Geld;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -665,6 +687,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,15 +729,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		667C88442BB5B9CA008E9728 /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mchoe/SwiftSVG.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+		6604D77C2BCEB2CE004835FD /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
 			requirement = {
@@ -723,9 +740,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		66ECA1E22BC09DE500FF9D0B /* SwiftDate */ = {
+		6640C1E42BCEB3A600D32DDD /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66ECA1E12BC09DE500FF9D0B /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			package = 6604D77C2BCEB2CE004835FD /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
 		};
 /* End XCSwiftPackageProductDependency section */

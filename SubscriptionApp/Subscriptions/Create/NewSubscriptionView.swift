@@ -138,7 +138,7 @@ struct NewSubscriptionView: View {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
                         
-                        CustomCreationView()
+                        CustomCreationView(viewModel: viewModel, showingSheet: $showingSheet)
                     } label: {
                         Text("Custom")
                     }

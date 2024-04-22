@@ -11,6 +11,7 @@ struct PersonalInformationView: View {
     
     @AppStorage("profileName") var profileName: String = "Guest"
     @Environment(\.dismiss) var dismiss
+    @Binding var showToolbar: Bool
     
     var body: some View {
         ZStack {
@@ -41,17 +42,17 @@ struct PersonalInformationView: View {
                
                 
             }
+            .onAppear {
+                showToolbar = false
+            }
             .padding(.top, 15)
             .navigationTitle("Personal information")
             .toolbarTitleDisplayMode(.inline)
             .navigationBarTitleTextColor(.white)
             
+            
         }
     }
 }
 
-#Preview {
-    NavigationStack {
-        PersonalInformationView()
-    }
-}
+

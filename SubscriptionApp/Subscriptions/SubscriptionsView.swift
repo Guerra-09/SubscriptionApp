@@ -56,14 +56,9 @@ struct SubscriptionsView: View {
                                         reminder: subscription.reminder,
                                         disableService: subscription.disableService
                                     )
-                                    
                                 }
                                 .padding(.vertical, 1.5)
-                                
-                                
-
-                                
-                                                                
+                                 
                             }
                                 
                         }
@@ -196,4 +191,5 @@ struct SubscriptionsSettingsSheet: View {
         
     }
 }
+
 

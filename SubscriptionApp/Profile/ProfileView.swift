@@ -12,7 +12,9 @@ import Photos
 struct ProfileView: View {
 
     @State private var selectedImage: UIImage?
+    @State private var showVersionDetails: Bool = false
     @State var imageSelection: PhotosPickerItem? = nil
+    @State var showToolbar: Bool = true
     
     private var url: URL {
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -21,7 +23,7 @@ struct ProfileView: View {
     
     
     @AppStorage("profileName") var profileName: String = "Guest"
-    
+    @ObservedObject var versionViewModel = VersionDetailsViewModel()
     
     var body: some View {
         NavigationStack {
@@ -52,7 +54,7 @@ struct ProfileView: View {
                     
                     
                     NavigationLink {
-                        PersonalInformationView()
+                        PersonalInformationView(showToolbar: $showToolbar)
                     } label: {
                         HStack {
                             Text("Personal information")
@@ -69,7 +71,7 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink {
-                        PreferencesView()
+                        PreferencesView(showToolbar: $showToolbar)
                     } label: {
                         HStack {
                             Text("Preferences")
@@ -90,6 +92,18 @@ struct ProfileView: View {
                     
                     Spacer()
                     
+                    
+                    
+                    Button {
+                        showVersionDetails.toggle()
+                    } label: {
+                        Text("\(Image(systemName: "globe")) ver \(versionViewModel.notes[0].version)")
+                            .underline()
+                            .foregroundStyle(.gray)
+                            .padding(.bottom, 25)
+                    }
+
+                    
                 }
 
                 .onChange(of: imageSelection) {
@@ -106,11 +120,18 @@ struct ProfileView: View {
             }
         }
         .onAppear {
+            showToolbar = true
+            
             url.loadImage(&selectedImage)
         }
+        .sheet(isPresented: $showVersionDetails, content: {
+            VersionDetails()
+        })
+        .toolbar(showToolbar ? .visible : .hidden, for: .tabBar)
         .navigationTitle("Profile")
         .toolbarTitleDisplayMode(.inline)
         .navigationBarTitleTextColor(.white)
+        
     }
     
     // Vista que es un PhotosPicker que muestra la imagen seleccionada.
@@ -138,8 +159,74 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        ProfileView()
+struct VersionDetails: View {
+    
+    @ObservedObject var versionViewModel = VersionDetailsViewModel()
+    @AppStorage("languageSelected") var languageSelected: String = "English"
+    @State var content: LocalizedStringKey = ""
+    
+    var body: some View {
+        ZStack {
+            Color("backgroundColor")
+                .ignoresSafeArea()
+            
+            ScrollView {
+                Text("Geld version \(versionViewModel.notes[0].version)")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 15)
+                
+                Text(content)
+                    .frame(width: 320, alignment: .leading)
+                    .padding(20)
+                
+                
+            }
+            .foregroundStyle(.white)
+            
+        }
+        .onAppear {
+            
+            for note in versionViewModel.notes {
+                content = LocalizedStringKey(languageSelected == "English" ? note.en : note.es)
+            }
+
+        }
     }
+}
+
+
+class VersionDetailsViewModel: ObservableObject {
+    @Published var notes = [NotesModel]()
+    
+    init() {
+        loadData()
+    }
+    
+    func loadData() {
+        if let url = Bundle.main.url(forResource: "VersionDescription", withExtension: "json") {
+            
+            do {
+                let data = try Data(contentsOf: url)
+
+                let notes = try JSONDecoder().decode([NotesModel].self, from: data)
+                self.notes = notes
+            } catch {
+                print("Error al cargar los datos del archivo JSON:", error)
+            }
+        } else {
+            print("No se encontró el archivo JSON")
+        }
+    }
+    
+}
+
+struct NotesModel: Decodable {
+    let version: String
+    let en: String
+    let es: String
+}
+
+#Preview {
+    VersionDetails()
 }

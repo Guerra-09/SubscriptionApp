@@ -38,11 +38,25 @@ struct SubscriptionViewComponent: View {
             VStack {
                 
                 HStack {
-                    Image(logo)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
-                        .foregroundStyle(Color(hex: logoColor))
+                    
+                    if logo.contains("logo") {
+                        
+                        Image(logo)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50)
+                            .foregroundStyle(Color(hex: logoColor))
+                            
+                    } else {
+                        Image(systemName: logo)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50)
+                            .foregroundStyle(Color(hex: logoColor))
+                        
+                    }
+                    
+                    
 
                     
                     VStack(alignment: .leading) {
@@ -79,7 +93,7 @@ struct SubscriptionViewComponent: View {
             .foregroundStyle(Color(hex: textColor))
         }
         .onAppear {
-            print("\(price.formatPriceFromFloatToString(currency: "CLP"))")
+            print(logo)
         }
     }
         

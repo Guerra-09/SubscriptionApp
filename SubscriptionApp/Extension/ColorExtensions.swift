@@ -33,4 +33,27 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
+    
+    public func toHex(alpha: Bool = false) -> String? {
+        UIColor(self).toHex(alpha: alpha)
+    }
+}
+
+extension UIColor {
+    func toHex(alpha: Bool = false) -> String? {
+        guard let components = cgColor.components, components.count >= 3 else {
+            return nil
+        }
+        
+        let r = Int(components[0] * 255.0)
+        let g = Int(components[1] * 255.0)
+        let b = Int(components[2] * 255.0)
+        
+        if alpha {
+            let a = Int(self.cgColor.alpha * 255.0)
+            return String(format: "#%02X%02X%02X%02X", r, g, b, a)
+        } else {
+            return String(format: "#%02X%02X%02X", r, g, b)
+        }
+    }
 }

@@ -21,6 +21,8 @@ struct PreferencesView: View {
     @AppStorage("languageSelected") var selectedLanguage = "English"
 //    @AppStorage("notifications") var notificationsActive = false
     @State var notificationsEnabled: Bool = false
+    @Binding var showToolbar: Bool
+        
     
     var body: some View {
         ZStack {
@@ -33,6 +35,7 @@ struct PreferencesView: View {
                 
                 PickerComponent(optionSelected: $selectedLanguage, title: "Language", options: languages)
                     .disabled(true)
+
                 
                 Button(action: {
                     guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -63,9 +66,15 @@ struct PreferencesView: View {
             
             
         }
-        .onAppear(perform: {
+        .onAppear {
+            showToolbar = false
             checkNotificationAuthorizationStatus()
-        })
+
+            
+        }
+
+        
+        /// En desarrollo
         .onChange(of: selectedLanguage, { oldValue, newValue in
             
             var localizable = ""
@@ -86,13 +95,5 @@ struct PreferencesView: View {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             notificationsEnabled = settings.authorizationStatus == .authorized
         }
-    }
-}
-
-
-
-#Preview {
-    NavigationStack {
-        PreferencesView()
     }
 }

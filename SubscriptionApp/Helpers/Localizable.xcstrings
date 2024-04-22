@@ -7,7 +7,20 @@
     "%@" : {
 
     },
+    "%@ ver %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ ver %2$@"
+          }
+        }
+      }
+    },
     "Account Settings" : {
+
+    },
+    "Acept" : {
 
     },
     "Add reminder" : {
@@ -58,9 +71,6 @@
       }
     },
     "Create" : {
-
-    },
-    "Creating a custom subscription" : {
 
     },
     "Custom" : {
@@ -121,6 +131,9 @@
     "Example: instead of 8 days -> next week" : {
 
     },
+    "Geld version %@" : {
+
+    },
     "Home" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -131,6 +144,9 @@
           }
         }
       }
+    },
+    "Icon" : {
+
     },
     "Languages" : {
       "extractionState" : "stale",
@@ -246,6 +262,9 @@
           }
         }
       }
+    },
+    "Select backgroundColor" : {
+
     },
     "Settings" : {
 

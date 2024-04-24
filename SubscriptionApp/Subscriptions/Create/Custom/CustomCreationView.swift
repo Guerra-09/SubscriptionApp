@@ -44,7 +44,7 @@ struct CustomCreationView: View {
             ScrollView {
                 Image(systemName: selectedIcon)
                     .resizable()
-                    .modifier(ImageWithLogoModifier())
+                    .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, logoColor: logoColor))
                     .onTapGesture {
                         selectIconSheet.toggle()
                     }
@@ -131,7 +131,8 @@ struct CustomCreationView: View {
                                               descriptionText: subscriptionDescription,
                                               reminder: subscriptionReminderToggle,
                                               reminderTime: subscriptionReminderSelected,
-                                              disableService: subcriptionIsDisable,
+                                              disableService: subcriptionIsDisable, 
+                                              customSubscription: true,
                                               subscriptionMetadata: metaData)
                     
                     
@@ -150,96 +151,9 @@ struct CustomCreationView: View {
                 
             }
             .sheet(isPresented: $selectIconSheet) {
-                IconSelection(iconSelected: $selectedIcon, textColor: $textColor, backgroundColor: $backgroundColor, logoColor: $logoColor)
+                IconSelectionView(iconSelected: $selectedIcon, textColor: $textColor, backgroundColor: $backgroundColor, logoColor: $logoColor)
             }
         }
-    }
-}
-
-struct IconSelection: View {
-    
-    @Environment(\.dismiss) var dismiss
-    var iconsToChoose: [String] = ["globe", "car", "fuelpump.fill", "dumbbell.fill", "cart.fill", "stethoscope", "airplane.departure", "tv"]
-    
-    @Binding var iconSelected: String
-    @Binding var textColor: String
-    @Binding var backgroundColor: String
-    @Binding var logoColor: String
-    
-    @State var bgColor: Color = Color.red
-    
-    private let adaptiveColumn = [
-            GridItem(.adaptive(minimum: 80))
-        ]
-    
-    var body: some View {
-
-        
-            
-        ZStack {
-            Color("backgroundColor")
-                .ignoresSafeArea()
-            
-            VStack {
-                
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Save")
-                            .padding()
-                            
-                    }
-                    
-                    SubscriptionViewComponent(logo: iconSelected, logoColor: logoColor, backgroundColor: backgroundColor, textColor: textColor, name: "Subscription Name", price: 9.99, cycle: "monthly", startDay: Date(), reminder: true, disableService: false)
-                        .padding(.vertical, 20)
-
-                }
-                
-                ScrollView {
-                    
-                    
-                    ColorPicker("Select backgroundColor", selection: $bgColor)
-                        .labelsHidden()
-                        .onChange(of: bgColor) { newValue in
-                            backgroundColor = bgColor.toHex() ?? "000000"
-                        }
-                    
-                    
-                    LazyVGrid(columns: adaptiveColumn, spacing: 12) {
-                        
-                        ForEach(iconsToChoose, id: \.self) { icon in
-                            Image(systemName: icon)
-                                .frame(width: 80, height: 80, alignment: .center)
-                                .background(Color("buttonBackgroundColor"))
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .onTapGesture {
-                                    dismiss()
-                                    iconSelected = icon
-                                }
-                        }
-                    }
-                }
-                
-            }
-            
-            
-            
-            
-        }
-        
-        .navigationTitle("Icon")
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Text("Acept")
-            }
-        }
-
-        
     }
 }
 

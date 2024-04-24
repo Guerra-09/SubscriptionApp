@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B551E177-E5C4-4F12-9139-AF59FDD7853B"
+            uuid = "7786F5D8-A100-4F97-AA56-445A6BDC6FAF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Persistence.swift"
+            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "PersistenceController"
-            landmarkType = "14">
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "daysUntilSixMonths(startDate:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,8 +13,7 @@ import UserNotifications
 @main
 struct SubscriptionAppApp: App {
 
-    
-    let persistentController = PersistenceController()
+
     let center = UNUserNotificationCenter.current()
     
     init() {
@@ -23,6 +22,8 @@ struct SubscriptionAppApp: App {
                 print("[D] ERROR REQUESTING NOTIFICATIONS SubscriptionAppApp \(error)")
             }
         }
+        
+        
 
     }
     

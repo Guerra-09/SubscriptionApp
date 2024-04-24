@@ -70,6 +70,18 @@
         }
       }
     },
+    "Change Background Color" : {
+
+    },
+    "Change Logo Color" : {
+
+    },
+    "Change Text Color" : {
+
+    },
+    "Colors" : {
+
+    },
     "Create" : {
 
     },
@@ -263,9 +275,6 @@
         }
       }
     },
-    "Select backgroundColor" : {
-
-    },
     "Settings" : {
 
     },
@@ -290,6 +299,9 @@
           }
         }
       }
+    },
+    "Subscription Preview" : {
+
     },
     "Subscriptions" : {
 

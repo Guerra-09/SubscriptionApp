@@ -21,11 +21,12 @@ class Subscription {
     var reminder: Bool
     var reminderTime: String
     var disableService: Bool
+    var customSubscription: Bool
     
     @Relationship(.unique) var subscriptionMetadata: SubscriptionMetadata?
     
     
-    init(id: UUID, name: String, price: Float, startDay: Date, cycle: String, descriptionText: String, reminder: Bool, reminderTime: String, disableService: Bool, subscriptionMetadata: SubscriptionMetadata) {
+    init(id: UUID, name: String, price: Float, startDay: Date, cycle: String, descriptionText: String, reminder: Bool, reminderTime: String, disableService: Bool, customSubscription: Bool,  subscriptionMetadata: SubscriptionMetadata) {
         self.id = id
         self.name = name
         self.price = price
@@ -35,6 +36,7 @@ class Subscription {
         self.reminder = reminder
         self.reminderTime = reminderTime
         self.disableService = disableService
+        self.customSubscription = customSubscription
         self.subscriptionMetadata = subscriptionMetadata
     }
     

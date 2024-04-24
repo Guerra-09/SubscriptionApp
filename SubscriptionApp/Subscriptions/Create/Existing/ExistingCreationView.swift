@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UserNotifications
+//import UserNotifications
 
 struct ExistingCreationView: View {
     
@@ -94,6 +94,9 @@ struct ExistingCreationView: View {
                 
                 Button {
                     
+                    // Creando notificacion
+                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected)
+                    
                     let metaData = SubscriptionMetadata(
                         id: .init(),
                         logo: susbcriptionModel.logo,
@@ -126,14 +129,14 @@ struct ExistingCreationView: View {
                                               descriptionText: subscriptionDescription,
                                               reminder: subscriptionReminderToggle,
                                               reminderTime: subscriptionReminderSelected,
-                                              disableService: subcriptionIsDisable,
+                                              disableService: subcriptionIsDisable, 
+                                              customSubscription: false,
                                               subscriptionMetadata: metaData)
                     
                     
                     viewModel.addSubscription(subscription: newSub)
                     
-                    // Creando notificacion
-                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected)
+                    
                     showingSheet.toggle()
 
      

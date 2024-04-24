@@ -36,16 +36,39 @@ struct TextFieldLabelCommonModifier: ViewModifier {
 }
 
 struct ImageWithLogoModifier: ViewModifier {
+    
+    var backgroundColor: String?
+    var logoColor: String?
+    
+    init(backgroundColor: String? = nil, logoColor: String? = nil) {
+        self.backgroundColor = backgroundColor
+        self.logoColor = logoColor
+    }
 
     func body(content: Content) -> some View {
-        content
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 70, height: 70)
-            .font(.system(size: 70))
-            .frame(width: 120, height: 135)
-            .background(Color("subViewsBackgroundColor"))
-            .foregroundStyle(.white)
-            .clipShape(.circle)
+        if (self.backgroundColor != nil) && (self.logoColor != nil) {
+            content
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70)
+                .font(.system(size: 70))
+                .frame(width: 120, height: 135)
+                .background(Color(hex: backgroundColor ?? "FFFFFF"))
+                .foregroundStyle(Color(hex: logoColor ?? "FFFFFF"))
+                
+                .clipShape(.circle)
+            
+        } else {
+            content
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70)
+                .font(.system(size: 70))
+                .frame(width: 120, height: 135)
+                .background(Color("subViewsBackgroundColor"))
+                .foregroundStyle(.white)
+                .clipShape(.circle)
+        }
+        
+        
     }
 }
 

@@ -16,13 +16,14 @@
 		663035FB2BB7610C00A0071B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663035FA2BB7610C00A0071B /* PreferencesView.swift */; };
 		663035FD2BB762BB00A0071B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 663035FC2BB762BB00A0071B /* Localizable.xcstrings */; };
 		663036012BB79AB600A0071B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
+		663395C02BD81E2900E3AA03 /* ColorPickerCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663395BF2BD81E2900E3AA03 /* ColorPickerCustom.swift */; };
+		663395C22BD83C4000E3AA03 /* IconSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663395C12BD83C4000E3AA03 /* IconSelectionView.swift */; };
 		663E736D2BC70FBB003DFB6D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
 		6640C1E52BCEB3A600D32DDD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 6640C1E42BCEB3A600D32DDD /* SwiftDate */; };
 		664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD212BBF2B9A00E4146B /* URLExtension.swift */; };
 		6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */; };
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
 		6653BC612B9FE3C700BB9207 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */; };
-		6653BC632B9FE3C700BB9207 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC622B9FE3C700BB9207 /* Persistence.swift */; };
 		6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */; };
 		6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC6E2B9FE59300BB9207 /* HomeView.swift */; };
 		667C88482BB5C7A5008E9728 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C88472BB5C7A5008E9728 /* ColorExtensions.swift */; };
@@ -70,12 +71,13 @@
 		663035FA2BB7610C00A0071B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		663035FC2BB762BB00A0071B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		663036002BB79AB600A0071B /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		663395BF2BD81E2900E3AA03 /* ColorPickerCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCustom.swift; sourceTree = "<group>"; };
+		663395C12BD83C4000E3AA03 /* IconSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectionView.swift; sourceTree = "<group>"; };
 		663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppTests.swift; sourceTree = "<group>"; };
 		664FFD212BBF2B9A00E4146B /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAppApp.swift; sourceTree = "<group>"; };
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6653BC622B9FE3C700BB9207 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6653BC652B9FE3C700BB9207 /* SubscriptionApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionApp.xcdatamodel; sourceTree = "<group>"; };
 		6653BC6E2B9FE59300BB9207 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
 		667C88472BB5C7A5008E9728 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				663035F82BB75F6E00A0071B /* DatePickerComponent.swift */,
 				669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */,
 				669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */,
+				663395BF2BD81E2900E3AA03 /* ColorPickerCustom.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				66D78E5C2B9FF6B200EE91BC /* CustomCreationView.swift */,
+				663395C12BD83C4000E3AA03 /* IconSelectionView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -199,7 +203,6 @@
 				66F783302BBDA4AA00406BB5 /* Extension */,
 				663035FF2BB79A9200A0071B /* Models */,
 				6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */,
-				6653BC622B9FE3C700BB9207 /* Persistence.swift */,
 				6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */,
 				6653BC5F2B9FE3C700BB9207 /* Preview Content */,
 			);
@@ -431,7 +434,6 @@
 				66906ACD2BBC9B420000CFE6 /* FloatExtensions.swift in Sources */,
 				66D78E5D2B9FF6B200EE91BC /* CustomCreationView.swift in Sources */,
 				663036012BB79AB600A0071B /* Subscription.swift in Sources */,
-				6653BC632B9FE3C700BB9207 /* Persistence.swift in Sources */,
 				6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */,
 				663035F92BB75F6E00A0071B /* DatePickerComponent.swift in Sources */,
 				66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */,
@@ -441,6 +443,7 @@
 				66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */,
 				66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */,
 				667C88482BB5C7A5008E9728 /* ColorExtensions.swift in Sources */,
+				663395C22BD83C4000E3AA03 /* IconSelectionView.swift in Sources */,
 				66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */,
 				66247D7C2BB48C8F002BFF62 /* NewSubscriptionViewModel.swift in Sources */,
 				66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */,
@@ -453,6 +456,7 @@
 				663035F62BB6F63E00A0071B /* TextFieldAndLabel.swift in Sources */,
 				66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */,
 				669BF8452BBB38910030A9D0 /* Modifiers.swift in Sources */,
+				663395C02BD81E2900E3AA03 /* ColorPickerCustom.swift in Sources */,
 				669BF8492BBB3D040030A9D0 /* ToggleComponent.swift in Sources */,
 				66A057992BC3376E00305054 /* DateCalculator.swift in Sources */,
 				669BF8472BBB3AD30030A9D0 /* PickerComponent.swift in Sources */,

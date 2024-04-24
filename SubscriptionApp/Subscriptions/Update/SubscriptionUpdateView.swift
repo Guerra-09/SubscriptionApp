@@ -28,19 +28,43 @@ struct SubscriptionUpdateView: View {
 
     @Bindable var subscription: Subscription
 
-
+    
+    // Variables para manejar el logo
+    @State var selectedIcon: String = ""
+    @State var textColor: String = ""
+    @State var backgroundColor: String = ""
+    @State var logoColor: String = ""
+    
+    @State var selectIconSheet: Bool = false
     
     var body: some View {
         ZStack {
             Color("backgroundColor")
                 .ignoresSafeArea()
             
-            
             ScrollView {
                 
-                Image(subscription.subscriptionMetadata?.logo ?? "")
-                    .resizable()
-                    .modifier(ImageWithLogoModifier())
+                if subscription.customSubscription {
+                    
+                    Image(systemName: selectedIcon) // Change on init
+                        .resizable()
+                        .modifier(ImageWithLogoModifier(
+//                            backgroundColor: subscription.subscriptionMetadata?.backgroundColor,
+//                            logoColor: subscription.subscriptionMetadata?.logoColor
+                            backgroundColor: self.backgroundColor,
+                            logoColor: self.logoColor
+                        ))
+                        .onTapGesture {
+                            selectIconSheet.toggle()
+                        }
+                    
+                } else {
+                    Image(subscription.subscriptionMetadata?.logo ?? "")
+                        .resizable()
+                        .modifier(ImageWithLogoModifier())
+                }
+                
+                
                 
                 
                 // Name
@@ -53,11 +77,7 @@ struct SubscriptionUpdateView: View {
                     // Por ahora como solo soporta USD y CLP, dejo esto asi, luego deberia incluir un enum o algo asi
                     .keyboardType(currencySelected == "USD" ? .decimalPad : .numberPad)
                     .onChange(of: subscriptionPrice) { oldValue, newValue in
-                        
-                        print("[D] old Value \(oldValue)")
-                        print("[D] new Value \(newValue)")
-                        
-                        
+                                                
                         var filteredText: String = ""
                         
                         if currencySelected == "USD" {
@@ -109,9 +129,6 @@ struct SubscriptionUpdateView: View {
                         
                         return Float(newValue) ?? 0.0
                     }
-
-                                        
-                    print("[D] ValueToSave : \(valueToSave)")
                     
                     self.subscription.price = valueToSave
                     
@@ -131,10 +148,42 @@ struct SubscriptionUpdateView: View {
                         .padding(.bottom, 30)
                 }
             }
+            .onAppear {
+                self.selectedIcon = subscription.subscriptionMetadata?.logo ?? ""
+                self.textColor = subscription.subscriptionMetadata?.textColor ?? ""
+                self.backgroundColor = subscription.subscriptionMetadata?.backgroundColor ?? ""
+                self.logoColor = subscription.subscriptionMetadata?.logoColor ?? ""
+            }
             .scrollDismissesKeyboard(.immediately)
+            .sheet(isPresented: $selectIconSheet) {
+                IconSelectionView(
+                    iconSelected: $selectedIcon,
+                    textColor: $textColor,
+                    backgroundColor: $backgroundColor,
+                    logoColor: $logoColor
+                )
+            }
             .toolbar {
                 Button("Save") {
                     dismiss()
+                    
+                    var valueToSave: Float {
+
+                        let replacingMoneySing = self.subscriptionPrice.replacingOccurrences(of: "$", with: "")
+                        
+                        let newValue = replacingMoneySing.replacingOccurrences(of: ",", with: ".")
+                        
+                        return Float(newValue) ?? 0.0
+                    }
+                    
+                    self.subscription.price = valueToSave
+                    
+                    self.subscription.subscriptionMetadata?.logo = selectedIcon
+                    self.subscription.subscriptionMetadata?.logoColor = logoColor
+                    self.subscription.subscriptionMetadata?.textColor = textColor
+                    self.subscription.subscriptionMetadata?.backgroundColor = backgroundColor
+                        
+                    
                 }
                 
             }
@@ -147,9 +196,6 @@ struct SubscriptionUpdateView: View {
             
             self.subscriptionPrice = String(subscription.price).replacingOccurrences(of: ".", with: ",")
             formatPrice()
-            
-            print("[D] self.subscriptionPrice \(self.subscriptionPrice)")
-            print("METADATA: \(subscription.subscriptionMetadata!.logo)")
         }
 
         

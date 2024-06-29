@@ -38,8 +38,11 @@ class NotificationCenter: ObservableObject {
         cycle: String,
         metadata: SubscriptionMetadata) -> () {
             
+        print("[D] CREANDO NOTIFICACION 1")
 
         guard let startDate = startDate else { return }
+            
+            print("[D] CREANDO NOTIFICACION 2")
             
             let nextPaymentDate: Date
             
@@ -96,9 +99,6 @@ class NotificationCenter: ObservableObject {
         
         
         // MARK: - PARA PRUEBAS
-//        var calendar = Calendar.current
-//        calendar.timeZone = TimeZone.current
-        
         var reminderDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
         
 

@@ -35,6 +35,7 @@ struct CustomCreationView: View {
     
     let notificationCenter = NotificationCenter()
     let dateCalculator = DateCalculator()
+    @State var metaData: SubscriptionMetadata?
     
     var body: some View {
         ZStack {
@@ -99,7 +100,7 @@ struct CustomCreationView: View {
                 
                 Button {
                     
-                    let metaData = SubscriptionMetadata(
+                    var metaData = SubscriptionMetadata(
                         id: .init(),
                         logo: selectedIcon,
                         logoColor: logoColor,
@@ -140,6 +141,33 @@ struct CustomCreationView: View {
                     
 //                    // Creando notificacion
 //                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected, startDate: <#Date?#>)
+                    
+                    metaData = SubscriptionMetadata(
+                        id: .init(),
+                        logo: logo,
+                        logoColor: logoColor,
+                        backgroundColor: backgroundColor,
+                        textColor: textColor,
+                        notificationIdentifier: ""
+                    )
+                    
+                    
+                    if !subcriptionIsDisable && subscriptionReminderToggle {
+
+                        DispatchQueue.main.async {
+                            notificationCenter.createNotification(
+                                subscriptionName: subscriptionName,
+                                reminderTime: subscriptionReminderSelected, // How many days before remember
+                                startDate: subscriptionStartDay,
+                                cycle: subscriptionCycleSelected,
+                                metadata: metaData //UNSAFE UNWRAPPING
+                            )
+                            
+                        }
+                        
+                        
+                    }
+                    
                     showingSheet.toggle()
 
      

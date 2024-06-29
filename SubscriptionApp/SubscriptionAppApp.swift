@@ -12,7 +12,9 @@ import UserNotifications
 
 @main
 struct SubscriptionAppApp: App {
-
+    
+//    @Environment(\.scenePhase) var scenePhase
+        
 
     let center = UNUserNotificationCenter.current()
     
@@ -22,9 +24,6 @@ struct SubscriptionAppApp: App {
                 print("[D] ERROR REQUESTING NOTIFICATIONS SubscriptionAppApp \(error)")
             }
         }
-        
-        
-
     }
     
     var body: some Scene {
@@ -32,5 +31,26 @@ struct SubscriptionAppApp: App {
             MainView()
                 .environmentObject(SubscriptionsViewModel())
         }
+        // Esto podria ser necesario en ciertos casos...
+//        .onChange(of: scenePhase) { phase in
+//            switch phase {
+//                
+//            case .background:
+//                print("Background Phase")
+//                
+//            case .inactive:
+//                print("Inactive Phase")
+//                
+//            case .active:
+//                print("Active Phase")
+//                
+//            @unknown default:
+//                print("Default")
+//            
+//            }
+//            
+//            
+//        }
     }
 }
+

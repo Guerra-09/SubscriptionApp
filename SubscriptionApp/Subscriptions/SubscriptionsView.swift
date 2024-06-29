@@ -73,10 +73,11 @@ struct SubscriptionsView: View {
                 }
             
             }
-            .onAppear {
+            .task {
                 viewModel.getSubscriptions()
                 showToolbar = true
             }
+ 
         }
         .navigationTitle("Subscriptions")
         .navigationBarTitleDisplayMode(.inline)

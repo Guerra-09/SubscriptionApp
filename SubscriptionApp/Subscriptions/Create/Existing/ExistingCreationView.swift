@@ -6,17 +6,15 @@
 //
 
 import SwiftUI
-//import UserNotifications
+import Foundation
 
+// Esta vista se encarga de crear una subscripcion de las existentes dentro de la APP.
 struct ExistingCreationView: View {
     
-//    @Environment(ExistingCreationViewModel.self) var viewModel
     @ObservedObject var viewModel: SubscriptionsViewModel
-
     @Binding var showingSheet: Bool
     
     let susbcriptionModel: SubscriptionModel
-    
     
     let subscriptionCycle: [String] = ["monthly", "each three months", "each six months", "yearly"]
     let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before"]
@@ -30,9 +28,19 @@ struct ExistingCreationView: View {
     @State var subscriptionReminderSelected: String = "The same day"
     @State var subcriptionIsDisable: Bool = false
     
+    @State var notificationsEnabled: Bool = false
+    
+    @State var metaData: SubscriptionMetadata?
     
     let notificationCenter = NotificationCenter()
     let dateCalculator = DateCalculator()
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d-MM-yyyy"
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }()
     
     var body: some View {
         ZStack {
@@ -73,6 +81,7 @@ struct ExistingCreationView: View {
                 
                 // Start day
                 DatePickerComponent(subscriptionStartDay: $subscriptionStartDay)
+
                 
                 // Subscription Cycle
                 PickerComponent(optionSelected: $subscriptionCycleSelected, title: "Subscription Cycle", options: subscriptionCycle)
@@ -82,6 +91,13 @@ struct ExistingCreationView: View {
                 
                 
                 ToggleComponent(title: "Add Reminder", toggleOption: $subscriptionReminderToggle)
+                
+                if !notificationsEnabled {
+                    Text("App Notifications are disable. Active them on Profile -> Preferences -> Allow Notifications")
+                        .padding()
+                        .foregroundStyle(.red)
+                }
+                
                     
                 
                 PickerComponent(optionSelected: $subscriptionReminderSelected, title: "Reminder Time", options: reminderOptions)
@@ -94,15 +110,14 @@ struct ExistingCreationView: View {
                 
                 Button {
                     
-                    // Creando notificacion
-                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected)
                     
-                    let metaData = SubscriptionMetadata(
+                    metaData = SubscriptionMetadata(
                         id: .init(),
                         logo: susbcriptionModel.logo,
                         logoColor: susbcriptionModel.logoColor,
                         backgroundColor: susbcriptionModel.backgroundColor,
-                        textColor: susbcriptionModel.textColor
+                        textColor: susbcriptionModel.textColor,
+                        notificationIdentifier: ""
                     )
                     
                     var formattedPrice: Float {
@@ -131,12 +146,29 @@ struct ExistingCreationView: View {
                                               reminderTime: subscriptionReminderSelected,
                                               disableService: subcriptionIsDisable, 
                                               customSubscription: false,
-                                              subscriptionMetadata: metaData)
+                                              subscriptionMetadata: metaData!) //UNSAFE UNWRAPPING
                     
                     
                     viewModel.addSubscription(subscription: newSub)
                     
                     
+                    
+                    if !subcriptionIsDisable && subscriptionReminderToggle {
+
+                        DispatchQueue.main.async {
+                            notificationCenter.createNotification(
+                                subscriptionName: subscriptionName,
+                                reminderTime: subscriptionReminderSelected, // How many days before remember
+                                startDate: dateFormatter.date(from: subscriptionStartDay.toString()),
+                                cycle: subscriptionCycleSelected,
+                                metadata: metaData! //UNSAFE UNWRAPPING
+                            )
+                            
+                        }
+                        
+                        
+                    }
+
                     showingSheet.toggle()
 
      
@@ -148,7 +180,17 @@ struct ExistingCreationView: View {
                 
             }
         }
+        .onAppear {
+            checkNotificationAuthorizationStatus()
+        }
         
+    }
+    
+    
+    private func checkNotificationAuthorizationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            notificationsEnabled = settings.authorizationStatus == .authorized
+        }
     }
     
 }

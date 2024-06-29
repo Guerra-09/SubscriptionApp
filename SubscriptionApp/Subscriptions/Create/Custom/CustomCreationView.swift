@@ -138,8 +138,8 @@ struct CustomCreationView: View {
                     
                     viewModel.addSubscription(subscription: newSub)
                     
-                    // Creando notificacion
-                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected)
+//                    // Creando notificacion
+//                    notificationCenter.createNotification(subscriptionName: subscriptionName, reminderTime: subscriptionReminderSelected, startDate: <#Date?#>)
                     showingSheet.toggle()
 
      

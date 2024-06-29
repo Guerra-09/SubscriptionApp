@@ -45,6 +45,9 @@
         }
       }
     },
+    "App Notifications are disable. Active them on Profile -> Preferences -> Allow Notifications" : {
+
+    },
     "Are you sure you want to delete the subscription?" : {
 
     },
@@ -213,6 +216,9 @@
           }
         }
       }
+    },
+    "Notification Time" : {
+
     },
     "Personal information" : {
 

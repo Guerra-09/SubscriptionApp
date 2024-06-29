@@ -37,6 +37,8 @@ struct SubscriptionUpdateView: View {
     
     @State var selectIconSheet: Bool = false
     
+    let notificationCenter = NotificationCenter()
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -132,6 +134,8 @@ struct SubscriptionUpdateView: View {
                     
                     self.subscription.price = valueToSave
                     
+                    notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
+                    
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
                 }
@@ -165,6 +169,7 @@ struct SubscriptionUpdateView: View {
             }
             .toolbar {
                 Button("Save") {
+
                     dismiss()
                     
                     var valueToSave: Float {
@@ -178,10 +183,7 @@ struct SubscriptionUpdateView: View {
                     
                     self.subscription.price = valueToSave
                     
-                    self.subscription.subscriptionMetadata?.logo = selectedIcon
-                    self.subscription.subscriptionMetadata?.logoColor = logoColor
-                    self.subscription.subscriptionMetadata?.textColor = textColor
-                    self.subscription.subscriptionMetadata?.backgroundColor = backgroundColor
+                    notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
                         
                     
                 }

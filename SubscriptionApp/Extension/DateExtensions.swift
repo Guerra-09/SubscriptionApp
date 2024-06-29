@@ -27,6 +27,11 @@ extension Date {
         DateComponents(calendar: .iso8601, year: year, month: month, day: 0).date
     }
     
+    func convertToTimeZone(identifier: String) -> Date {
+        let timeZone = TimeZone(identifier: identifier)!
+        let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - TimeZone.current.secondsFromGMT(for: self))
+        return addingTimeInterval(delta)
+    }
     
     
 }

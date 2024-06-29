@@ -48,12 +48,14 @@ class SubscriptionMetadata {
     var logoColor: String
     var backgroundColor: String
     var textColor: String?
+    var notificationIdentifier: String?
     
-    init(id: UUID, logo: String, logoColor: String, backgroundColor: String, textColor: String?) {
+    init(id: UUID, logo: String, logoColor: String, backgroundColor: String, textColor: String?, notificationIdentifier: String? = nil) {
         self.logo = logo
         self.logoColor = logoColor
         self.backgroundColor = backgroundColor
         self.textColor = textColor
+        self.notificationIdentifier = notificationIdentifier
     }
     
 }

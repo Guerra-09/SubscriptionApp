@@ -103,6 +103,7 @@
 		66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewComponent.swift; sourceTree = "<group>"; };
 		66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66FCBED22C2D155600A26BF5 /* TESTPLAYGROUND.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TESTPLAYGROUND.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +235,7 @@
 				66D78E502B9FEBC800EE91BC /* MainView.swift */,
 				66A057982BC3376E00305054 /* DateCalculator.swift */,
 				66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */,
+				66FCBED22C2D155600A26BF5 /* TESTPLAYGROUND.playground */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -7,192 +7,78 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7786F5D8-A100-4F97-AA56-445A6BDC6FAF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "daysUntilSixMonths(startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "90D5949E-74CA-4212-904E-C884E48BD7A5"
+            uuid = "77B246F3-A0C6-43FE-890B-A77152CBD733"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "createNotification(subscriptionName:reminderTime:startDate:cycle:metadata:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "changeNotificationTime()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "77B246F3-A0C6-43FE-890B-A77152CBD733 - be0a25d2b52dbf65"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SubscriptionApp.NotificationCenter.changeNotificationTime() -&gt; ()"
+                  moduleName = "SubscriptionApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/SubscriptionApp/Helpers/NotificationCenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185">
+               </Location>
+               <Location
+                  uuid = "77B246F3-A0C6-43FE-890B-A77152CBD733 - b16db040c0624d8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;__C.UNNotificationRequest&gt;) -&gt; () in SubscriptionApp.NotificationCenter.changeNotificationTime() -&gt; ()"
+                  moduleName = "SubscriptionApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/SubscriptionApp/Helpers/NotificationCenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "923881BC-EDD5-4B57-A4B6-B560DF12A112"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "getNextPaymentDateThreeMonths(startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E7CAD510-2E6F-4689-B0BF-FBA0864482B3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Subscriptions/SubscriptionsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "getSubscriptions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2BFB9BB2-4E69-44D6-98C8-0794214D5FC1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Subscriptions/SubscriptionsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "58D5316F-8547-49C9-9D7C-9F15787AEEE8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Profile/PreferencesView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "PreferencesView"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "31D8C43B-0910-41B5-AF20-BBC9C479AAC7"
+            uuid = "1169E178-905E-4DF7-B556-3A9D22E7052E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "createNotification(subscriptionName:reminderTime:startDate:cycle:metadata:)"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "changeNotificationTime()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "18600050-4607-4138-970F-07D5167AA8FC"
-            shouldBeEnabled = "No"
+            uuid = "BFBEB3C7-91C5-4D5C-B68D-CA15B4340FB6"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "changeNotificationTime(newHour:newMinute:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EFA3768D-5F94-47D5-A8B0-321485EA1C2E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "getNextPaymentDateMonthly(startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F2206E1B-5E85-4AD1-BF8A-0D4C48C57CC1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "getNextPaymentDateMonthly(startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "341586FB-0F75-4F41-87EC-144BDCCD4D49"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "getNextPaymentDateMonthly(startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "570348D4-A540-48EA-8544-4FE275FC84B0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SubscriptionApp/Helpers/DateCalculator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "getNextPaymentDateMonthly(startDate:)"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "changeNotificationTime()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

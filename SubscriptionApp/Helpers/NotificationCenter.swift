@@ -10,11 +10,12 @@ import SwiftUI
 import UserNotifications
 import SwiftDate
 
-/// BUG: TIENE DESFASE DE 4 HORAS, DEBE SER POR EL TIMEZONE. PROBAR ENTRE LAS 8 DE LA NOCHE Y LAS 11:59
+/// Clase encargada de Crear, Eliminar y modificar notificaciones de subscripciones.
 class NotificationCenter: ObservableObject {
     
     @AppStorage("notificationHourString") private var notificationHourString: String = ""
     
+    /// Variable para obtener un formato de Horas:Minutos.
     private let dateFormatterTime: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
@@ -22,14 +23,16 @@ class NotificationCenter: ObservableObject {
             return formatter
     }()
     
+    ///Variable para obtener un formato de dia-mes-año.
     private let dateFormatterDate: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "d-MM-yyyy"
             formatter.timeZone = TimeZone.current
             return formatter
     }()
-
+    
     let dateCalculator = DateCalculator()
+    
     
     func createNotification(
         subscriptionName: String,
@@ -38,23 +41,20 @@ class NotificationCenter: ObservableObject {
         cycle: String,
         metadata: SubscriptionMetadata) -> () {
             
-        print("[D] CREANDO NOTIFICACION 1")
 
         guard let startDate = startDate else { return }
             
-            print("[D] CREANDO NOTIFICACION 2")
+        let nextPaymentDate: Date
+        
+        if cycle == "monthly" {
+            nextPaymentDate = dateCalculator.getNextPaymentDateMonthly(startDate: startDate)
             
-            let nextPaymentDate: Date
+        } else if cycle == "each three months" {
+            nextPaymentDate = dateCalculator.getNextPaymentDateThreeMonths(startDate: startDate)
             
-            if cycle == "monthly" {
-                nextPaymentDate = dateCalculator.getNextPaymentDateMonthly(startDate: startDate)
-                
-            } else if cycle == "each three months" {
-                nextPaymentDate = dateCalculator.getNextPaymentDateThreeMonths(startDate: startDate)
-                
-            } else {
-                nextPaymentDate = Date.now
-            }
+        } else {
+            nextPaymentDate = Date.now
+        }
 
         print("[D] nextPaymentDate: \(nextPaymentDate)")
         var daysBefore: Int
@@ -105,7 +105,7 @@ class NotificationCenter: ObservableObject {
         
         
         // Hora a la que notificar desde @AppStorage
-        if let notificationHourDate = dateFormatterTime.date(from: notificationHourString) {
+            if let notificationHourDate = dateFormatterTime.date(from: notificationHourString) {
             let hourComponents = Calendar.current.dateComponents([.hour, .minute], from: notificationHourDate)
             reminderDateComponents.hour = hourComponents.hour
             reminderDateComponents.minute = hourComponents.minute
@@ -144,67 +144,80 @@ class NotificationCenter: ObservableObject {
             startDate: Date?,
             cycle: String,
             metadata: SubscriptionMetadata) {
-        if let identifier = metadata.notificationIdentifier {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-        }
         
-        print("[D] Se borro la notificacion.")
+                
+        deleteNotification(identifier: metadata.notificationIdentifier)
         
         
         createNotification(subscriptionName: subscriptionName, reminderTime: reminderTime, startDate: startDate, cycle: cycle, metadata: metadata)
         
-        print("[D] Se modifico la notificacion a la nueva fecha.")
     }
     
-    /// BUG: Modifica las horas de notificaciones futuras, es decir que las ya creadas permaneceran con la hora anterior, las que se creen luego de cambiarlo se cambiaran.
-    func changeNotificationTime(newHour: Int, newMinute: Int) {
+    
+    func deleteNotification(identifier: String?) -> () {
+        
+        if let notificationIdentifier = identifier {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationIdentifier])
+        }
+        
+        print("[D] Se borro la notificacion")
+    }
+    
+    
+    func deleteAllNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        print("Todas las notificaciones pendientes han sido eliminadas.")
+    }
+    
+    
+    
+    
+    func changeNotificationTime() {
+        
+        // Parsear la nueva hora desde String a Date utilizando dateFormatter
+        guard let newTime = dateFormatterTime.date(from: notificationHourString) else {
+            return  // Asegúrate de manejar el caso en que no se pueda parsear la hora
+        }
+        
+        print("[D] Entre aqui")
         
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            
             for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger {
-                    var newDateComponents = trigger.dateComponents
-                    newDateComponents.hour = newHour
-                    newDateComponents.minute = newMinute
-                    
-                    let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
-                    let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
-                    
-                    UNUserNotificationCenter.current().add(newRequest) { error in
-                        if let error = error {
-                            print("[D] Error al modificar la notificación: \(error.localizedDescription)")
-                        } else {
-                            print("[D] Notificación modificada correctamente con nuevo horario: \(newHour):\(newMinute)")
-                        }
+                print("[D] Entre aqui 2")
+                
+                guard let trigger = request.trigger as? UNCalendarNotificationTrigger else {
+                    continue  // Solo nos interesan los disparadores de calendario
+                }
+                
+                // Modificar la hora de la notificación
+                var newDateComponents = trigger.dateComponents
+                newDateComponents.hour = Calendar.current.component(.hour, from: newTime)
+                newDateComponents.minute = Calendar.current.component(.minute, from: newTime)
+                
+                // Crear un nuevo disparador con la nueva hora
+                let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
+                
+                // Crear una nueva solicitud de notificación con el nuevo disparador
+                let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
+                
+
+                
+                
+                // Actualizar la notificación existente con la nueva solicitud
+                UNUserNotificationCenter.current().add(newRequest) { error in
+                    if let error = error {
+                        print("[D] Error al modificar la notificación: \(error.localizedDescription)")
+                    } else {
+                        print("[D] Notificación modificada correctamente con nuevo horario: \(self.notificationHourString) id: \(request.identifier)")
                     }
                 }
+                
+                print("[D] Entre aqui 3")
             }
         }
     }
 
-    
-//    func changeNotificationTime(newHour: Int, newMinute: Int) {
-//            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-//                for request in requests {
-//                    if let trigger = request.trigger as? UNCalendarNotificationTrigger {
-//                        var newDateComponents = trigger.dateComponents
-//                        newDateComponents.hour = newHour
-//                        newDateComponents.minute = newMinute
-//                        
-//                        let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
-//                        let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
-//                        
-//                        UNUserNotificationCenter.current().add(newRequest) { error in
-//                            if let error = error {
-//                                print("[D] Error al modificar la notificación: \(error.localizedDescription)")
-//                            } else {
-//                                print("[D] Notificación modificada correctamente con nuevo horario: \(newHour):\(newMinute)")
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
     
 }
     

@@ -96,10 +96,7 @@ struct PreferencesView: View {
             } else {
                 notificationHour = Date()
             }
-            
-            print("[D1] APP STORAGE: \(notificationHourString)")
-            print("[D1] A: \(notificationHour)")
-            
+
 
         }
 
@@ -135,6 +132,6 @@ struct PreferencesView: View {
         let newMinute = components.minute ?? 0
         notificationHourString = dateFormatter.string(from: notificationHour)
                 
-        notificationCenter.changeNotificationTime(newHour: newHour, newMinute: newMinute)
+        notificationCenter.changeNotificationTime()
     }
 }

@@ -49,6 +49,7 @@
 		66E89A792BC7131800CF051D /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
 		66E89A7A2BC7132800CF051D /* SubscriptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */; };
 		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
+		66FBED0F2C30677600ED6BF6 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FBED0E2C30677600ED6BF6 /* DateCalculatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewComponent.swift; sourceTree = "<group>"; };
 		66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66FBED0E2C30677600ED6BF6 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */,
+				66FBED0E2C30677600ED6BF6 /* DateCalculatorTests.swift */,
 			);
 			path = SubscriptionAppTests;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FBED0F2C30677600ED6BF6 /* DateCalculatorTests.swift in Sources */,
 				66E89A792BC7131800CF051D /* Subscription.swift in Sources */,
 				663E736D2BC70FBB003DFB6D /* SubscriptionAppTests.swift in Sources */,
 			);

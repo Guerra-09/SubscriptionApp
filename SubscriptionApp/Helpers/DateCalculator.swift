@@ -77,7 +77,9 @@ class DateCalculator {
         // StartDate
         let firstPaymentDay = startDate.day
         
-        let now = Date()
+        var now = Date()
+        
+        
         let components = calendar.dateComponents([.year, .month, .day], from: now)
 
         let actualDay = components.day
@@ -92,7 +94,7 @@ class DateCalculator {
         let nextMonthLastDay = monthLater.date.lastDateOfPreviousMonth
 
         
-        // Si el mes siguiente tiene menos meses, se toma el ultimo dia del mes
+        // Si el mes siguiente tiene menos dias, se toma el ultimo dia de ese mes
         if nextMonthLastDay!.day < firstPaymentDay {
             day = nextMonthLastDay!.day
         } else {
@@ -113,14 +115,7 @@ class DateCalculator {
         guard let date = Calendar.current.date(from: creationComponents) else {
             return Date.now
         }
-        
-//        print("[D] dateCalculator date \(dateFormatter.string(from: date))")
 
-//        let now = Date()
-//        print("[D] Current Date and Time: \(dateFormatter.string(from: now))")
-//        print("[D] Current Time Zone Offset: \(TimeZone.current.secondsFromGMT()) seconds")
-
-        
         return date
     }
         
@@ -133,8 +128,11 @@ class DateCalculator {
         
         let date = getNextPaymentDateMonthly(startDate: startDate)
         
+        var now = Date()
     
-        let result = Date().distance(to: date)
+        let result = now.distance(to: date)
+        
+        
         
         
         return Int((result / secondsInDay).rounded(.up))

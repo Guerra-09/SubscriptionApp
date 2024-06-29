@@ -14,40 +14,10 @@
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "changeNotificationTime()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "77B246F3-A0C6-43FE-890B-A77152CBD733 - be0a25d2b52dbf65"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SubscriptionApp.NotificationCenter.changeNotificationTime() -&gt; ()"
-                  moduleName = "SubscriptionApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/SubscriptionApp/Helpers/NotificationCenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185">
-               </Location>
-               <Location
-                  uuid = "77B246F3-A0C6-43FE-890B-A77152CBD733 - b16db040c0624d8e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;__C.UNNotificationRequest&gt;) -&gt; () in SubscriptionApp.NotificationCenter.changeNotificationTime() -&gt; ()"
-                  moduleName = "SubscriptionApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/SubscriptionApp/Helpers/NotificationCenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -60,8 +30,8 @@
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "changeNotificationTime()"
             landmarkType = "7">
          </BreakpointContent>
@@ -76,8 +46,8 @@
             filePath = "SubscriptionApp/Helpers/NotificationCenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "changeNotificationTime()"
             landmarkType = "7">
          </BreakpointContent>

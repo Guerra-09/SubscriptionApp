@@ -10,6 +10,8 @@ import SwiftUI
 import UserNotifications
 import SwiftDate
 
+//Falta hacer que se creen notificaciones cada un mes, 3 meses, etc hasta el infito!!!!!
+
 /// Clase encargada de Crear, Eliminar y modificar notificaciones de subscripciones.
 class NotificationCenter: ObservableObject {
     
@@ -137,7 +139,7 @@ class NotificationCenter: ObservableObject {
         
     }
     
-    
+
     func modifyNotification(
             subscriptionName: String,
             reminderTime: String,

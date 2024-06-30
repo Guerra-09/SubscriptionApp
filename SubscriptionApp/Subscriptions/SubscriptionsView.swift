@@ -134,6 +134,9 @@ struct SubscriptionsSettingsSheet: View {
     @AppStorage("showAproximateDate") var showAproximateDate: Bool = false
     @AppStorage("tag") var tag: String = "all"
     
+    
+    let notificationCenter = NotificationCenter()
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -172,6 +175,7 @@ struct SubscriptionsSettingsSheet: View {
                 Button(action: {
                     dismiss()
                     viewModel.deleteAllSubscriptions()
+                    notificationCenter.deleteAllNotifications()
                 }, label: {
                     Text("DELETE ALL DEVELOPER OPTION")
                         .foregroundStyle(.red)

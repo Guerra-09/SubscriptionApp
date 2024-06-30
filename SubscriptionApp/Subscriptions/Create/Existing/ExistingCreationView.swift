@@ -159,7 +159,7 @@ struct ExistingCreationView: View {
                             notificationCenter.createNotification(
                                 subscriptionName: subscriptionName,
                                 reminderTime: subscriptionReminderSelected, // How many days before remember
-                                startDate: dateFormatter.date(from: subscriptionStartDay.toString()),
+                                startDate: subscriptionStartDay,
                                 cycle: subscriptionCycleSelected,
                                 metadata: metaData! //UNSAFE UNWRAPPING
                             )

@@ -5,6 +5,11 @@ SubscriptionAppTests
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+# Added by me
+.DS_Store
+SubscriptionApp.xcodeproj/project.xcworkspace/xcuserdata/guerrinha.xcuserdatad/UserInterfaceState.xcuserstate
+
+
 ## Build generated
 build/
 DerivedData/

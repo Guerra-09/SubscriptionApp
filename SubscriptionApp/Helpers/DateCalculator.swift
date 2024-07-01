@@ -150,7 +150,6 @@ class DateCalculator {
         let calendar = Calendar.current
         let componentMonth = calendar.dateComponents([.month], from: startDate, to: Date())
         
-        
    
         var dayOfPayment: Int = startDate.day
         var yearOfPayment: Int = Date().year
@@ -234,11 +233,6 @@ class DateCalculator {
         if date == nil {
             print("[D] date nil")
             
-            if dayOfPayment == 8 && monthOfPayment == 6 {
-                
-                let next = dateFormatter.date(from: "07-06-\(yearOfPayment)")
-                date = next
-            }
             
             // Ajustar el día hasta que la fecha sea válida, pero no menos de 27
             var newDay = dayOfPayment
@@ -276,6 +270,7 @@ class DateCalculator {
     
     
     /// Funcion encargada de retornar la fecha de la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 6 meses. Retorna un tipo Date
+    /// Funciona pero falta testear mas casos
     func getNextPaymentDateSixMonths(startDate: Date) -> Date {
         
         let calendar = Calendar.current
@@ -284,12 +279,6 @@ class DateCalculator {
         var dayOfPayment: Int = startDate.day
         var yearOfPayment: Int = Date().year
         var monthOfPayment = Date().month
-            
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "us_US")
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        dateFormatter.timeZone = TimeZone(identifier: "UTC") // Establecer la zona horaria según sea necesario
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Establecer la configuración regional en inglés para usar el calendario gregoriano
 
             
         if componentMonth.month! % 6 == 0 {
@@ -300,28 +289,27 @@ class DateCalculator {
                     
             } else {
                 print("[D] Restos 0: Se paga en 6 meses")
-                monthOfPayment += 6 // Agregando los 3 meses.
+                monthOfPayment += 5
             }
                 
                 
         } else if componentMonth.month! % 6 == 1 {
             print("[D] Restos 1: Se paga en 5 meses")
             
-            monthOfPayment += 5 // Agregando los 5 meses.
+            monthOfPayment += 4 // Agregando los 5 meses.
                 
         } else if componentMonth.month! % 6 == 2 {
-                
-            // Si el dia de inicio es mayor al actual, significa que se paga este mes en unos dias.
+
             print("[D] Restos 2: Se paga en 4 meses")
-            monthOfPayment += 4 // Agregando los 4 meses.
+            monthOfPayment += 3 // Agregando los 4 meses.
                 
         } else if componentMonth.month! % 6 == 3 {
             print("[D] Restos 3: Se paga en 3 meses")
-            monthOfPayment += 3
+            monthOfPayment += 2
                 
         } else if componentMonth.month! % 6 == 4 {
             print("[D] Restos 4: Se paga en 2 meses")
-            monthOfPayment += 2
+            monthOfPayment += 1
                 
         } else if componentMonth.month! % 6 == 5 {
                 
@@ -346,19 +334,20 @@ class DateCalculator {
         }
 
             
-        // Creando formater para la fecha de facturacion
-        let monthString = monthOfPayment < 10 ? "0\(monthOfPayment)" : "\(monthOfPayment)"
-        let dayString = dayOfPayment < 10 ? "0\(dayOfPayment)" : "\(dayOfPayment)"
-        let nextPayment = "\(yearOfPayment)-\(monthString)-\(dayString)"
+        // Crear componentes de fecha
+        var dateComponents = DateComponents()
+        dateComponents.day = dayOfPayment
+        dateComponents.month = monthOfPayment
+        dateComponents.year = yearOfPayment
             
-        var date = self.dateFormatter.date(from: nextPayment)
+        var date = Calendar.current.date(from: dateComponents)
             
         if date == nil {
             // Ajustar el día hasta que la fecha sea válida, pero no menos de 27
             var newDay = dayOfPayment
             while newDay > 27 && date == nil {
                 newDay -= 1
-                let adjustedPayment = "\(yearOfPayment)-\(monthString)-\(newDay)"
+                let adjustedPayment = "\(newDay)-0\(monthOfPayment)-\(yearOfPayment)"
                 date = self.dateFormatter.date(from: adjustedPayment)
             }
         }
@@ -370,7 +359,7 @@ class DateCalculator {
     /// Funcion encargada de retornar los dias restantes hasta la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 6 meses. Retorna un Int, que son los dias que faltan.
     func daysUntilSixMonths(startDate: Date) -> Int {
             
-        let date = getNextPaymentDateMonthly(startDate: startDate)
+        let date = getNextPaymentDateSixMonths(startDate: startDate)
 
 
         let result = Date().distance(to: date)

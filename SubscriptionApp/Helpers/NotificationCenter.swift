@@ -10,7 +10,8 @@ import SwiftUI
 import UserNotifications
 import SwiftDate
 
-// DE MOMENTO: Crea la notificacion de manera mensual de manera correcta.
+// DE MOMENTO: Crea la notificacion de manera mensual, cada tres meses y cada seis meses de manera correcta.
+
 class NotificationCenter: ObservableObject {
     
     @AppStorage("notificationHourString") private var notificationHourString: String = ""
@@ -73,7 +74,7 @@ class NotificationCenter: ObservableObject {
                 message = "ERROR"
             }
             
-//            let nextPaymentDate: Date
+            let calendar = Calendar.current
             
             let content = UNMutableNotificationContent()
             content.title = "Geld Reminder: \(subscriptionName)"
@@ -81,8 +82,7 @@ class NotificationCenter: ObservableObject {
             content.sound = UNNotificationSound.defaultCritical
             
             if cycle == "monthly" {
-                
-                let calendar = Calendar.current
+            
                 
                 let nextPaymentDate = calendar.date(byAdding: .month, value: 1, to: startDate)!
                         
@@ -90,10 +90,6 @@ class NotificationCenter: ObservableObject {
                         
                 
                 var reminderDateComponents = calendar.dateComponents([.day, .hour, .minute], from: reminderDate)
-                        
-                
-//                reminderDateComponents.day! = startDate.day
-                // reminderDateComponents.month! += 1
                 
                 
                 // Hora a la que notificar desde @AppStorage
@@ -128,8 +124,159 @@ class NotificationCenter: ObservableObject {
                 
                 
                 
-            } else {
+            } else if cycle == "each three months" {
+                print("[D] Cada 3 meses")
                 
+                // Configurar el número de repeticiones (por ejemplo, para los próximos 3 años)
+                    let numberOfRepetitions = 12 // 3 años, una notificación cada tres meses
+
+                    for i in 0..<numberOfRepetitions {
+                        // Calcular la fecha del próximo trimestre
+                        let nextPaymentDate = calendar.date(byAdding: .month, value: i * 3, to: startDate)!
+                        
+                        // Restar los días antes a la fecha del próximo pago
+                        let reminderDate = calendar.date(byAdding: .day, value: -daysBefore, to: nextPaymentDate)!
+                        
+                        // Crear componentes de la fecha para el recordatorio
+                        var reminderDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
+                        
+                        // Hora a la que notificar desde @AppStorage
+                        if let notificationHourDate = timeFormatter.date(from: notificationHourString) {
+                            let hourComponents = calendar.dateComponents([.hour, .minute], from: notificationHourDate)
+                            reminderDateComponents.hour = hourComponents.hour
+                            reminderDateComponents.minute = hourComponents.minute
+                        } else {
+                            // Hora predeterminada si no se puede leer de @AppStorage
+                            reminderDateComponents.hour = 12
+                            reminderDateComponents.minute = 34
+                        }
+                        
+                        let identifier = UUID().uuidString
+                        // Crear un trigger que no se repite (repeticiones manuales)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: reminderDateComponents, repeats: false)
+                        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                        
+                        UNUserNotificationCenter.current().add(request) { error in
+                            if let error = error {
+                                print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
+                            } else {
+                                let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
+                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                
+                                metadata.notificationIdentifier = identifier
+                            }
+                        }
+                    }
+                
+                
+                
+                
+            } else if cycle == "each six months" {
+                print("[D] Cada 6 meses")
+                
+                // Configurar el número de repeticiones (por ejemplo, para los próximos 3 años)
+                let numberOfRepetitions = 6 // 3 años, una notificación cada seis meses
+
+                var addedRepetitions = 0 // Contador para las notificaciones realmente añadidas
+                var monthOffset = 6 // Inicializar con el primer semestre
+
+                while addedRepetitions < numberOfRepetitions {
+                    // Calcular la fecha del próximo semestre
+                    let nextPaymentDate = calendar.date(byAdding: .month, value: monthOffset, to: startDate)!
+                    
+                    // Restar los días antes a la fecha del próximo pago
+                    let reminderDate = calendar.date(byAdding: .day, value: -daysBefore, to: nextPaymentDate)!
+                    
+                    // Verificar que la fecha de recordatorio no sea en el pasado
+                    if reminderDate > Date() {
+                        // Crear componentes de la fecha para el recordatorio
+                        var reminderDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
+                        
+                        // Hora a la que notificar desde @AppStorage
+                        if let notificationHourDate = timeFormatter.date(from: notificationHourString) {
+                            let hourComponents = calendar.dateComponents([.hour, .minute], from: notificationHourDate)
+                            reminderDateComponents.hour = hourComponents.hour
+                            reminderDateComponents.minute = hourComponents.minute
+                        } else {
+                            // Hora predeterminada si no se puede leer de @AppStorage
+                            reminderDateComponents.hour = 12
+                            reminderDateComponents.minute = 34
+                        }
+                        
+                        let identifier = UUID().uuidString
+                        // Crear un trigger que no se repite (repeticiones manuales)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: reminderDateComponents, repeats: false)
+                        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                        
+                        UNUserNotificationCenter.current().add(request) { error in
+                            if let error = error {
+                                print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
+                            } else {
+                                let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
+                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                
+                                metadata.notificationIdentifier = identifier
+                            }
+                        }
+                        addedRepetitions += 1
+                    }
+                    monthOffset += 6 // Incrementar el semestre
+                }
+            } else if cycle == "yearly" {
+                
+                print("[D] Cada año")
+                
+                // Configurar el número de repeticiones (por ejemplo, para los próximos 10 años)
+                let numberOfRepetitions = 3 // 10 años, una notificación cada año
+
+                var addedRepetitions = 0 // Contador para las notificaciones realmente añadidas
+                var yearOffset = 1 // Inicializar con el primer año
+
+                while addedRepetitions < numberOfRepetitions {
+                    // Calcular la fecha del próximo año
+                    let nextPaymentDate = calendar.date(byAdding: .year, value: yearOffset, to: startDate)!
+                    
+                    // Restar los días antes a la fecha del próximo pago
+                    let reminderDate = calendar.date(byAdding: .day, value: -daysBefore, to: nextPaymentDate)!
+                    
+                    // Verificar que la fecha de recordatorio no sea en el pasado
+                    if reminderDate > Date() {
+                        // Crear componentes de la fecha para el recordatorio
+                        var reminderDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
+                        
+                        // Hora a la que notificar desde @AppStorage
+                        if let notificationHourDate = timeFormatter.date(from: notificationHourString) {
+                            let hourComponents = calendar.dateComponents([.hour, .minute], from: notificationHourDate)
+                            reminderDateComponents.hour = hourComponents.hour
+                            reminderDateComponents.minute = hourComponents.minute
+                        } else {
+                            // Hora predeterminada si no se puede leer de @AppStorage
+                            reminderDateComponents.hour = 12
+                            reminderDateComponents.minute = 34
+                        }
+                        
+                        let identifier = UUID().uuidString
+                        // Crear un trigger que no se repite (repeticiones manuales)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: reminderDateComponents, repeats: false)
+                        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                        
+                        UNUserNotificationCenter.current().add(request) { error in
+                            if let error = error {
+                                print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
+                            } else {
+                                let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
+                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                
+                                metadata.notificationIdentifier = identifier
+                            }
+                        }
+                        addedRepetitions += 1
+                    }
+                    yearOffset += 1 // Incrementar el año
+                }
+                
+            } else {
+                print("[D] cycle ELSE")
             }
             
             

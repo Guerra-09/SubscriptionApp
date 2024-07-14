@@ -35,3 +35,11 @@ extension Date {
     
     
 }
+
+
+extension Date {
+    init?(_ year: Int,_ month: Int,_ day: Int) {
+        guard let date = DateComponents(calendar: .current, year: year, month: month, day: day, hour: 12).date else { return nil }
+        self = date
+    }
+}

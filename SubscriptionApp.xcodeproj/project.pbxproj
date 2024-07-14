@@ -24,7 +24,6 @@
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
 		6653BC612B9FE3C700BB9207 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */; };
 		6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */; };
-		6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC6E2B9FE59300BB9207 /* HomeView.swift */; };
 		667C88482BB5C7A5008E9728 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C88472BB5C7A5008E9728 /* ColorExtensions.swift */; };
 		66906ACD2BBC9B420000CFE6 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */; };
 		669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */; };
@@ -34,6 +33,8 @@
 		669BF84D2BBB3FC10030A9D0 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */; };
 		66A057992BC3376E00305054 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A057982BC3376E00305054 /* DateCalculator.swift */; };
 		66AF09A22BCB0151003B6A84 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */; };
+		66BBFFED2C33769F00141688 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBFFEC2C33769F00141688 /* HomeView.swift */; };
+		66BBFFF02C3378B500141688 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBFFEF2C3378B400141688 /* DateCalculatorTests.swift */; };
 		66D2FC642BD6D0C10002D941 /* VersionDescription.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D2FC632BD6D0C10002D941 /* VersionDescription.json */; };
 		66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E502B9FEBC800EE91BC /* MainView.swift */; };
 		66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */; };
@@ -47,7 +48,7 @@
 		66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */; };
 		66E89A792BC7131800CF051D /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
 		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
-		66FBED0F2C30677600ED6BF6 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FBED0E2C30677600ED6BF6 /* DateCalculatorTests.swift */; };
+		66FBED0F2C30677600ED6BF6 /* (null) in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,10 +78,8 @@
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6653BC652B9FE3C700BB9207 /* SubscriptionApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionApp.xcdatamodel; sourceTree = "<group>"; };
-		6653BC6E2B9FE59300BB9207 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../HomeView.swift; sourceTree = "<group>"; };
 		667C88472BB5C7A5008E9728 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
-		669197F02C32075800187170 /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SubscriptionAppTests.xctest; path = "/Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app/PlugIns/SubscriptionAppTests.xctest"; sourceTree = "<absolute>"; };
 		669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpdateView.swift; sourceTree = "<group>"; };
 		669BF8442BBB38910030A9D0 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		669BF8462BBB3AD30030A9D0 /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
@@ -88,6 +87,10 @@
 		669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		66A057982BC3376E00305054 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		66BBFFEA2C33767F00141688 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubscriptionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66BBFFEC2C33769F00141688 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		66BBFFEF2C3378B400141688 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
 		66D2FC632BD6D0C10002D941 /* VersionDescription.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = VersionDescription.json; sourceTree = "<group>"; };
 		66D78E502B9FEBC800EE91BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
@@ -100,7 +103,6 @@
 		66E57C1B2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingCreationViewModel.swift; sourceTree = "<group>"; };
 		66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewComponent.swift; sourceTree = "<group>"; };
 		66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SubscriptionApp.app; path = "/Users/guerrinha/Desktop/129799/SwiftUI/SubscriptionApp/build/Debug-iphoneos/SubscriptionApp.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,22 +156,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		663E736B2BC70FBB003DFB6D /* SubscriptionAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				663E736C2BC70FBB003DFB6D /* SubscriptionAppTests.swift */,
-				66FBED0E2C30677600ED6BF6 /* DateCalculatorTests.swift */,
-			);
-			path = SubscriptionAppTests;
-			sourceTree = "<group>";
-		};
-		6640C1E32BCEB3A600D32DDD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		664FFD232BBF615800E4146B /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				6653BC582B9FE3C500BB9207 /* SubscriptionApp */,
+				66BBFFEA2C33767F00141688 /* SubscriptionApp.app */,
+				66BBFFF12C33794000141688 /* SusbcriptionAppTests */,
+				66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */,
-				6653BC712B9FE5C700BB9207 /* Home */,
 				66D78E532B9FF09C00EE91BC /* Subscriptions */,
 				66D78E522B9FF09400EE91BC /* Profile */,
 				66D78E4F2B9FEBB600EE91BC /* Helpers */,
@@ -200,6 +188,7 @@
 				6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */,
 				6653BC642B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld */,
 				6653BC5F2B9FE3C700BB9207 /* Preview Content */,
+				66BBFFEC2C33769F00141688 /* HomeView.swift */,
 			);
 			path = SubscriptionApp;
 			sourceTree = "<group>";
@@ -212,12 +201,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6653BC712B9FE5C700BB9207 /* Home */ = {
+		66BBFFF12C33794000141688 /* SusbcriptionAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				6653BC6E2B9FE59300BB9207 /* HomeView.swift */,
+				66BBFFEF2C3378B400141688 /* DateCalculatorTests.swift */,
 			);
-			path = Home;
+			path = SusbcriptionAppTests;
 			sourceTree = "<group>";
 		};
 		66D78E4F2B9FEBB600EE91BC /* Helpers */ = {
@@ -320,7 +309,7 @@
 			);
 			name = SubscriptionAppTests;
 			productName = SubscriptionAppTests;
-			productReference = 669197F02C32075800187170 /* SubscriptionAppTests.xctest */;
+			productReference = 66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		6653BC552B9FE3C500BB9207 /* SubscriptionApp */ = {
@@ -340,7 +329,7 @@
 				6640C1E42BCEB3A600D32DDD /* SwiftDate */,
 			);
 			productName = SubscriptionApp;
-			productReference = 66F7832F2BBDA04E00406BB5 /* SubscriptionApp.app */;
+			productReference = 66BBFFEA2C33767F00141688 /* SubscriptionApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -351,7 +340,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					663E73692BC70FBB003DFB6D = {
 						CreatedOnToolsVersion = 15.3;
@@ -412,8 +401,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66FBED0F2C30677600ED6BF6 /* DateCalculatorTests.swift in Sources */,
+				66FBED0F2C30677600ED6BF6 /* (null) in Sources */,
 				66E89A792BC7131800CF051D /* Subscription.swift in Sources */,
+				66BBFFF02C3378B500141688 /* DateCalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,13 +416,13 @@
 				669BF8432BBB06A50030A9D0 /* SubscriptionUpdateView.swift in Sources */,
 				66E57C1C2BB8A5B500B89EF0 /* ExistingCreationViewModel.swift in Sources */,
 				664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */,
+				66BBFFED2C33769F00141688 /* HomeView.swift in Sources */,
 				66906ACD2BBC9B420000CFE6 /* FloatExtensions.swift in Sources */,
 				66D78E5D2B9FF6B200EE91BC /* CustomCreationView.swift in Sources */,
 				663036012BB79AB600A0071B /* Subscription.swift in Sources */,
 				6653BC662B9FE3C700BB9207 /* SubscriptionApp.xcdatamodeld in Sources */,
 				663035F92BB75F6E00A0071B /* DatePickerComponent.swift in Sources */,
 				66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */,
-				6653BC6F2B9FE59300BB9207 /* HomeView.swift in Sources */,
 				66AF09A22BCB0151003B6A84 /* NotificationCenter.swift in Sources */,
 				6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */,
 				66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */,
@@ -517,6 +507,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -580,6 +571,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

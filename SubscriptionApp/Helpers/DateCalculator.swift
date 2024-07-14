@@ -69,70 +69,96 @@ class DateCalculator {
     }
     
     
-    // BUG: startDate 31-03-24 return 01-05-24
-    // Deberia retornar 30-04-24 (ultimo dia de abril)
+
     /// Funcion encargada de retornar la fecha de la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo mensual. Retorna un tipo Date
-    func getNextPaymentDateMonthly(startDate: Date) -> Date {
+    func getNextPaymentDateMonthly(startDate: Date, testDate now: Date = Date()) -> Date {
         
-        // StartDate
-        let firstPaymentDay = startDate.day
-        
-        var now = Date()
-        
+        let firstPaymentDay = calendar.component(.day, from: startDate)
         
         let components = calendar.dateComponents([.year, .month, .day], from: now)
+        let actualDay = components.day!
+        var actualMonth = components.month!
+        var actualYear = components.year!
+        
+        print("[D] ACTUAL DAY \(actualDay)")
+        
+        // Añadir un mes a la fecha actual
+        var nextMonthComponents = DateComponents()
+        nextMonthComponents.month = 1
+        
+        if let nextMonthDate = calendar.date(byAdding: nextMonthComponents, to: now),
+           let range = calendar.range(of: .day, in: .month, for: nextMonthDate) {
+            let nextMonthLastDay = range.count
+            
+            
+            // Ajustar el día de pago si el día del primer pago no existe en el próximo mes
+            var paymentDay = firstPaymentDay
+            if nextMonthLastDay < firstPaymentDay {
+                paymentDay = nextMonthLastDay
+            }
+            
+            
+            if actualDay > paymentDay {
+                actualMonth += 1
+                if actualMonth > 12 {
+                    actualMonth = 1
+                    actualYear += 1
+                }
+            }
+            
+            var creationComponents = DateComponents()
+            creationComponents.day = paymentDay
+            creationComponents.month = actualMonth
+            creationComponents.year = actualYear
+            
+            print("[D] creationComponents \(creationComponents)")
+            print("[D] paymentDay \(paymentDay)")
+            
+            // Verificando si la fecha que se va a crear existe.
+            if dateFormatter.date(from: "\(creationComponents.day!)-\(creationComponents.month!)-\(creationComponents.year!)") != nil {
+                print("[D] Se crea correctamente")
+                
+                let date = calendar.date(from: creationComponents)
+                
+                return date!
+                
+                
+            } else {
+                print("[D] FAILED AL CREAR DATE ")
+                
+                var date = dateFormatter.date(from: "\(String(describing: creationComponents.day))-\(actualMonth)-\(String(describing: creationComponents.year))")
+                
 
-        let actualDay = components.day
-        let actualMonth = components.month
-        let actualYear = components.year
- 
-        
-        // Creating fixing date
-        var month = actualMonth
-        var day = firstPaymentDay
-        let monthLater = Date().dateByAdding(1, .month)
-        let nextMonthLastDay = monthLater.date.lastDateOfPreviousMonth
+                var newDay = paymentDay
+                while newDay > 27 && date == nil {
+                    newDay -= 1
+                    date = dateFormatter.date(from: "\(newDay)-\(creationComponents.month!)-\(creationComponents.year!)")
+                
+                    
+                }
+                
 
-        
-        // Si el mes siguiente tiene menos dias, se toma el ultimo dia de ese mes
-        if nextMonthLastDay!.day < firstPaymentDay {
-            day = nextMonthLastDay!.day
-        } else {
-            day = firstPaymentDay
+                return date ?? Date()
+            }
+            
+            
+            
+            
+            
+            
         }
-        
-        // Si el dia actual es mayor al dia de pago, se le suma un mes porque ya se se pago, de lo contrario es el mismo mes, pero falta para que llegue el dia para pagar
-        if actualDay! > day {
-            month! += 1
-        }
-        
-        // Creando formater para la fecha de facturacion
-        var creationComponents = DateComponents()
-        creationComponents.day = day
-        creationComponents.month = month
-        creationComponents.year = actualYear
-        
-        guard let date = Calendar.current.date(from: creationComponents) else {
-            return Date.now
-        }
-
-        return date
+        print("[D] Returning now")
+        return now // En caso de falla, retorna la fecha actual (esto debería ser manejado de manera más robusta)
     }
         
     
-    // Esta funcion retorna los dias cuando el ciclo es mensual
-    // Revisar -> 01-02-2024
-    /// Funcion encargada de retornar los dias restantes hasta la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago mensual. Retorna un Int, que son los dias que faltan.
-    func daysUntilMonthly(startDate: Date) -> Int {
-        
-        
-        let date = getNextPaymentDateMonthly(startDate: startDate)
-        
-        var now = Date()
     
+    /// Funcion encargada de retornar los dias restantes hasta la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago mensual. Retorna un Int, que son los dias que faltan.
+    func daysUntilMonthly(startDate: Date, now: Date = Date()) -> Int {
+        
+        let date = getNextPaymentDateMonthly(startDate: startDate, testDate: now)
+        
         let result = now.distance(to: date)
-        
-        
         
         
         return Int((result / secondsInDay).rounded(.up))
@@ -140,31 +166,30 @@ class DateCalculator {
     }
     
     
-    
+
     
     /// Funcion encargada de retornar la fecha de la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 3 meses. Retorna un tipo Date
-    func getNextPaymentDateThreeMonths(startDate: Date) -> Date {
+    func getNextPaymentDateThreeMonths(startDate: Date, testDate now: Date = Date()) -> Date {
         
         let calendar = Calendar.current
-        let componentMonth = calendar.dateComponents([.month], from: startDate, to: Date())
-        
+        let componentMonth = calendar.dateComponents([.month], from: startDate, to: now)
    
-        var dayOfPayment: Int = startDate.day
-        var yearOfPayment: Int = Date().year
-        var monthOfPayment = Date().month
+        let dayOfPayment: Int = startDate.day
+        var yearOfPayment: Int = startDate.year
+        var monthOfPayment = now.month
         
-        
+        print("[D] testDate \(now)")
         
         if componentMonth.month! % 3 == 0 {
             
             // Si es que el dia es menor y no hay restos, se agregan dos meses
-            if startDate.day > Date().day {
+            if startDate.day > now.day {
                 print("[D] Restos 0: Se paga en dos meses")
                 monthOfPayment += 2
                 
             // Si es el mismo dia con 3 meses de diferencia es porque se paga ese dia
-            } else if startDate.day != Date().day {
-                print("[D] Restos 0: Se paga en 3 meses -> \(startDate.day) ? \(Date().day)")
+            } else if startDate.day != now.day {
+                print("[D] Restos 0: Se paga en 3 meses -> \(startDate.day) ? \(now.day)")
                 monthOfPayment += 3 // Agregando los 3 meses.
                 
             } else {
@@ -174,7 +199,7 @@ class DateCalculator {
         
         } else if componentMonth.month! % 3 == 1 {
             
-            if startDate.day >= Date().day {
+            if startDate.day >= now.day {
                 print("[D] Restos 1: Se paga en 1 mes")
                 monthOfPayment += 1
                 
@@ -190,10 +215,10 @@ class DateCalculator {
         } else if componentMonth.month! % 3 == 2 {
             
             // Si el dia de inicio es mayor al actual, significa que se paga este mes en unos dias.
-            if startDate.day > Date().day {
+            if startDate.day > now.day {
                 print("[D] Restos 2: En unos dias")
                 
-            } else if startDate.day == Date().day {
+            } else if startDate.day == now.day {
                 print("[D] Restos 2: En dos meses mas")
                 monthOfPayment += 1
                 
@@ -206,14 +231,18 @@ class DateCalculator {
             print("[D] Restos ELSE")
         }
         
-        // Si los meses dan mas de 12, le resto esos meses y agrego un año
+        
+        // Si los meses dan mas de 12, le resto esos meses y agrego un año.
         if monthOfPayment > 12 {
             monthOfPayment -= 12
             yearOfPayment += 1
+            print("[D] agregando anio quitando meses")
+            
+        } else if monthOfPayment == 1 || monthOfPayment == 2 {
+            yearOfPayment += 1
         }
-
+ 
     
-        ///BUG: 07/06/2024 no acepta esa exacta fecha y la deja como nil
         
         // Crear componentes de fecha
         var dateComponents = DateComponents()
@@ -223,8 +252,7 @@ class DateCalculator {
         
         
         // Crear la fecha usando el calendario actual
-        var date = Calendar.current.date(from: dateComponents)
-//        print("[D] Fecha inicial: \(String(describing: date))")
+        var date = dateFormatter.date(from: "\(dateComponents.day!)-\(dateComponents.month!)-\(dateComponents.year!)")
         
         
         
@@ -237,27 +265,24 @@ class DateCalculator {
             while newDay > 27 && date == nil {
                 newDay -= 1
                 
-                let adjustedPayment = "\(newDay)-0\(monthOfPayment)-\(yearOfPayment)"
+                let adjustedPayment = "\(newDay)-0\(monthOfPayment)-\(dateComponents.year!)"
                 date = self.dateFormatter.date(from: adjustedPayment)
             }
+            
+            
         }
         
         return date ?? Date()
+//        return Date()
     }
     
     
     /// Funcion encargada de retornar los dias restantes hasta la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 3 meses. Retorna un Int, que son los dias que faltan.
-    func daysUntilThreeMonths(startDate: Date) -> Int {
+    func daysUntilThreeMonths(startDate: Date, testDate now: Date = Date()) -> Int {
         
-        let date = getNextPaymentDateThreeMonths(startDate: startDate)
+        let date = getNextPaymentDateThreeMonths(startDate: startDate, testDate: now)
 
-        let result = Date().distance(to: date)
-        
-
-        print("[D] StartDatePayment: \(startDate.toFormat("dd-MM-yyyy"))")
-        print("[D] NextPaymentDate \(date.toFormat("dd-MM-yyyy"))")
-        print("[D] nextPayment in days: \((result / secondsInDay).rounded(.up))")
-        print("[D] --------------------------------")
+        let result = now.distance(to: date)
         
         
 
@@ -269,20 +294,20 @@ class DateCalculator {
     
     /// Funcion encargada de retornar la fecha de la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 6 meses. Retorna un tipo Date
     /// Funciona pero falta testear mas casos
-    func getNextPaymentDateSixMonths(startDate: Date) -> Date {
+    func getNextPaymentDateSixMonths(startDate: Date, testDate now: Date = Date()) -> Date {
         
         let calendar = Calendar.current
-        let componentMonth = calendar.dateComponents([.month], from: startDate, to: Date())
+        let componentMonth = calendar.dateComponents([.month], from: startDate, to: now)
             
         var dayOfPayment: Int = startDate.day
-        var yearOfPayment: Int = Date().year
-        var monthOfPayment = Date().month
+        var yearOfPayment: Int = now.year
+        var monthOfPayment = now.month
 
             
         if componentMonth.month! % 6 == 0 {
                 
             // Si es el mismo dia con 3 meses de diferencia es porque se paga ese dia
-            if startDate.day == Date().day {
+            if startDate.day == now.day {
                 print("[D] Restos 0: Se paga hoy")
                     
             } else {
@@ -311,7 +336,7 @@ class DateCalculator {
                 
         } else if componentMonth.month! % 6 == 5 {
                 
-            if startDate.day > Date().day {
+            if startDate.day > now.day {
                 print("[D] Restos 5: Se paga en unos dias")
 
                 // monthOfPayment += 1// ERROR
@@ -337,9 +362,13 @@ class DateCalculator {
         dateComponents.day = dayOfPayment
         dateComponents.month = monthOfPayment
         dateComponents.year = yearOfPayment
+        
+        var date = dateFormatter.date(from: "\(dateComponents.day!)-\(dateComponents.month!)-\(dateComponents.year!)")
             
-        var date = Calendar.current.date(from: dateComponents)
+//        var date = Calendar.current.date(from: dateComponents)
             
+        
+        
         if date == nil {
             // Ajustar el día hasta que la fecha sea válida, pero no menos de 27
             var newDay = dayOfPayment
@@ -354,27 +383,24 @@ class DateCalculator {
         
     }
 
+    
     /// Funcion encargada de retornar los dias restantes hasta la siguiente facturacion segun fecha de inicio cuando la subscripcion tiene un ciclo de pago de 6 meses. Retorna un Int, que son los dias que faltan.
-    func daysUntilSixMonths(startDate: Date) -> Int {
+    func daysUntilSixMonths(startDate: Date, testDate now: Date = Date()) -> Int {
             
-        let date = getNextPaymentDateSixMonths(startDate: startDate)
+        
+        let date = getNextPaymentDateSixMonths(startDate: startDate, testDate: now)
 
+        let result = now.distance(to: date)
 
-        let result = Date().distance(to: date)
-
-        print("[D] StartDatePayment: \(startDate.toFormat("dd-MM-yyyy"))")
-        print("[D] NextPaymentDate \(date.toFormat("dd-MM-yyyy"))")
-        print("[D] nextPayment in days: \((result / secondsInDay).rounded(.up))")
-        print("[D] --------------------------------")
 
         return Int((result / secondsInDay).rounded(.up))
     }
 
     
     
-    func daysUntilYear(startDate: Date) -> Date {
+    func daysUntilYear(startDate: Date, testDate now: Date = Date()) -> Date {
   
-        
+    
         return Date()
     }
     

@@ -54,12 +54,6 @@
     "Are you sure you want to delete?" : {
 
     },
-    "Average Monthly Expenses: %@" : {
-
-    },
-    "Average Yearly Expenses: %@" : {
-
-    },
     "Buscar un resultado..." : {
 
     },
@@ -143,6 +137,15 @@
         }
       }
     },
+    "Error calculating days" : {
+
+    },
+    "Error loading logo" : {
+
+    },
+    "Error loading name" : {
+
+    },
     "Example: instead of 8 days -> next week" : {
 
     },
@@ -184,6 +187,9 @@
           }
         }
       }
+    },
+    "Monthly Spent \n %@" : {
+
     },
     "Name" : {
       "extractionState" : "manual",
@@ -261,6 +267,12 @@
         }
       }
     },
+    "Renew in %lld days" : {
+
+    },
+    "Renewing Soon" : {
+
+    },
     "Save" : {
       "localizations" : {
         "es" : {
@@ -305,6 +317,9 @@
           }
         }
       }
+    },
+    "Stats" : {
+
     },
     "Subscription Preview" : {
 
@@ -352,6 +367,12 @@
       }
     },
     "Welcome %@" : {
+
+    },
+    "Yearly Spent \n  %@" : {
+
+    },
+    "You have %lld subscriptions" : {
 
     }
   },

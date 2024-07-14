@@ -132,6 +132,6 @@ struct PreferencesView: View {
         let newMinute = components.minute ?? 0
         notificationHourString = dateFormatter.string(from: notificationHour)
                 
-        notificationCenter.changeNotificationTime()
+//        notificationCenter.changeNotificationTime()
     }
 }

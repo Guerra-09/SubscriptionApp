@@ -14,25 +14,110 @@ struct HomeView: View {
     @State var monthlySpent: String = ""
     @State var yearlySpent: String = ""
     @AppStorage("currencySelected") var currencySelected: String = "USD"
+    @State var sub: (days: Int, subscription: Subscription)?
+
+
     
     var body: some View {
         ZStack {
             Color("backgroundColor")
                 .ignoresSafeArea()
             
-            VStack(alignment: .leading) {
-                Text("Average Monthly Expenses: \(Float(monthlySpent)?.formatPriceFromFloatToString(currency: currencySelected) ?? "ERROR")")
-                    .foregroundStyle(.white)
-                
-                Text("Average Yearly Expenses: \(Float(yearlySpent)?.formatPriceFromFloatToString(currency: currencySelected) ?? "ERROR")")
-                    .foregroundStyle(.white)
-            }
             
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        
+                        HStack {
+                            Text("Renewing Soon")
+//                                .font(.system(size: 25))
+                                .font(.title)
+                                .bold()
+                            
+                            Spacer()
+                        }
+                        
+                        
+                        
+                        HStack {
+                            
+                            if let logo = sub?.subscription.subscriptionMetadata?.logo {
+                                Image(logo)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .padding(10)
+                                    .background(Color(hex: "293638"))
+                                    .cornerRadius(15)
+                                
+                            } else {
+                                Text("Error loading logo")
+                            }
+                            
+                            VStack {
+                                if let name = sub?.subscription.name {
+                                    HStack {
+                                        Text(name)
+                                        Spacer()
+                                    }
+                                } else {
+                                    Text("Error loading name")
+                                }
+                                
+                                
+                                if let days = sub?.days {
+                                    HStack {
+                                        Text("Renew in \(days) days")
+                                        Spacer()
+                                    }
+                                } else {
+                                    Text("Error calculating days")
+                                }
+                                
+                            }
+                            Spacer()
+                        }
+                        .padding(.bottom, 20)
+
+                        
+                        
+                        Text("Stats")
+                            .font(.title)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        
+                        
+                        Text("You have \(viewModel.subscriptions.count) subscriptions")
+                            
+                        
+                        Section {
+                            Text("Monthly Spent \n \(Float(monthlySpent)?.formatPriceFromFloatToString(currency: currencySelected) ?? "ERROR")")
+                                .font(.title2)
+                                .bold()
+
+                            
+                            Text("Yearly Spent \n  \(Float(yearlySpent)?.formatPriceFromFloatToString(currency: currencySelected) ?? "ERROR")")
+                                .font(.title2)
+                                .bold()
+                            
+                        }
+                        .padding(.top, 15)
+                        
+                    }
+                    .frame(width: 350)
+//                    .background(.red)
+             
+                }
+                Spacer()
+            }
+            .padding(.top, 15)
             
         }
         .onAppear {
             viewModel.getSubscriptions()
-            getMonthlyAmount()
+            self.sub = viewModel.getClosestPaymentSusbcription()
+            getExpenses()
         }
         
         .navigationTitle("Welcome \(profileName)")
@@ -43,43 +128,14 @@ struct HomeView: View {
 
     
     
-    func getMonthlyAmount() {
-
-        var counter: Float = 0.0
+    func getExpenses() {
         
-        for sub in viewModel.subscriptions {
-            
-            if sub.disableService == false {
-                
-                if sub.cycle == "monthly" {
-                    counter += sub.price
-                    
-                } else if sub.cycle == "each three months" {
-                    counter += (sub.price / 3)
-                    
-                } else if sub.cycle == "each six months" {
-                    counter += (sub.price / 6)
-                    
-                } else if sub.cycle == "yearly" {
-                    counter += (sub.price / 12)
-                    
-                }
-            }
-            
-        }
+        let monthlyPrice = viewModel.getTotalPrice()
         
-        self.monthlySpent = String(counter)
-        self.yearlySpent = String(counter*12)
+        self.monthlySpent = String(monthlyPrice)
+        self.yearlySpent = String(monthlyPrice * 12)
 
     }
     
     
 }
-
-
-#Preview {
-    NavigationStack {
-        HomeView()
-    }
-}
-

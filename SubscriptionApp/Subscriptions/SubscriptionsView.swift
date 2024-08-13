@@ -44,18 +44,26 @@ struct SubscriptionsView: View {
                             } else {
                                 
                                 NavigationLink(value: subscription) {
-                                    SubscriptionViewComponent(
-                                        logo: subscription.subscriptionMetadata!.logo,
-                                        logoColor: subscription.subscriptionMetadata!.logoColor,
-                                        backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
-                                        textColor: subscription.subscriptionMetadata!.textColor!,
-                                        name: subscription.name,
-                                        price: Float(subscription.price), 
-                                        cycle: subscription.cycle,
-                                        startDay: subscription.startDay,
-                                        reminder: subscription.reminder,
-                                        disableService: subscription.disableService
-                                    )
+                                    
+                                    if let logo = subscription.subscriptionMetadata?.logo {
+                                        
+                                        SubscriptionViewComponent(
+                                            logo: logo,
+                                            logoColor: subscription.subscriptionMetadata!.logoColor,
+                                            backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
+                                            textColor: subscription.subscriptionMetadata!.textColor!,
+                                            name: subscription.name,
+                                            price: Float(subscription.price),
+                                            cycle: subscription.cycle,
+                                            startDay: subscription.startDay,
+                                            reminder: subscription.reminder,
+                                            disableService: subscription.disableService
+                                        )
+                                    } else {
+                                        Text("Nothing to see here")
+                                    }
+                                    
+                                    
                                 }
                                 .padding(.vertical, 1.5)
                                  
@@ -106,7 +114,7 @@ struct SubscriptionsView: View {
         
         .sheet(isPresented: $showingSheet, content: {
             
-            NewSubscriptionView(showingSheet: $showingSheet, viewModel: viewModel)
+            CreationView(viewModel: viewModel, showingSheet: $showingSheet)
             
         })
         

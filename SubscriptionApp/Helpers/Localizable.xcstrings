@@ -45,16 +45,7 @@
         }
       }
     },
-    "App Notifications are disable. Active them on Profile -> Preferences -> Allow Notifications" : {
-
-    },
-    "Are you sure you want to delete the subscription?" : {
-
-    },
     "Are you sure you want to delete?" : {
-
-    },
-    "Buscar un resultado..." : {
 
     },
     "Cancel" : {
@@ -82,7 +73,11 @@
     "Create" : {
 
     },
+    "Create Subscription" : {
+
+    },
     "Custom" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -136,15 +131,6 @@
           }
         }
       }
-    },
-    "Error calculating days" : {
-
-    },
-    "Error loading logo" : {
-
-    },
-    "Error loading name" : {
-
     },
     "Example: instead of 8 days -> next week" : {
 
@@ -203,6 +189,7 @@
       }
     },
     "New Subscription" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -223,6 +210,9 @@
         }
       }
     },
+    "Nothing to see here" : {
+
+    },
     "Notification Time" : {
 
     },
@@ -240,6 +230,9 @@
       }
     },
     "Press on Create to start filling this side!" : {
+
+    },
+    "Press on icon to change it" : {
 
     },
     "Price" : {
@@ -339,6 +332,9 @@
       }
     },
     "There aren't any subscription created" : {
+
+    },
+    "There's no data to show here!\n go add some subscriptions to track" : {
 
     },
     "To next payment" : {

@@ -51,8 +51,6 @@ struct SubscriptionUpdateView: View {
                     Image(systemName: selectedIcon) // Change on init
                         .resizable()
                         .modifier(ImageWithLogoModifier(
-//                            backgroundColor: subscription.subscriptionMetadata?.backgroundColor,
-//                            logoColor: subscription.subscriptionMetadata?.logoColor
                             backgroundColor: self.backgroundColor,
                             logoColor: self.logoColor
                         ))

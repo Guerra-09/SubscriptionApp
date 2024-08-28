@@ -42,6 +42,7 @@
 		66E57C192BB892E800B89EF0 /* SubscriptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */; };
 		66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */; };
 		66E89A792BC7131800CF051D /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
+		66EADB352C73A79000F776D8 /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EADB342C73A79000F776D8 /* SettingsSheetView.swift */; };
 		66ECA1E02BC09AC200FF9D0B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */; };
 		66FBED0F2C30677600ED6BF6 /* (null) in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		66D78E602B9FF86800EE91BC /* PersonalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationView.swift; sourceTree = "<group>"; };
 		66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewModel.swift; sourceTree = "<group>"; };
 		66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewComponent.swift; sourceTree = "<group>"; };
+		66EADB342C73A79000F776D8 /* SettingsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
 		66ECA1DF2BC09AC200FF9D0B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 				66E57C182BB892E800B89EF0 /* SubscriptionsViewModel.swift */,
 				66D78E5A2B9FF66B00EE91BC /* Create */,
 				66D78E5B2B9FF68500EE91BC /* Update */,
+				66EADB342C73A79000F776D8 /* SettingsSheetView.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				66247D762BB4622D002BFF62 /* ViewExtensions.swift in Sources */,
 				669BF84D2BBB3FC10030A9D0 /* ButtonCustom.swift in Sources */,
 				663035F62BB6F63E00A0071B /* TextFieldAndLabel.swift in Sources */,
+				66EADB352C73A79000F776D8 /* SettingsSheetView.swift in Sources */,
 				66E57C1F2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift in Sources */,
 				669BF8452BBB38910030A9D0 /* Modifiers.swift in Sources */,
 				663395C02BD81E2900E3AA03 /* ColorPickerCustom.swift in Sources */,

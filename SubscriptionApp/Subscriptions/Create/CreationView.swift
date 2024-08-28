@@ -13,17 +13,17 @@ struct CreationView: View {
 
     @Binding var showingSheet: Bool
     
-    
     let subscriptionCycle: [String] = ["monthly", "each three months", "each six months", "yearly"]
     let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before"]
+    
     
     @State var subscriptionName: String = ""
     @State var logo: String = ""
     @State var textColor: String = "000000"
-    @State var backgroundColor: String = "FFFFFF"
-    @State var logoColor: String =  "000000"
+    @State var backgroundColor: String = "5C6362"
+    @State var logoColor: String =  "1C2426"
     @State var selectIconSheet: Bool = false
-    @State var selectedIcon: String = "globe"
+    @State var selectedIcon: String = "bills"
     
     @State var subscriptionPrice: String = ""
     @State var subscriptionStartDay: Date = Date()
@@ -32,6 +32,7 @@ struct CreationView: View {
     @AppStorage("notifications") var subscriptionReminderToggle = false
     @State var subscriptionReminderSelected: String = "The same day"
     @State var subcriptionIsDisable: Bool = false
+
     
     let notificationCenter = NotificationCenter()
     let dateCalculator = DateCalculator()
@@ -45,7 +46,7 @@ struct CreationView: View {
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    Image(systemName: selectedIcon)
+                    Image(selectedIcon)
                         .resizable()
                         .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, logoColor: logoColor))
                         .onTapGesture {
@@ -54,10 +55,12 @@ struct CreationView: View {
                     
                     Text("Press on icon to change it")
                         .font(.caption)
+                        .foregroundStyle(.white)
                     
                     
                     // Name
                     TextFieldAndLabel(labelName: "Name", placeholder: "Subscription Name", textVariable: $subscriptionName, bigContainer: false)
+                
                     
                     // Price
                     TextFieldAndLabel(labelName: "Price", placeholder: "$0.00", textVariable: $subscriptionPrice, bigContainer: false)
@@ -181,7 +184,13 @@ struct CreationView: View {
                     
                 }
                 .sheet(isPresented: $selectIconSheet) {
-                    IconSelectionView(iconSelected: $selectedIcon, textColor: $textColor, backgroundColor: $backgroundColor, logoColor: $logoColor)
+                    IconSelectionView(iconSelected: $selectedIcon, 
+                                      textColor: $textColor,
+                                      backgroundColor: $backgroundColor,
+                                      logoColor: $logoColor,
+                                      subscriptionName: self.$subscriptionName,
+                                      startDate: self.$subscriptionStartDay
+                    )
                 }
             }
             .navigationTitle("Create Subscription")

@@ -10,8 +10,27 @@ import SwiftUI
 import UserNotifications
 import SwiftDate
 
-// DE MOMENTO: Crea la notificacion de manera mensual, cada tres meses y cada seis meses de manera correcta.
 
+/// Clase encargada de crear, editar y borrar notificaciones de subscripciones.
+///
+/// Esta clase es llamada principalmente cuando se quiere gestionar las notificaciones, siempre y cuando el usuario desee activarlas y haya aceptado las notificaciones por parte de la aplicacion.
+///
+/// - Parameters:
+///     - notificationHourString:
+///     Este variable se encarga de obtener el horario escogido por el usuario a traves de PreferencesView. Es de tipo `String` (e.g: "09:30")
+///
+///     - timeFormatter:
+///     Encargado de establecer un formato al tiempo de tipo "HH:mm" y un timezone. Usado para horas.
+///
+///     - dateFormatter:
+///     Encargado de establecer un formato de "d-MM-yyyy" y un timezone. Usado para fechas.
+///
+///
+///
+///
+/// - Experiment: Hay un bug con cambiar el horario de notificacion. Tambien deberia cambiarse el formato de "d-mm-yyyy" a otros desde las preferencias.
+///
+///
 class NotificationCenter: ObservableObject {
     
     @AppStorage("notificationHourString") private var notificationHourString: String = ""
@@ -30,11 +49,24 @@ class NotificationCenter: ObservableObject {
         return formatter
     }()
     
+    /// Encargado de almacenar los dias antes que tiene que notificar, es decir si la subscripcion tiene seleccionado la notificacion "2 Dias antes", este deberia ser un 2.
     var daysBefore: Int = 0
     
     
     let dateCalculator = DateCalculator()
     
+    
+    /// Funcion encargada de crear notificaciones.
+    ///
+    /// Lo que hace esta funcion es crear alertas dentro de las queue de notificaciones del iPhone. Para el caso del pago mensual es muy facil ya que es automatico, sin embargo para notificaciones de 3, 6 y 12 meses hay que ir creando notificaciones de manera manual.
+    ///
+    /// - Parameters:
+    ///     - subcriptionName: Nombre de la subscripcion
+    ///     - reminderTime: Cuando recordar, el mismo dia, 1 dia antes, 2 dias antes, etc.
+    ///     - startDate: Fecha del primer pago, para calcular el siguiente.
+    ///     - cycle: Ciclo de la subcripcion, mensual, trimestral, etc.
+    ///     - metadata: Conjunto de variables que definen la personalizacion del logo y ademas tienen el ID de la notificacion (como no esta creado aun esta como un optional).
+    ///
     func createNotification(
         subscriptionName: String,
         reminderTime: String,
@@ -43,12 +75,12 @@ class NotificationCenter: ObservableObject {
         metadata: SubscriptionMetadata) -> () {
             
             
-            guard let startDate = startDate else { return }
-            
+            guard let startDate = startDate else { print("[D] Problema con starDate") ; return }
             
             var message = ""
             
             switch reminderTime {
+                
             case "The same day":
                 daysBefore = 0
                 message = "today"
@@ -296,7 +328,7 @@ class NotificationCenter: ObservableObject {
             
             createNotification(subscriptionName: subscriptionName, reminderTime: reminderTime, startDate: startDate, cycle: cycle, metadata: metadata)
             
-            print("[D] Se modifico la notificacion a la nueva fecha.")
+            print("[D] Se modifico la notificacion a la nueva fecha. :D")
         }
     
     

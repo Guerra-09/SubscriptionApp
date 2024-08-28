@@ -39,25 +39,12 @@ struct SubscriptionViewComponent: View {
                 
                 HStack {
                     
-                    if logo.contains("logo") {
+                    Image(logo)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50)
+                        .foregroundStyle(Color(hex: logoColor))
                         
-                        Image(logo)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
-                            .foregroundStyle(Color(hex: logoColor))
-                            
-                    } else {
-                        Image(systemName: logo)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
-                            .foregroundStyle(Color(hex: logoColor))
-                        
-                    }
-                    
-                    
-
                     
                     VStack(alignment: .leading) {
                         Text(name)

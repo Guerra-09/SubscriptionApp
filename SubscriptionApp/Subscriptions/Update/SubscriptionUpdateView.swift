@@ -39,6 +39,8 @@ struct SubscriptionUpdateView: View {
     
     let notificationCenter = NotificationCenter()
     
+    
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -46,26 +48,16 @@ struct SubscriptionUpdateView: View {
             
             ScrollView {
                 
-                if subscription.customSubscription {
-                    
-                    Image(systemName: selectedIcon) // Change on init
-                        .resizable()
-                        .modifier(ImageWithLogoModifier(
-                            backgroundColor: self.backgroundColor,
-                            logoColor: self.logoColor
-                        ))
-                        .onTapGesture {
-                            selectIconSheet.toggle()
-                        }
-                    
-                } else {
-                    Image(subscription.subscriptionMetadata?.logo ?? "")
-                        .resizable()
-                        .modifier(ImageWithLogoModifier())
-                }
+                Image(selectedIcon)
+                    .resizable()
+                    .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, logoColor: logoColor))
+                    .onTapGesture {
+                        selectIconSheet.toggle()
+                    }
                 
-                
-                
+                Text("Press on icon to change it")
+                    .font(.caption)
+                    .foregroundStyle(.white)
                 
                 // Name
                 TextFieldAndLabel(labelName: "Name", placeholder: "Editar", textVariable: $subscription.name, bigContainer: false)
@@ -152,17 +144,35 @@ struct SubscriptionUpdateView: View {
             }
             .onAppear {
                 self.selectedIcon = subscription.subscriptionMetadata?.logo ?? ""
+                
                 self.textColor = subscription.subscriptionMetadata?.textColor ?? ""
+                
                 self.backgroundColor = subscription.subscriptionMetadata?.backgroundColor ?? ""
+                
                 self.logoColor = subscription.subscriptionMetadata?.logoColor ?? ""
             }
+            .onChange(of: selectedIcon) { _, newValue in
+                self.subscription.subscriptionMetadata?.logo = newValue
+            }
+            .onChange(of: textColor) { _, newValue in
+                self.subscription.subscriptionMetadata?.textColor = newValue
+            }
+            .onChange(of: backgroundColor) { _, newValue in
+                self.subscription.subscriptionMetadata?.backgroundColor = newValue
+            }
+            .onChange(of: logoColor) { _, newValue in
+                self.subscription.subscriptionMetadata?.logoColor = newValue
+            }
+            
             .scrollDismissesKeyboard(.immediately)
             .sheet(isPresented: $selectIconSheet) {
                 IconSelectionView(
                     iconSelected: $selectedIcon,
                     textColor: $textColor,
                     backgroundColor: $backgroundColor,
-                    logoColor: $logoColor
+                    logoColor: $logoColor,
+                    subscriptionName: $subscription.name,
+                    startDate: $subscription.startDay
                 )
             }
             .toolbar {

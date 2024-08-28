@@ -13,18 +13,21 @@ struct PreferencesView: View {
     @Environment(\.dismiss) var dismiss
     
     let currencies: [String] = ["USD", "CLP"] // Con el tiempo ire agregando mas monedas...
-    let languages: [String] = ["English", "Español"]
+//    let languages: [String] = ["English", "Español"]
+//    let dateFormats: [String] = ["d-MM-YYYY", "MM-d-YYYY"]
 
     
     // Luego con un init deberia poner los datos de la DB
     @AppStorage("currencySelected") var currencySelected = "USD"
-    @AppStorage("languageSelected") var selectedLanguage = "English"
+//    @AppStorage("dateFormatSelected") var dateFormatSelected = "MM-d-YYYY"
+//    @AppStorage("languageSelected") var selectedLanguage = "English"
 //    @AppStorage("notifications") var notificationsActive = false
     @State var notificationsEnabled: Bool = false
     @Binding var showToolbar: Bool
         
     @AppStorage("notificationHourString") private var notificationHourString: String = ""
     
+        
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -44,8 +47,8 @@ struct PreferencesView: View {
                 
                 PickerComponent(optionSelected: $currencySelected, title: "Currency", options: currencies)
                 
-                PickerComponent(optionSelected: $selectedLanguage, title: "Language", options: languages)
-                    .disabled(true)
+//                PickerComponent(option/*Selected: $dateFormatSelected, title: "Date Format"*/, options: dateFormats)
+                    
                 
                 
                 DatePicker("Notification Time", selection: $notificationHour, displayedComponents: .hourAndMinute)
@@ -53,6 +56,8 @@ struct PreferencesView: View {
                         notificationHourString = dateFormatter.string(from: newValue)
                         updateNotificationTime()
                     }
+                    .padding()
+                    .foregroundStyle(.white)
                 
 
                 
@@ -102,17 +107,6 @@ struct PreferencesView: View {
 
         
         /// En desarrollo
-        .onChange(of: selectedLanguage, { oldValue, newValue in
-            
-//            var localizable = ""
-//            
-//            if newValue == "English" {
-//                localizable = "en"
-//            } else if newValue == "Español" {
-//                localizable = "es"
-//            }
-
-        })
         .navigationTitle("Preferences")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitleTextColor(.white)

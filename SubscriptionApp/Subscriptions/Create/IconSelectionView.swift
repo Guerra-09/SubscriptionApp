@@ -10,12 +10,16 @@ import SwiftUI
 struct IconSelectionView: View {
     
     @Environment(\.dismiss) var dismiss
-    var iconsToChoose: [String] = ["globe", "car", "fuelpump.fill", "dumbbell.fill", "cart.fill", "stethoscope", "airplane.departure", "tv"]
+    
+    @State var iconsToChoose: [String] = [""]
+    
     
     @Binding var iconSelected: String
     @Binding var textColor: String
     @Binding var backgroundColor: String
     @Binding var logoColor: String
+    @Binding var subscriptionName: String 
+    @Binding var startDate: Date
     
     @State var bgColor: Color = Color.white
     @State var txtColor: Color = Color.black
@@ -62,7 +66,19 @@ struct IconSelectionView: View {
                     .padding(.top, 30)
                   
                     
-                    SubscriptionViewComponent(logo: iconSelectioned, logoColor: logoColor, backgroundColor: backgroundColor, textColor: textColor, name: "Subscription Name", price: 9.99, cycle: "monthly", startDay: Date(), reminder: true, disableService: false)
+                    SubscriptionViewComponent(logo: iconSelectioned, 
+                                              logoColor: logoColor,
+                                              backgroundColor: backgroundColor,
+                                              
+                                              textColor: textColor,
+                                              name: subscriptionName == "" ?  "Subscription Name" : subscriptionName,
+                                              
+                                              price: 9.99, 
+                                              cycle: "monthly",
+                                              startDay: startDate,
+                                              reminder: true, 
+                                              disableService: false)
+                    
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                     
@@ -98,7 +114,7 @@ struct IconSelectionView: View {
                             }
                     }
                     
-                    VStack {
+                    VStack { 
                         Text("Change Text Color")
                         ColorPicker("", selection: $txtColor)
                             .labelsHidden()
@@ -137,13 +153,15 @@ struct IconSelectionView: View {
                     LazyVGrid(columns: adaptiveColumn, spacing: 8) {
                         
                         ForEach(iconsToChoose, id: \.self) { icon in
-                            Image(systemName: icon)
+                            
+                            Image(icon)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
                                 .frame(width: 80, height: 80, alignment: .center)
                                 .background(Color("buttonBackgroundColor"))
+                                .foregroundStyle(.white)
                                 .cornerRadius(10)
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .padding()
                                 .onTapGesture {
                                     self.iconSelectioned = icon
                                     iconSelected = icon
@@ -151,10 +169,10 @@ struct IconSelectionView: View {
                             
                         }
                     }
+                    .scrollIndicators(.hidden)
                 }
                 .padding(.horizontal, 20)
-                
-                
+    
             }
             
             
@@ -166,6 +184,7 @@ struct IconSelectionView: View {
             self.lgColor = Color(hex: logoColor)
             self.iconSelectioned = iconSelected
             
+            fetchIcons()
             
         }
         
@@ -177,5 +196,12 @@ struct IconSelectionView: View {
         }
 
         
+    }
+    
+    func fetchIcons() -> Void {
+
+        let icons = ["apple", "bank", "bike", "bills", "bitcoin", "bolt", "bone", "book", "brush", "bug", "bus", "camera", "card", "charts", "chat", "clock", "clothes", "cloud", "coctel", "code", "coffe", "computer", "dog_paw", "dollars", "dumbbell", "flatware", "functions", "gamecontrol", "gift", "hamburguer", "headphones", "healthy shield", "heart", "home", "key", "lightbulb", "lock", "luggage", "map", "movie", "music", "newspaper", "pen", "phone", "photo", "piano", "pill", "pizza", "plane", "road", "robot", "savings", "shield", "shoppingbag", "shoppingcart", "soccer", "sprint", "swords", "syringe", "tool", "train", "translate", "tv", "wallet", "water", "waterglass", "world"]
+            
+        self.iconsToChoose = icons
     }
 }

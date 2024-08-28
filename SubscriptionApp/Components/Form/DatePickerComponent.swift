@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DatePickerComponent: View {
     
-    @Binding var subscriptionStartDay: Date 
+    @Binding var subscriptionStartDay: Date
     
     var body: some View {
         
@@ -32,16 +32,18 @@ struct DatePickerComponent: View {
                                in: ...Date(),
                                displayedComponents: .date)
                         .padding()
+                        .fixedSize()
                         .datePickerStyle(.compact)
-                        .colorInvert()
+                        .foregroundStyle(.white)
                         .colorMultiply(.white)
-                        .frame(width: 370, height: 58, alignment: .center)
-                        .foregroundStyle(.gray)
+                        .frame(width: 370, height: 58, alignment: .leading)
                         .background(Color("subViewsBackgroundColor"))
                         .clipShape(Rectangle())
                         .cornerRadius(15)
-                
+                    
+                        Spacer()
                 }
+                
                 
             }
             .padding(10)

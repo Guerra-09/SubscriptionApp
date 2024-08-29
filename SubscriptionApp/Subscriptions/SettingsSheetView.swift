@@ -57,16 +57,16 @@ struct SubscriptionsSettingsSheet: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    dismiss()
-                    viewModel.deleteAllSubscriptions()
-                    notificationCenter.deleteAllNotifications()
-                    
-                }, label: {
-                    Text("DELETE ALL DEVELOPER OPTION")
-                        .foregroundStyle(.red)
-                })
-                
+//                Button(action: {
+//                    dismiss()
+//                    viewModel.deleteAllSubscriptions()
+//                    notificationCenter.deleteAllNotifications()
+//                    
+//                }, label: {
+//                    Text("DELETE ALL DEVELOPER OPTION")
+//                        .foregroundStyle(.red)
+//                })
+//                
                 Button(action: {
                     dismiss()
                 }, label: {

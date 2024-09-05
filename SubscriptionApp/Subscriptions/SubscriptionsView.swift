@@ -50,9 +50,8 @@ struct SubscriptionsView: View {
                                         
                                         SubscriptionViewComponent(
                                             logo: logo,
-                                            logoColor: subscription.subscriptionMetadata!.logoColor,
+                                            tintColor: subscription.subscriptionMetadata!.tintColor,
                                             backgroundColor: subscription.subscriptionMetadata!.backgroundColor,
-                                            textColor: subscription.subscriptionMetadata!.textColor!,
                                             name: subscription.name,
                                             price: Float(subscription.price),
                                             cycle: subscription.cycle,
@@ -121,7 +120,7 @@ struct SubscriptionsView: View {
         
         .sheet(isPresented: $showingSubscriptionsBy) {
             NavigationStack {
-                SubscriptionsSettingsSheet(viewModel: viewModel)
+                SubscriptionsSettingsSheet()
             }
         }
         

@@ -66,8 +66,8 @@ final class SubscriptionsViewModel: ObservableObject {
             }
         }
         
-        
     }
+    
 
 
     func getTotalPrice() -> Float {

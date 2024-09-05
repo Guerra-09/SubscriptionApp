@@ -31,9 +31,8 @@ struct SubscriptionUpdateView: View {
     
     // Variables para manejar el logo
     @State var selectedIcon: String = ""
-    @State var textColor: String = ""
+    @State var tintColor: String = ""
     @State var backgroundColor: String = ""
-    @State var logoColor: String = ""
     
     @State var selectIconSheet: Bool = false
     
@@ -50,7 +49,7 @@ struct SubscriptionUpdateView: View {
                 
                 Image(selectedIcon)
                     .resizable()
-                    .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, logoColor: logoColor))
+                    .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, tintColor: tintColor))
                     .onTapGesture {
                         selectIconSheet.toggle()
                     }
@@ -145,35 +144,33 @@ struct SubscriptionUpdateView: View {
             .onAppear {
                 self.selectedIcon = subscription.subscriptionMetadata?.logo ?? ""
                 
-                self.textColor = subscription.subscriptionMetadata?.textColor ?? ""
+                self.tintColor = subscription.subscriptionMetadata?.tintColor ?? ""
                 
                 self.backgroundColor = subscription.subscriptionMetadata?.backgroundColor ?? ""
                 
-                self.logoColor = subscription.subscriptionMetadata?.logoColor ?? ""
             }
             .onChange(of: selectedIcon) { _, newValue in
                 self.subscription.subscriptionMetadata?.logo = newValue
             }
-            .onChange(of: textColor) { _, newValue in
-                self.subscription.subscriptionMetadata?.textColor = newValue
+            
+            .onChange(of: tintColor) { _, newValue in
+                self.subscription.subscriptionMetadata?.tintColor = newValue
             }
             .onChange(of: backgroundColor) { _, newValue in
                 self.subscription.subscriptionMetadata?.backgroundColor = newValue
             }
-            .onChange(of: logoColor) { _, newValue in
-                self.subscription.subscriptionMetadata?.logoColor = newValue
-            }
+ 
             
             .scrollDismissesKeyboard(.immediately)
             .sheet(isPresented: $selectIconSheet) {
                 IconSelectionView(
                     iconSelected: $selectedIcon,
-                    textColor: $textColor,
-                    backgroundColor: $backgroundColor,
-                    logoColor: $logoColor,
                     subscriptionName: $subscription.name,
-                    startDate: $subscription.startDay
+                    startDate: $subscription.startDay,
+                    tintColor: $tintColor,
+                    backgroundColor: $backgroundColor
                 )
+
             }
             .toolbar {
                 Button("Save") {

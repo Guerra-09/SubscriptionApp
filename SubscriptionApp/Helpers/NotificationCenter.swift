@@ -151,6 +151,12 @@ class NotificationCenter: ObservableObject {
                         
                         
                         metadata.notificationIdentifier = identifier
+                        
+                        
+                        
+                        
+                        
+              
                     }
                 }
                 
@@ -319,16 +325,28 @@ class NotificationCenter: ObservableObject {
         startDate: Date?,
         cycle: String,
         metadata: SubscriptionMetadata) {
+            
+           
+            
             if let identifier = metadata.notificationIdentifier {
+                
+                print("[D] identifier: \(identifier)")
+
+                
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+                
+                createNotification(subscriptionName: subscriptionName, reminderTime: reminderTime, startDate: startDate, cycle: cycle, metadata: metadata)
+                
+                print("[D] Se modifico la notificacion a la nueva fecha. :D")
+                
+                
+                
+            } else {
+                print("[D] Error deleting notification \(metadata.notificationIdentifier)")
             }
             
-            print("[D] Se borro la notificacion.")
             
             
-            createNotification(subscriptionName: subscriptionName, reminderTime: reminderTime, startDate: startDate, cycle: cycle, metadata: metadata)
-            
-            print("[D] Se modifico la notificacion a la nueva fecha. :D")
         }
     
     

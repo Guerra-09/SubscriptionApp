@@ -9,15 +9,12 @@ import SwiftUI
 
 struct SubscriptionsSettingsSheet: View {
     
-    @ObservedObject var viewModel: SubscriptionsViewModel // Solo para pruebas, despues deberia borrarse el viewmodel y la opcion de borrar todo
+
     @Environment(\.dismiss) var dismiss
     
     var tags: [String] = ["all", "music", "streaming", "gaming"]
     
     @AppStorage("showInactive") var showInactive: Bool = true
-//    @AppStorage("whiteTheme") var whiteTheme: Bool = false
-//    @AppStorage("showAproximateDate") var showAproximateDate: Bool = false
-    @AppStorage("tag") var tag: String = "all"
     
     
     let notificationCenter = NotificationCenter()
@@ -35,25 +32,7 @@ struct SubscriptionsSettingsSheet: View {
                 })
                 .padding()
                 
-//                Toggle(isOn: $showAproximateDate, label: {
-//                    Text("Show aproximate date")
-//                        .foregroundStyle(.white)
-//                    Text("Example: instead of 8 days -> next week")
-//                        .font(.caption)
-//                        .foregroundStyle(.white)
-//                })
-//                .padding()
-                
-//                Toggle(isOn: $whiteTheme, label: {
-//                    Text("Show white theme")
-//                        .foregroundStyle(.white)
-//                })
-//                .disabled(true)
-//                .padding()
-                
-                PickerComponent(optionSelected: $tag, title: "Tag Filtering", options: tags)
-                    .disabled(true)
-                
+                                
                 
                 Spacer()
                 

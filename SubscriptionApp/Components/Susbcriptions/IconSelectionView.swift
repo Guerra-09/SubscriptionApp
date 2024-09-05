@@ -10,20 +10,18 @@ import SwiftUI
 struct IconSelectionView: View {
     
     @Environment(\.dismiss) var dismiss
+    @State var backgroundColorSheet: Bool = false
+    @State var tintColorSheet: Bool = false
     
     @State var iconsToChoose: [String] = [""]
     
     
     @Binding var iconSelected: String
-    @Binding var textColor: String
-    @Binding var backgroundColor: String
-    @Binding var logoColor: String
     @Binding var subscriptionName: String 
     @Binding var startDate: Date
+    @Binding var tintColor: String
+    @Binding var backgroundColor: String
     
-    @State var bgColor: Color = Color.white
-    @State var txtColor: Color = Color.black
-    @State var lgColor: Color = Color.black
     @State var iconSelectioned = "globe"
     
     
@@ -67,10 +65,9 @@ struct IconSelectionView: View {
                   
                     
                     SubscriptionViewComponent(logo: iconSelectioned, 
-                                              logoColor: logoColor,
+                                              tintColor: tintColor,
                                               backgroundColor: backgroundColor,
                                               
-                                              textColor: textColor,
                                               name: subscriptionName == "" ?  "Subscription Name" : subscriptionName,
                                               
                                               price: 9.99, 
@@ -104,33 +101,44 @@ struct IconSelectionView: View {
                 HStack {
                     
                     VStack {
-                        Text("Change Background Color")
+                        Text("Background Color")
                             
-                        
-                        ColorPicker("", selection: $bgColor)
-                            .labelsHidden()
-                            .onChange(of: bgColor) { oldValue, newValue in
-                                backgroundColor = bgColor.toHex() ?? "000000"
+                    
+                        Rectangle()
+                            .frame(maxWidth: 60, maxHeight: 35)
+                            .foregroundStyle(Color(hex: backgroundColor))
+                            .onTapGesture {
+                                self.backgroundColorSheet.toggle()
                             }
+                        
                     }
+                    .sheet(isPresented: $backgroundColorSheet) {
+                        ColorSelectionComponent(selectedColor: $backgroundColor)
+                            .presentationDetents([.height(250), .fraction(0.25)])
+                            .presentationDragIndicator(.automatic)
+                    }
+                
+                    
+                    
                     
                     VStack { 
-                        Text("Change Text Color")
-                        ColorPicker("", selection: $txtColor)
-                            .labelsHidden()
-                            .onChange(of: txtColor) { oldValue, newValue in
-                                textColor = txtColor.toHex() ?? "000000"
+                        Text("Text and logo color")
+                            
+                    
+                        Rectangle()
+                            .frame(maxWidth: 60, maxHeight: 35)
+                            .foregroundStyle(Color(hex: "AAAAAA"))
+                            .onTapGesture {
+                                self.tintColorSheet.toggle()
                             }
+                        
+                    }
+                    .sheet(isPresented: $tintColorSheet) {
+                        ColorSelectionComponent(selectedColor: $tintColor)
+                            .presentationDetents([.height(250), .fraction(0.25)])
+                            .presentationDragIndicator(.automatic)
                     }
                     
-                    VStack {
-                        Text("Change Logo Color")
-                        ColorPicker("", selection: $lgColor)
-                            .labelsHidden()
-                            .onChange(of: lgColor) { oldValue, newValue in
-                                logoColor = lgColor.toHex() ?? "000000"
-                            }
-                    }
                 }
                 .foregroundStyle(.white)
                 .font(.system(size: 12))
@@ -179,9 +187,7 @@ struct IconSelectionView: View {
             
         }
         .onAppear {
-            self.bgColor = Color(hex: backgroundColor)
-            self.txtColor = Color(hex: textColor)
-            self.lgColor = Color(hex: logoColor)
+            self.backgroundColor = backgroundColor
             self.iconSelectioned = iconSelected
             
             fetchIcons()

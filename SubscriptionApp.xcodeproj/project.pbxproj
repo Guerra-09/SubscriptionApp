@@ -16,7 +16,6 @@
 		663036012BB79AB600A0071B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663036002BB79AB600A0071B /* Subscription.swift */; };
 		663395C02BD81E2900E3AA03 /* ColorPickerCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663395BF2BD81E2900E3AA03 /* ColorPickerCustom.swift */; };
 		663395C22BD83C4000E3AA03 /* IconSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663395C12BD83C4000E3AA03 /* IconSelectionView.swift */; };
-		6640C1E52BCEB3A600D32DDD /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 6640C1E42BCEB3A600D32DDD /* SwiftDate */; };
 		664FFD222BBF2B9A00E4146B /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFD212BBF2B9A00E4146B /* URLExtension.swift */; };
 		6653BC5A2B9FE3C500BB9207 /* SubscriptionAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653BC592B9FE3C500BB9207 /* SubscriptionAppApp.swift */; };
 		6653BC5E2B9FE3C700BB9207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */; };
@@ -30,10 +29,13 @@
 		669BF8492BBB3D040030A9D0 /* ToggleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */; };
 		669BF84D2BBB3FC10030A9D0 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */; };
 		66A057992BC3376E00305054 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A057982BC3376E00305054 /* DateCalculator.swift */; };
+		66A4C3142C80D2300084D4F5 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 66A4C3132C80D2300084D4F5 /* SwiftDate */; };
+		66AB584C2C80CF3500C94B79 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 66AB584B2C80CF3500C94B79 /* SwiftDate */; };
 		66AF09A22BCB0151003B6A84 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */; };
 		66BBFFED2C33769F00141688 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBFFEC2C33769F00141688 /* HomeView.swift */; };
 		66BBFFF02C3378B500141688 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBFFEF2C3378B400141688 /* DateCalculatorTests.swift */; };
 		66D2FC642BD6D0C10002D941 /* VersionDescription.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D2FC632BD6D0C10002D941 /* VersionDescription.json */; };
+		66D628B02C896169008D4FFE /* ColorSelectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D628AF2C896169008D4FFE /* ColorSelectionComponent.swift */; };
 		66D78E512B9FEBC800EE91BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E502B9FEBC800EE91BC /* MainView.swift */; };
 		66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */; };
 		66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D78E562B9FF0D300EE91BC /* ProfileView.swift */; };
@@ -80,12 +82,14 @@
 		669BF8482BBB3D040030A9D0 /* ToggleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleComponent.swift; sourceTree = "<group>"; };
 		669BF84C2BBB3FC10030A9D0 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		66A057982BC3376E00305054 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
+		66AB584A2C80CF2400C94B79 /* SwiftDate-malcommac.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "SwiftDate-malcommac.zip"; path = "../../../SwiftDate-malcommac.zip"; sourceTree = "<group>"; };
 		66AF09A12BCB0151003B6A84 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		66BBFFEA2C33767F00141688 /* SubscriptionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubscriptionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BBFFEC2C33769F00141688 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		66BBFFEF2C3378B400141688 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
 		66D2FC632BD6D0C10002D941 /* VersionDescription.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = VersionDescription.json; sourceTree = "<group>"; };
+		66D628AF2C896169008D4FFE /* ColorSelectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionComponent.swift; sourceTree = "<group>"; };
 		66D78E502B9FEBC800EE91BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		66D78E542B9FF0C800EE91BC /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		66D78E562B9FF0D300EE91BC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AB584C2C80CF3500C94B79 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6640C1E52BCEB3A600D32DDD /* SwiftDate in Frameworks */,
+				66A4C3142C80D2300084D4F5 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +160,7 @@
 				66BBFFEA2C33767F00141688 /* SubscriptionApp.app */,
 				66BBFFF12C33794000141688 /* SusbcriptionAppTests */,
 				66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */,
+				66AB58492C80CE5A00C94B79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +188,14 @@
 				6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		66AB58492C80CE5A00C94B79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66AB584A2C80CF2400C94B79 /* SwiftDate-malcommac.zip */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		66BBFFF12C33794000141688 /* SusbcriptionAppTests */ = {
@@ -230,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				66D78E5C2B9FF6B200EE91BC /* CreationView.swift */,
-				663395C12BD83C4000E3AA03 /* IconSelectionView.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -246,7 +259,9 @@
 		66E57C1D2BB8A80000B89EF0 /* Susbcriptions */ = {
 			isa = PBXGroup;
 			children = (
+				663395C12BD83C4000E3AA03 /* IconSelectionView.swift */,
 				66E57C1E2BB8A80F00B89EF0 /* SubscriptionViewComponent.swift */,
+				66D628AF2C896169008D4FFE /* ColorSelectionComponent.swift */,
 			);
 			path = Susbcriptions;
 			sourceTree = "<group>";
@@ -280,6 +295,9 @@
 				663E736F2BC70FBB003DFB6D /* PBXTargetDependency */,
 			);
 			name = SubscriptionAppTests;
+			packageProductDependencies = (
+				66AB584B2C80CF3500C94B79 /* SwiftDate */,
+			);
 			productName = SubscriptionAppTests;
 			productReference = 66BBFFEB2C33767F00141688 /* SubscriptionAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -298,7 +316,7 @@
 			);
 			name = SubscriptionApp;
 			packageProductDependencies = (
-				6640C1E42BCEB3A600D32DDD /* SwiftDate */,
+				66A4C3132C80D2300084D4F5 /* SwiftDate */,
 			);
 			productName = SubscriptionApp;
 			productReference = 66BBFFEA2C33767F00141688 /* SubscriptionApp.app */;
@@ -400,6 +418,7 @@
 				663395C22BD83C4000E3AA03 /* IconSelectionView.swift in Sources */,
 				66D78E572B9FF0D300EE91BC /* ProfileView.swift in Sources */,
 				66D78E552B9FF0C800EE91BC /* SubscriptionsView.swift in Sources */,
+				66D628B02C896169008D4FFE /* ColorSelectionComponent.swift in Sources */,
 				66D78E612B9FF86800EE91BC /* PersonalInformationView.swift in Sources */,
 				66247D7A2BB48BFB002BFF62 /* SubscriptionModel.swift in Sources */,
 				66247D762BB4622D002BFF62 /* ViewExtensions.swift in Sources */,
@@ -434,7 +453,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,7 +462,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubscriptionApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SubscriptionApp";
 			};
 			name = Debug;
@@ -456,7 +475,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -465,7 +484,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubscriptionApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SubscriptionApp";
 			};
 			name = Release;
@@ -504,6 +523,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -568,6 +588,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -596,6 +617,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SubscriptionApp/Preview Content\"";
@@ -608,7 +631,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,12 +639,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -630,6 +654,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SubscriptionApp/Preview Content\"";
@@ -642,7 +668,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -650,12 +676,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jose-guerra.SubscriptionApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -703,7 +730,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6640C1E42BCEB3A600D32DDD /* SwiftDate */ = {
+		66A4C3132C80D2300084D4F5 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6604D77C2BCEB2CE004835FD /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+		66AB584B2C80CF3500C94B79 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6604D77C2BCEB2CE004835FD /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;

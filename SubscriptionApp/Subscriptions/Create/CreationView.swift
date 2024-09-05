@@ -19,9 +19,8 @@ struct CreationView: View {
     
     @State var subscriptionName: String = ""
     @State var logo: String = ""
-    @State var textColor: String = "000000"
+    @State var tintColor: String = "000000"
     @State var backgroundColor: String = "5C6362"
-    @State var logoColor: String =  "1C2426"
     @State var selectIconSheet: Bool = false
     @State var selectedIcon: String = "bills"
     
@@ -48,7 +47,7 @@ struct CreationView: View {
                 ScrollView {
                     Image(selectedIcon)
                         .resizable()
-                        .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, logoColor: logoColor))
+                        .modifier(ImageWithLogoModifier(backgroundColor: backgroundColor, tintColor: tintColor))
                         .onTapGesture {
                             selectIconSheet.toggle()
                         }
@@ -111,9 +110,8 @@ struct CreationView: View {
                         var metaData = SubscriptionMetadata(
                             id: .init(),
                             logo: selectedIcon,
-                            logoColor: logoColor,
-                            backgroundColor: backgroundColor,
-                            textColor: textColor
+                            tintColor: tintColor,
+                            backgroundColor: backgroundColor
                         )
                         
                         var formattedPrice: Float {
@@ -151,9 +149,8 @@ struct CreationView: View {
                         metaData = SubscriptionMetadata(
                             id: .init(),
                             logo: logo,
-                            logoColor: logoColor,
+                            tintColor: tintColor,
                             backgroundColor: backgroundColor,
-                            textColor: textColor,
                             notificationIdentifier: ""
                         )
                         
@@ -161,17 +158,19 @@ struct CreationView: View {
                         if !subcriptionIsDisable && subscriptionReminderToggle {
                             
                             
-                            notificationCenter.createNotification(
-                                subscriptionName: subscriptionName,
-                                reminderTime: subscriptionReminderSelected,
-                                startDate: subscriptionStartDay,
-                                cycle: subscriptionCycleSelected,
-                                metadata: metaData
-                            )
-                                
+                            DispatchQueue.main.async {
+                                notificationCenter.createNotification(
+                                    subscriptionName: subscriptionName,
+                                    reminderTime: subscriptionReminderSelected,
+                                    startDate: subscriptionStartDay,
+                                    cycle: subscriptionCycleSelected,
+                                    metadata: metaData)
+                            }
                             
                             
                         }
+                        
+                        print("[D] identifier: \(String(describing: metaData.notificationIdentifier))")
                         
                         showingSheet.toggle()
                         
@@ -184,13 +183,7 @@ struct CreationView: View {
                     
                 }
                 .sheet(isPresented: $selectIconSheet) {
-                    IconSelectionView(iconSelected: $selectedIcon, 
-                                      textColor: $textColor,
-                                      backgroundColor: $backgroundColor,
-                                      logoColor: $logoColor,
-                                      subscriptionName: self.$subscriptionName,
-                                      startDate: self.$subscriptionStartDay
-                    )
+                    IconSelectionView(iconSelected: $selectedIcon, subscriptionName: self.$subscriptionName, startDate: self.$subscriptionStartDay, tintColor: $tintColor, backgroundColor: $backgroundColor)
                 }
             }
             .navigationTitle("Create Subscription")

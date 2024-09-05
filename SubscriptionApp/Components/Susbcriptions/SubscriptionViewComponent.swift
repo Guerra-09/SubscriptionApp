@@ -10,9 +10,8 @@ import SwiftUI
 struct SubscriptionViewComponent: View {
     
     var logo: String
-    var logoColor: String
+    var tintColor: String
     var backgroundColor: String
-    var textColor: String
     
     var name: String
     var price: Float
@@ -43,7 +42,7 @@ struct SubscriptionViewComponent: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
-                        .foregroundStyle(Color(hex: logoColor))
+                        .foregroundStyle(Color(hex: tintColor))
                         
                     
                     VStack(alignment: .leading) {
@@ -77,7 +76,7 @@ struct SubscriptionViewComponent: View {
 
 
             }
-            .foregroundStyle(Color(hex: textColor))
+            .foregroundStyle(Color(hex: tintColor))
         }
         .onAppear {
             print(logo)

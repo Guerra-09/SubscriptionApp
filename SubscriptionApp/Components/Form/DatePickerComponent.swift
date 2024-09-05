@@ -35,11 +35,13 @@ struct DatePickerComponent: View {
                         .fixedSize()
                         .datePickerStyle(.compact)
                         .foregroundStyle(.white)
+                        .colorInvert()
                         .colorMultiply(.white)
                         .frame(width: 370, height: 58, alignment: .leading)
                         .background(Color("subViewsBackgroundColor"))
                         .clipShape(Rectangle())
                         .cornerRadius(15)
+                        
                     
                         Spacer()
                 }

@@ -45,22 +45,19 @@ class Subscription {
 @Model
 class SubscriptionMetadata {
     var logo: String
-    var logoColor: String
+    var tintColor: String
     var backgroundColor: String
-    var textColor: String?
     var notificationIdentifier: String?
     
     init(id: UUID = UUID(),
          logo: String = "",
-         logoColor: String = "",
+         tintColor: String = "",
          backgroundColor: String = "",
-         textColor: String? = nil,
          notificationIdentifier: String? = nil) {
         
         self.logo = logo
-        self.logoColor = logoColor
+        self.tintColor = tintColor
         self.backgroundColor = backgroundColor
-        self.textColor = textColor
         self.notificationIdentifier = notificationIdentifier
     }
     

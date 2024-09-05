@@ -12,8 +12,7 @@ struct SubscriptionModel: Codable, Identifiable {
     
     let id = UUID()
     let name: String
-    let textColor: String
+    let tintColor: String
     let logo: String
-    let logoColor: String
     let backgroundColor: String
 }

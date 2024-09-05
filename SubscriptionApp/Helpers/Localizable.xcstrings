@@ -48,6 +48,9 @@
     "Are you sure you want to delete?" : {
 
     },
+    "Background Color" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "es" : {
@@ -57,15 +60,6 @@
           }
         }
       }
-    },
-    "Change Background Color" : {
-
-    },
-    "Change Logo Color" : {
-
-    },
-    "Change Text Color" : {
-
     },
     "Colors" : {
 
@@ -318,6 +312,9 @@
           }
         }
       }
+    },
+    "Text and logo color" : {
+
     },
     "There aren't any subscription created" : {
 

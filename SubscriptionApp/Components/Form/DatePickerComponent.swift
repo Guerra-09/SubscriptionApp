@@ -12,50 +12,49 @@ struct DatePickerComponent: View {
     @Binding var subscriptionStartDay: Date
     
     var body: some View {
-        
-        ZStack {
-            Color("backgroundColor")
-                .ignoresSafeArea()
-            
-            
-            VStack {
+ 
+            HStack {
                 
                 Text("Start day")
                     .foregroundStyle(.white)
-                    .frame(width: 350,alignment: .leading)
+                    .frame(minWidth: 120, maxWidth: 210, alignment: .leading)
                     .fontWeight(.bold)
                     .font(.system(size: 20))
-                
-                HStack {
+                    .multilineTextAlignment(.center)
                     
-                    DatePicker("", selection: $subscriptionStartDay,
-                               in: ...Date(),
-                               displayedComponents: .date)
-                        .padding()
-                        .fixedSize()
-                        .datePickerStyle(.compact)
-                        .foregroundStyle(.white)
-                        .colorInvert()
-                        .colorMultiply(.white)
-                        .frame(width: 370, height: 58, alignment: .leading)
-                        .background(Color("subViewsBackgroundColor"))
-                        .clipShape(Rectangle())
-                        .cornerRadius(15)
+                
+            
+                    
+                DatePicker("", selection: $subscriptionStartDay,
+                           in: ...Date(),
+                           displayedComponents: .date)
+                    
+                    .fixedSize()
+                    .datePickerStyle(.compact)
+                    .foregroundStyle(.white)
+                    .colorInvert()
+                    .padding(5)
+                    .colorMultiply(.white)
+                    .clipShape(Rectangle())
+                    
                         
                     
-                        Spacer()
-                }
                 
                 
             }
-            .padding(10)
-        }
+            .padding(.vertical, 10)
         
         
         
     }
 }
 
-//#Preview {
-//    DatePickerComponent()
-//}
+#Preview {
+    ZStack {
+        Color("backgroundColor")
+        
+        DatePickerComponent(subscriptionStartDay: .constant(Date()))
+        
+
+    }
+}

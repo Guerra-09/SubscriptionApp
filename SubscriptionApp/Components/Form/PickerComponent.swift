@@ -14,12 +14,14 @@ struct PickerComponent: View {
     var options: [String]
     
     var body: some View {
-        VStack {
+        HStack {
             Text(title)
                 .foregroundStyle(.white)
-                .frame(width: 350,alignment: .leading)
+                .frame(width: 140,alignment: .leading)
                 .fontWeight(.bold)
                 .font(.system(size: 20))
+                .multilineTextAlignment(.center)
+            
             
             
             Picker("Select", selection: $optionSelected) {
@@ -28,15 +30,27 @@ struct PickerComponent: View {
                 }
             }
             .accentColor(.white)
-            .padding()
-            .frame(width: 370, height: 58, alignment: .leading)
-            .background(Color("subViewsBackgroundColor"))
-            .clipShape(Rectangle())
-            .cornerRadius(15)
+            .frame(minWidth: 120, maxWidth: 190, maxHeight: 26, alignment: .leading)
+            .padding(5)
+            .background(Color("subViewsBackgroundColor").opacity(0.15))
+            .cornerRadius(10)
+     
+            
+               
+            
+
         }
+        .padding(.vertical, 10)
     }
 }
 
 #Preview {
-    PickerComponent(optionSelected: .constant("the same day"), title: "Title of view", options: ["the same day", "other day", "never"])
+    
+    ZStack {
+        Color("backgroundColor")
+        
+        PickerComponent(optionSelected: .constant("Monthly"), title: "Cycle", options: ["Monthly", "Each three months", "each six months", "yearly"])
+    }
+    
+    
 }

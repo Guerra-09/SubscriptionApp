@@ -93,19 +93,20 @@ struct IconSelectionView: View {
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                         .font(.title)
+                        .padding(.horizontal, 20)
                     
                     Spacer()
                 }
-                .padding()
-                
-                HStack {
+                HStack(spacing: 20) {
                     
                     VStack {
                         Text("Background Color")
+                            .font(.headline)
                             
                     
                         Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 35)
+                            .frame(maxWidth: 80, maxHeight: 45)
+                            .clipShape(.capsule)
                             .foregroundStyle(Color(hex: backgroundColor))
                             .onTapGesture {
                                 self.backgroundColorSheet.toggle()
@@ -123,10 +124,11 @@ struct IconSelectionView: View {
                     
                     VStack { 
                         Text("Text and logo color")
-                            
+                            .font(.headline)
                     
                         Rectangle()
-                            .frame(maxWidth: 60, maxHeight: 35)
+                            .frame(maxWidth: 80, maxHeight: 45)
+                            .clipShape(.capsule)
                             .foregroundStyle(Color(hex: "AAAAAA"))
                             .onTapGesture {
                                 self.tintColorSheet.toggle()
@@ -153,7 +155,8 @@ struct IconSelectionView: View {
                     
                     Spacer()
                 }
-                    .padding()
+                .padding(.horizontal, 20)
+
                 
                 ScrollView {
 

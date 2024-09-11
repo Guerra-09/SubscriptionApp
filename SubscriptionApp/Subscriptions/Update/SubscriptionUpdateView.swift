@@ -92,7 +92,7 @@ struct SubscriptionUpdateView: View {
                 DatePickerComponent(subscriptionStartDay: $subscription.startDay)
                 
                 // Susbcription Cycle
-                PickerComponent(optionSelected: $subscription.cycle, title: "Subscription Cycle", options: subscriptionCycle)
+                PickerComponent(optionSelected: $subscription.cycle, title: "Cycle", options: subscriptionCycle)
                 
                 // Notes
                 TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: $subscription.descriptionText, bigContainer: true)

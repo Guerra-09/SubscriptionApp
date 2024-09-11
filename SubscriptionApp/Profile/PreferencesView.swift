@@ -46,20 +46,33 @@ struct PreferencesView: View {
             VStack {
                 
                 PickerComponent(optionSelected: $currencySelected, title: "Currency", options: currencies)
-                
-//                PickerComponent(option/*Selected: $dateFormatSelected, title: "Date Format"*/, options: dateFormats)
-                    
-                
-                
+        
+
                 DatePicker("Notification Time", selection: $notificationHour, displayedComponents: .hourAndMinute)
                     .onChange(of: notificationHour) { oldValue, newValue in
                         notificationHourString = dateFormatter.string(from: newValue)
                         updateNotificationTime()
                     }
-                    .padding()
                     .foregroundStyle(.white)
+                    .accentColor(.white)
+                    .fontWeight(.bold)
+                    .font(.system(size: 20))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
                 
-
+                
+                    Text("This will change the time of ALL your subscriptions")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                        .frame(minWidth: 250, maxWidth: 350, alignment: .leading)
+                        .padding(.vertical, 10)
+                    
+                        
+                
+                
+                
+                
                 
                 Button(action: {
                     guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -70,7 +83,7 @@ struct PreferencesView: View {
                     } else {
                         ButtonCustom(title: "Disallow Notifications", color: .red)
                     }
-                  
+                    
                 })
                 .padding(.top, 20)
                 
@@ -101,10 +114,10 @@ struct PreferencesView: View {
             } else {
                 notificationHour = Date()
             }
-
-
+            
+            
         }
-
+        
         
         /// En desarrollo
         .navigationTitle("Preferences")
@@ -126,6 +139,6 @@ struct PreferencesView: View {
         let newMinute = components.minute ?? 0
         notificationHourString = dateFormatter.string(from: notificationHour)
                 
-//        notificationCenter.changeNotificationTime()
+        notificationCenter.changeNotificationTime(newHour: newHour, newMinute: newMinute)
     }
 }

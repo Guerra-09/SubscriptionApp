@@ -86,18 +86,20 @@ struct CreationView: View {
                     
                     // Start day
                     DatePickerComponent(subscriptionStartDay: $subscriptionStartDay)
+                        
                     
                     // Subscription Cycle
-                    PickerComponent(optionSelected: $subscriptionCycleSelected, title: "Subscription Cycle", options: subscriptionCycle)
+                    PickerComponent(optionSelected: $subscriptionCycleSelected, title: "Cycle", options: subscriptionCycle)
                     
                     // Notes
                     TextFieldAndLabel(labelName: "Notes", placeholder: "Enter a description", textVariable: $subscriptionDescription, bigContainer: true)
                     
                     
+                    
                     ToggleComponent(title: "Add Reminder", toggleOption: $subscriptionReminderToggle)
                     
                     
-                    PickerComponent(optionSelected: $subscriptionReminderSelected, title: "Reminder Time", options: reminderOptions)
+                    PickerComponent(optionSelected: $subscriptionReminderSelected, title: "Reminder", options: reminderOptions)
                         .disabled(!subscriptionReminderToggle)
                     
                     
@@ -106,13 +108,6 @@ struct CreationView: View {
                     
                     
                     Button {
-                        
-                        var metaData = SubscriptionMetadata(
-                            id: .init(),
-                            logo: selectedIcon,
-                            tintColor: tintColor,
-                            backgroundColor: backgroundColor
-                        )
                         
                         var formattedPrice: Float {
                             
@@ -129,6 +124,23 @@ struct CreationView: View {
                         }
                         
                         
+                        var metaData = SubscriptionMetadata(
+                            id: .init(),
+                            logo: selectedIcon,
+                            tintColor: tintColor,
+                            backgroundColor: backgroundColor,
+                            notificationIdentifier: ""
+                        )
+                        
+                        if !subcriptionIsDisable && subscriptionReminderToggle {
+                            
+                            notificationCenter.createNotification(
+                                subscriptionName: subscriptionName,
+                                reminderTime: subscriptionReminderSelected,
+                                startDate: subscriptionStartDay,
+                                cycle: subscriptionCycleSelected,
+                                metadata: metaData)
+                        }
                         
                         let newSub = Subscription(id: .init(),
                                                   name: subscriptionName,
@@ -145,32 +157,12 @@ struct CreationView: View {
                         
                         viewModel.addSubscription(subscription: newSub)
                         
-                        
-                        metaData = SubscriptionMetadata(
-                            id: .init(),
-                            logo: logo,
-                            tintColor: tintColor,
-                            backgroundColor: backgroundColor,
-                            notificationIdentifier: ""
-                        )
+                    
                         
                         
-                        if !subcriptionIsDisable && subscriptionReminderToggle {
-                            
-                            
-                            DispatchQueue.main.async {
-                                notificationCenter.createNotification(
-                                    subscriptionName: subscriptionName,
-                                    reminderTime: subscriptionReminderSelected,
-                                    startDate: subscriptionStartDay,
-                                    cycle: subscriptionCycleSelected,
-                                    metadata: metaData)
-                            }
-                            
-                            
-                        }
                         
-                        print("[D] identifier: \(String(describing: metaData.notificationIdentifier))")
+                        
+                        
                         
                         showingSheet.toggle()
                         

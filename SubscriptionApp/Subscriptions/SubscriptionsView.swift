@@ -37,6 +37,7 @@ struct SubscriptionsView: View {
                         
                     } else {
                         
+                        
                         ForEach(viewModel.subscriptions) { subscription in
                             
                             if !showInactive && subscription.disableService {
@@ -69,6 +70,9 @@ struct SubscriptionsView: View {
                                  
                             }
                                 
+                        }
+                        .onDelete { indexSet in
+                            print("[D] testing")
                         }
 
                     }

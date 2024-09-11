@@ -140,24 +140,22 @@ class NotificationCenter: ObservableObject {
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().add(request) { error in
+                    
                     if let error = error {
                         print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
+                        
                     } else {
-                        
-                        
-                        
                         let formattedDate = self.dateFormatter.string(from: Calendar.current.date(from: reminderDateComponents)!)
                         print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
                         
                         
+                        print("[D] identifier created = \(identifier)")
+                        
+                        
                         metadata.notificationIdentifier = identifier
-                        
-                        
-                        
-                        
-                        
-              
+                            
                     }
+                    
                 }
                 
                 
@@ -342,7 +340,7 @@ class NotificationCenter: ObservableObject {
                 
                 
             } else {
-                print("[D] Error deleting notification \(metadata.notificationIdentifier)")
+                print("[D1] Error deleting notification \(metadata.notificationIdentifier)")
             }
             
             
@@ -351,8 +349,6 @@ class NotificationCenter: ObservableObject {
     
     
     
-    
-    /// BUG: Modifica las horas de notificaciones futuras, es decir que las ya creadas permaneceran con la hora anterior, las que se creen luego de cambiarlo se cambiaran.
     func changeNotificationTime(newHour: Int, newMinute: Int) {
         
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
@@ -362,6 +358,8 @@ class NotificationCenter: ObservableObject {
                     var newDateComponents = trigger.dateComponents
                     newDateComponents.hour = newHour
                     newDateComponents.minute = newMinute
+                    
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
                     
                     let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
                     let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)

@@ -32,7 +32,7 @@ struct ColorSelectionComponent: View {
                         .frame(height: 60)
                         .foregroundStyle(Color(hex: "#AAAAAA"))
                         .onTapGesture {
-                            self.selectedColor = "#"
+                            self.selectedColor = "#AAAAAA"
                         }
                     
                     Circle()

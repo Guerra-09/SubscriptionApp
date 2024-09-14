@@ -340,7 +340,7 @@ class NotificationCenter: ObservableObject {
                 
                 
             } else {
-                print("[D1] Error deleting notification \(metadata.notificationIdentifier)")
+                print("[D1] Error deleting notification")
             }
             
             
@@ -383,7 +383,7 @@ class NotificationCenter: ObservableObject {
     func deleteAllNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        print("Todas las notificaciones pendientes han sido eliminadas.")
+        print("[D] Todas las notificaciones pendientes han sido eliminadas.")
     }
     
 }

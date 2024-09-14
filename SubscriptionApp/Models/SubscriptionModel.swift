@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SubscriptionModel: Codable, Identifiable {
     
-    let id = UUID()
+    var id = UUID()
     let name: String
     let tintColor: String
     let logo: String

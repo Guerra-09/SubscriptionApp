@@ -305,7 +305,7 @@ class DateCalculator {
         let calendar = Calendar.current
         let componentMonth = calendar.dateComponents([.month], from: startDate, to: now)
             
-        var dayOfPayment: Int = startDate.day
+        let dayOfPayment: Int = startDate.day
         var yearOfPayment: Int = now.year
         var monthOfPayment = now.month
 

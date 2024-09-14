@@ -124,7 +124,7 @@ struct CreationView: View {
                         }
                         
                         
-                        var metaData = SubscriptionMetadata(
+                        let metaData = SubscriptionMetadata(
                             id: .init(),
                             logo: selectedIcon,
                             tintColor: tintColor,

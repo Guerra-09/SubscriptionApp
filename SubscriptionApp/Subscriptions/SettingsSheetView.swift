@@ -27,7 +27,7 @@ struct SubscriptionsSettingsSheet: View {
             VStack {
                 
                 Toggle(isOn: $showInactive, label: {
-                    Text("Show inactives")
+                    Text("Show disabled subscriptions")
                         .foregroundStyle(.white)
                 })
                 .padding()

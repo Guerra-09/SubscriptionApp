@@ -5,7 +5,14 @@
 
     },
     "%@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@ ver %@" : {
       "localizations" : {
@@ -14,21 +21,87 @@
             "state" : "new",
             "value" : "%1$@ ver %2$@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ver %2$@"
+          }
         }
       }
     },
-    "Account Settings" : {
-
-    },
-    "Acept" : {
-
-    },
-    "Add reminder" : {
-      "extractionState" : "stale",
+    "%lld day" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "%lld dia"
+          }
+        }
+      }
+    },
+    "%lld days" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld días"
+          }
+        }
+      }
+    },
+    "%lld subscriptions hidden. " : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld subscripciones ocultas"
+          }
+        }
+      }
+    },
+    "$%@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$%@"
+          }
+        }
+      }
+    },
+    "Accept" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        }
+      }
+    },
+    "Account Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuracion"
+          }
+        }
+      }
+    },
+    "Add reminder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Reminder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Agregar recordatorio"
           }
         }
@@ -37,19 +110,39 @@
     "All Subscriptions   %@" : {
       "extractionState" : "stale",
       "localizations" : {
-        "es" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "All Subscriptions %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Todas las subscripciones"
           }
         }
       }
     },
     "Are you sure you want to delete?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estas seguro de que quieres eliminar?"
+          }
+        }
+      }
     },
     "Background Color" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color de fondo"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -62,27 +155,55 @@
       }
     },
     "Colors" : {
-
-    },
-    "Create" : {
-
-    },
-    "Create Subscription" : {
-
-    },
-    "Custom" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuevo"
+            "value" : "Colores"
+          }
+        }
+      }
+    },
+    "Create" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear"
+          }
+        }
+      }
+    },
+    "Create Subscription" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear subscripción"
+          }
+        }
+      }
+    },
+    "Currency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moneda"
           }
         }
       }
     },
     "Delete" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
     },
     "Description" : {
       "extractionState" : "manual",
@@ -101,13 +222,13 @@
         }
       }
     },
-    "Disable service" : {
-      "extractionState" : "stale",
+    "Disallow Notifications" : {
+      "extractionState" : "manual",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deshabilitar servicio"
+            "value" : "Desactivar notificaciones"
           }
         }
       }
@@ -123,12 +244,35 @@
         }
       }
     },
+    "Error INT()" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
     "Geld version %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version de Geld %@"
+          }
+        }
+      }
     },
     "Home" : {
       "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -138,15 +282,21 @@
       }
     },
     "Icon" : {
-
-    },
-    "Languages" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idiomas"
+            "value" : "Icono"
+          }
+        }
+      }
+    },
+    "is the payment" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es el siguiente pago"
           }
         }
       }
@@ -163,7 +313,14 @@
       }
     },
     "Monthly Spent \n %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto mensual %@"
+          }
+        }
+      }
     },
     "Name" : {
       "extractionState" : "manual",
@@ -173,15 +330,27 @@
             "state" : "translated",
             "value" : "Name"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
         }
       }
     },
     "New Subscription" : {
       "extractionState" : "stale",
       "localizations" : {
-        "es" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "New subscription"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Nueva subscripcion"
           }
         }
@@ -199,13 +368,34 @@
       }
     },
     "Nothing to see here" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada que ver aquí"
+          }
+        }
+      }
     },
     "Notification Time" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora de notificación"
+          }
+        }
+      }
     },
     "Personal information" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información personal"
+          }
+        }
+      }
     },
     "Preferences" : {
       "localizations" : {
@@ -218,10 +408,24 @@
       }
     },
     "Press on Create to start filling this side!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presiona en Crear para tener subscripciones"
+          }
+        }
+      }
     },
     "Press on icon to change it" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca en el icono para cambiarlo"
+          }
+        }
+      }
     },
     "Price" : {
       "extractionState" : "manual",
@@ -235,24 +439,51 @@
       }
     },
     "Profile" : {
-
-    },
-    "Profile View" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "Profile View" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile view"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Vista perfi"
           }
         }
       }
     },
     "Renew in %lld days" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Factura en %lld días"
+          }
+        }
+      }
     },
     "Renewing Soon" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renovación próxima"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -275,13 +506,24 @@
       }
     },
     "Settings" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuraciones"
+          }
+        }
+      }
     },
-    "Show inactives" : {
-
-    },
-    "Soon more options..." : {
-
+    "Show disabled subscriptions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar subscripciones deshabilitadas"
+          }
+        }
+      }
     },
     "Start day" : {
       "localizations" : {
@@ -294,46 +536,104 @@
       }
     },
     "Stats" : {
-
-    },
-    "Subscription Preview" : {
-
-    },
-    "Subscriptions" : {
-
-    },
-    "Susbcription Cycle" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Estadisticas"
+          }
+        }
+      }
+    },
+    "Subscription Preview" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista previa"
+          }
+        }
+      }
+    },
+    "Subscriptions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Susbcripciones"
+          }
+        }
+      }
+    },
+    "Susbcription Cycle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscription cycle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Ciclo de subscripcion"
           }
         }
       }
     },
     "Text and logo color" : {
-
-    },
-    "There aren't any subscription created" : {
-
-    },
-    "There's no data to show here!\n go add some subscriptions to track" : {
-
-    },
-    "This will change the time of ALL your subscriptions" : {
-
-    },
-    "To next payment" : {
-
-    },
-    "To notifications set up" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Color de texto e icono"
+          }
+        }
+      }
+    },
+    "There aren't any subscription created" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay subscripciones creadas"
+          }
+        }
+      }
+    },
+    "There's no data to show here\n go add some subscriptions in subscriptions tab" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay información para mostrar. Agrega algunas subscripciones en la pestaña de subscripciones"
+          }
+        }
+      }
+    },
+    "This will change the time of ALL your subscriptions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto afectará al horario de TODAS tus subscripciones"
+          }
+        }
+      }
+    },
+    "To notifications set up" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To notification set up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Configurar notificaciones"
           }
         }
@@ -342,6 +642,12 @@
     "To personal info" : {
       "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To personal info"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -350,14 +656,55 @@
         }
       }
     },
+    "to the next payment" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para el siguiente pago"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
     "Welcome %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido/a"
+          }
+        }
+      }
     },
     "Yearly Spent \n  %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto anual %@"
+          }
+        }
+      }
     },
     "You have %lld subscriptions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienes %lld subscripciones"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

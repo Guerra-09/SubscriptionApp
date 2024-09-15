@@ -105,7 +105,7 @@ struct IconSelectionView: View {
                             
                     
                         Rectangle()
-                            .frame(maxWidth: 80, maxHeight: 45)
+                            .frame(maxWidth: 60, maxHeight: 60)
                             .clipShape(.capsule)
                             .foregroundStyle(Color(hex: backgroundColor))
                             .onTapGesture {
@@ -127,9 +127,9 @@ struct IconSelectionView: View {
                             .font(.headline)
                     
                         Rectangle()
-                            .frame(maxWidth: 80, maxHeight: 45)
+                            .frame(maxWidth: 60, maxHeight: 60)
                             .clipShape(.capsule)
-                            .foregroundStyle(Color(hex: "AAAAAA"))
+                            .foregroundStyle(Color(hex: tintColor))
                             .onTapGesture {
                                 self.tintColorSheet.toggle()
                             }
@@ -200,7 +200,7 @@ struct IconSelectionView: View {
         .navigationTitle("Icon")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Text("Acept")
+                Text("Accept")
             }
         }
 

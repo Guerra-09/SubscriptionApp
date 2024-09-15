@@ -16,6 +16,8 @@ struct SubscriptionsView: View {
     @EnvironmentObject var viewModel: SubscriptionsViewModel
     @AppStorage("showInactive") var showInactive: Bool = true
     
+    @State var animation: Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -77,6 +79,14 @@ struct SubscriptionsView: View {
 
                     }
                     
+                    if !showInactive {
+                        
+                        Text("\(self.viewModel.countDisableSubscriptions()) subscriptions hidden. ")
+                            .foregroundStyle(.gray)
+                            .padding(20)
+                    }
+                    
+                    
                     
                 }
                 .padding(.top, 25)
@@ -110,7 +120,21 @@ struct SubscriptionsView: View {
                 Button(action: {
                     showingSheet.toggle()
                 }, label: {
-                    Text("Create")
+                    if viewModel.subscriptions.count == 0 {
+                        Text("Create")
+                            .opacity(animation ? 1 : 0)
+                            .onAppear {
+                                
+                                let baseAnimation = Animation.easeInOut(duration: 0.5)
+                                let repeated = baseAnimation.repeatForever(autoreverses: true)
+                                withAnimation(repeated) {
+                                        animation.toggle()
+                                }
+                            }
+                    } else {
+                        Text("Create")
+                    }
+                    
                 })
             }
             

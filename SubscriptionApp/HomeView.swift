@@ -16,6 +16,11 @@ struct HomeView: View {
     @AppStorage("currencySelected") var currencySelected: String = "USD"
     @State var sub: (days: Int, subscription: Subscription)? = nil
     
+    //Animation variables
+    
+    @State private var isVisible = true
+    @State private var offset: CGFloat = 0
+    
     var body: some View {
         ZStack {
             Color("backgroundColor")
@@ -67,6 +72,11 @@ struct HomeView: View {
                                         Spacer()
                                     }
                                     
+                                    HStack {
+                                        Text("$\(String(format: "%.2f", sub.subscription.price))")
+                                        Spacer()
+                                    }
+                                    
                                     
                                 }
                                 Spacer()
@@ -105,8 +115,36 @@ struct HomeView: View {
                     }
                     Spacer()
                 } else {
-                    Text("There's no data to show here!\n go add some subscriptions to track")
+                    Spacer()
+                    Text("There's no data to show here\n go add some subscriptions in subscriptions tab")
+                        .font(.title2)
                         .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(5)
+                        
+                    
+                    Spacer()
+                    
+                    
+                    
+                    Image(systemName: "arrow.down")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(minWidth: 40, maxWidth: 80, minHeight: 40, maxHeight: 80)
+                        .padding(.bottom, 15)
+                        .opacity(isVisible ? 1 : 0)
+                        .offset(y: offset)
+                        .onAppear {
+                            let baseAnimation = Animation.easeInOut(duration: 0.8)
+                            let repeated = baseAnimation.repeatForever(autoreverses: true)
+                            withAnimation(repeated) {
+                                isVisible.toggle()
+                                offset = offset == 0 ? 10 : 0
+                            }
+                        }
+                    
+                        
+                    
                 }
             }
             .padding(.top, 15)

@@ -59,11 +59,31 @@ struct SubscriptionViewComponent: View {
                     Spacer()
                     
                     VStack {
-
+                        
+                        if let nextPayment = Int(dateCalculator.getPaymentDay(startDay: startDay, cycle: self.cycle, aproximateDate: showAproximateDate)) {
                             
-                        Text("\(dateCalculator.getPaymentDay(startDay: startDay, cycle: self.cycle, aproximateDate: showAproximateDate))")
-                        Text("To next payment")
-                            .font(.caption)
+                            if nextPayment == 0 {
+                                Text("Today")
+                                Text("is the payment")
+                                    .font(.caption)
+                                
+                            } else if nextPayment == 1 {
+                                
+                                
+                                Text("\(nextPayment) day")
+                                Text("to the next payment")
+                                    .font(.caption)
+                                
+                            } else {
+                                Text("\(nextPayment) days")
+                                Text("to the next payment")
+                                    .font(.caption)
+                            }
+                            
+                        } else {
+                            Text("Error INT()")
+                        }
+
                         
                     }
                     
@@ -84,6 +104,7 @@ struct SubscriptionViewComponent: View {
     }
         
 
+    
     
 }
 

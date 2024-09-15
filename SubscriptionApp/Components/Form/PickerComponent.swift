@@ -30,7 +30,7 @@ struct PickerComponent: View {
                 }
             }
             .accentColor(.white)
-            .frame(minWidth: 120, maxWidth: 190, maxHeight: 26, alignment: .leading)
+            .frame(minWidth: 120, maxWidth: 190, maxHeight: 26, alignment: .center)
             .padding(5)
             .background(Color("subViewsBackgroundColor").opacity(0.15))
             .cornerRadius(10)

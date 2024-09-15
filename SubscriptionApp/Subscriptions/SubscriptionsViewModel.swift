@@ -68,6 +68,19 @@ final class SubscriptionsViewModel: ObservableObject {
         
     }
     
+    @MainActor
+    func countDisableSubscriptions() -> Int {
+        
+        var counter = 0
+        
+        for sub in subscriptions {
+            if sub.disableService {
+             counter += 1
+            }
+        }
+        
+        return counter
+    }
 
 
     func getTotalPrice() -> Float {

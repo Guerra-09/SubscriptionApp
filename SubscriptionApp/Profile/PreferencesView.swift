@@ -36,6 +36,8 @@ struct PreferencesView: View {
     
     @State private var notificationHour: Date = Date()
     private let notificationCenter = NotificationCenter()
+    
+    @State var title1 = "Currency"
 
     
     var body: some View {
@@ -45,7 +47,7 @@ struct PreferencesView: View {
             
             VStack {
                 
-                PickerComponent(optionSelected: $currencySelected, title: "Currency", options: currencies)
+                PickerComponent(optionSelected: $currencySelected, title: title1, options: currencies)
         
 
                 DatePicker("Notification Time", selection: $notificationHour, displayedComponents: .hourAndMinute)
@@ -54,7 +56,7 @@ struct PreferencesView: View {
                         updateNotificationTime()
                     }
                     .foregroundStyle(.white)
-                    .accentColor(.white)
+                    .colorScheme(.dark)
                     .fontWeight(.bold)
                     .font(.system(size: 20))
                     .multilineTextAlignment(.center)

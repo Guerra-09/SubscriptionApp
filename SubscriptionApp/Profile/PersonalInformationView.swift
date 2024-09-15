@@ -33,12 +33,7 @@ struct PersonalInformationView: View {
                 }
                 .padding(.bottom, 10)
 
-                
-                Text("Soon more options...")
-                    .font(.caption)
-                    .foregroundStyle(.white)
-
-                
+        
                
                 
             }

@@ -19,7 +19,6 @@ final class SubscriptionsViewModel: ObservableObject {
     @MainActor
     var modelContext: ModelContext {
         container.mainContext
-        
     }
     
     var subscriptions: [Subscription] = []
@@ -28,45 +27,35 @@ final class SubscriptionsViewModel: ObservableObject {
     func getSubscriptions() {
         let fetchDescriptor = FetchDescriptor<Subscription>(predicate: nil, sortBy: [SortDescriptor<Subscription>(\.name)])
         subscriptions = try! modelContext.fetch(fetchDescriptor)
-        print(subscriptions)
     }
     
     @MainActor
     func addSubscription(subscription: Subscription) {
         modelContext.insert(subscription)
+      
+        try? modelContext.save()
+        
         subscriptions = []
         getSubscriptions()
     }
     
     @MainActor
     func deleteAllSubscriptions() {
-        subscriptions.forEach {
-            modelContext.delete($0)
+
+        for sub in subscriptions {
+            modelContext.delete(sub)
         }
+
         subscriptions = []
         getSubscriptions()
     }
     
     @MainActor
     func deleteSubscription(subscription: Subscription) {
-        
         modelContext.delete(subscription)
         getSubscriptions()
     }
-    
-    @MainActor
-    func deleteSubscriptionByLogo(subscription: SubscriptionModel) {
 
-        for sub in subscriptions {
-            
-            if sub.subscriptionMetadata?.logo == subscription.logo {
-                modelContext.delete(sub)
-                getSubscriptions()
-                return
-            }
-        }
-        
-    }
     
     @MainActor
     func countDisableSubscriptions() -> Int {

@@ -53,7 +53,6 @@ struct PreferencesView: View {
                 DatePicker("Notification Time", selection: $notificationHour, displayedComponents: .hourAndMinute)
                     .onChange(of: notificationHour) { oldValue, newValue in
                         notificationHourString = dateFormatter.string(from: newValue)
-                        updateNotificationTime()
                     }
                     .foregroundStyle(.white)
                     .colorScheme(.dark)
@@ -95,6 +94,7 @@ struct PreferencesView: View {
                 
                 Button {
                     // Aqui deberia guardar los datos
+                    updateNotificationTime()
                     dismiss()
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
@@ -142,5 +142,6 @@ struct PreferencesView: View {
         notificationHourString = dateFormatter.string(from: notificationHour)
                 
         notificationCenter.changeNotificationTime(newHour: newHour, newMinute: newMinute)
+        print("[D] updateNotificationTime executed")
     }
 }

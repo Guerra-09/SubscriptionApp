@@ -91,7 +91,8 @@ struct SubscriptionsView: View {
                 }
                 .padding(.top, 25)
                 .navigationDestination(for: Subscription.self) { sub in
-                    SubscriptionUpdateView(viewModel: viewModel, showToolbar: $showToolbar, subscription: sub)
+//                    SubscriptionUpdateView(subscriptionID: sub.id, in: modelContext.container)
+                    SubscriptionUpdateView(subscriptionID: sub.id, in: viewModel.modelContext.container, viewModel: viewModel, showToolbar: $showToolbar)
                 }
             
             }
@@ -148,7 +149,7 @@ struct SubscriptionsView: View {
         
         .sheet(isPresented: $showingSubscriptionsBy) {
             NavigationStack {
-                SubscriptionsSettingsSheet()
+                SubscriptionsSettingsSheet(viewModel: viewModel)
             }
         }
         

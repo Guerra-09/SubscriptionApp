@@ -146,7 +146,7 @@ class NotificationCenter: ObservableObject {
                         
                     } else {
                         let formattedDate = self.dateFormatter.string(from: Calendar.current.date(from: reminderDateComponents)!)
-                        print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                        print("[D] La solicitud de notificación mensual se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
                         
                         
                         print("[D] identifier created = \(identifier)")
@@ -164,8 +164,9 @@ class NotificationCenter: ObservableObject {
                 print("[D] Cada 3 meses")
                 
                 // Configurar el número de repeticiones (por ejemplo, para los próximos 3 años)
-                    let numberOfRepetitions = 12 // 3 años, una notificación cada tres meses
+//                    let numberOfRepetitions = 12 // 3 años, una notificación cada tres meses
 
+                    let numberOfRepetitions = 3
                     for i in 0..<numberOfRepetitions {
                         // Calcular la fecha del próximo trimestre
                         let nextPaymentDate = calendar.date(byAdding: .month, value: i * 3, to: startDate)!
@@ -185,6 +186,7 @@ class NotificationCenter: ObservableObject {
                             // Hora predeterminada si no se puede leer de @AppStorage
                             reminderDateComponents.hour = 12
                             reminderDateComponents.minute = 34
+                            print("[D] ERROR reading from AppStorage")
                         }
                         
                         let identifier = UUID().uuidString
@@ -197,7 +199,7 @@ class NotificationCenter: ObservableObject {
                                 print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
                             } else {
                                 let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
-                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                print("[D] Cada 3 meses: \(formattedDate) a las \(self.notificationHourString)")
                                 
                                 metadata.notificationIdentifier = identifier
                             }
@@ -249,7 +251,7 @@ class NotificationCenter: ObservableObject {
                                 print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
                             } else {
                                 let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
-                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                print("[D] La solicitud de notificación cada 6 meses se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
                                 
                                 metadata.notificationIdentifier = identifier
                             }
@@ -301,7 +303,7 @@ class NotificationCenter: ObservableObject {
                                 print("[D] Error al agregar la solicitud de notificación: \(error.localizedDescription)")
                             } else {
                                 let formattedDate = self.dateFormatter.string(from: calendar.date(from: reminderDateComponents)!)
-                                print("[D] La solicitud de notificación se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
+                                print("[D] La solicitud de notificación anual se agregó correctamente para el \(formattedDate) a las \(self.notificationHourString)")
                                 
                                 metadata.notificationIdentifier = identifier
                             }
@@ -335,12 +337,12 @@ class NotificationCenter: ObservableObject {
                 
                 createNotification(subscriptionName: subscriptionName, reminderTime: reminderTime, startDate: startDate, cycle: cycle, metadata: metadata)
                 
-                print("[D] Se modifico la notificacion a la nueva fecha. :D")
+                print("[D] Se modifico la notificacion de \(subscriptionName) a la nueva fecha. :D")
                 
                 
                 
             } else {
-                print("[D1] Error deleting notification")
+                print("[D1] Error deleting notification of \(subscriptionName)")
             }
             
             
@@ -348,37 +350,55 @@ class NotificationCenter: ObservableObject {
         }
     
     
+    func deleteRequest(identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        
+        print("[D] Notification Deleted")
+    }
+    
     
     func changeNotificationTime(newHour: Int, newMinute: Int) {
         
+        
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            print("[D] Number of pending requests: \(requests.count)")
             
             for request in requests {
                 if let trigger = request.trigger as? UNCalendarNotificationTrigger {
+                    print("[D] Editing request with identifier: \(request.identifier)")
+
                     var newDateComponents = trigger.dateComponents
                     newDateComponents.hour = newHour
                     newDateComponents.minute = newMinute
                     
-                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+//                    // Eliminando la notificacion
+//                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+//                    print("[D] Removing request with identifier: \(request.identifier)")
                     
-                    let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
-                    let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
-                    
-                    UNUserNotificationCenter.current().add(newRequest) { error in
-                        if let error = error {
-                            print("[D] Error al modificar la notificación: \(error.localizedDescription)")
-                        } else {
-                            print("[D] Notificación modificada correctamente con nuevo horario: \(newHour):\(newMinute)")
+                    // Agregandola nuevamente
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        
+                        let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: true)
+                        print("[D] New trigger created with date components: \(newDateComponents)") // <-- Log adicional
+                        let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
+                        
+                        print("[D] identifier edited: \(request.identifier)")
+                        
+                        UNUserNotificationCenter.current().add(newRequest) { error in
+                            if let error = error {
+                                print("[D] Error al agregar la notificación: \(error.localizedDescription)")
+                            } else {
+                                // Eliminando la notificación original después de agregar la nueva
+                                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                                print("[D] Notificación modificada correctamente a las \(newHour):\(newMinute)")
+                            }
                         }
                     }
                 }
             }
         }
     }
-    
-    
-    
-    
+
     
     func deleteAllNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()

@@ -6,38 +6,47 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SubscriptionUpdateView: View {
     
     let subscriptionCycle: [String] = ["monthly", "each three months", "each six months", "yearly"]
-    let reminderOptions: [String] = ["The same day","One day before", "Two days before", "Three days before", "One week before", "Two weeks before"]
-    
+    let reminderOptions: [String] = ["The same day", "One day before", "Two days before", "Three days before", "One week before", "Two weeks before"]
     
     @ObservedObject var viewModel: SubscriptionsViewModel
-    
     @State var showingAlertDelete: Bool = false
-    
     @State var subscriptionPrice: String = ""
     @State var subscriptionToDelete: Subscription?
     @FocusState var priceFocus: Bool
     @Binding var showToolbar: Bool
-    
     @Environment(\.dismiss) var dismiss
-    
     @AppStorage("currencySelected") var currencySelected: String = "USD"
-
     @Bindable var subscription: Subscription
-
     
     // Variables para manejar el logo
     @State var selectedIcon: String = ""
     @State var tintColor: String = ""
     @State var backgroundColor: String = ""
-    
     @State var selectIconSheet: Bool = false
     
     let notificationCenter = NotificationCenter()
+    var modelContext: ModelContext
     
+    // Modifica el init para inicializar viewModel y showToolbar
+    init(subscriptionID: PersistentIdentifier, in container: ModelContainer, viewModel: SubscriptionsViewModel, showToolbar: Binding<Bool>) {
+        
+        // Inicializa viewModel y showToolbar al principio
+        self.viewModel = viewModel
+        self._showToolbar = showToolbar
+        
+        // Inicializa el contexto del modelo
+        modelContext = ModelContext(container)
+        modelContext.autosaveEnabled = false
+        
+        // Inicializa la suscripción
+        subscription = modelContext.model(for: subscriptionID) as? Subscription ?? Subscription(id: UUID(), name: "New subscription", price: 5.5, startDay: Date(), cycle: "monthly", descriptionText: "", reminder: false, reminderTime: "The same day", disableService: true, customSubscription: true, subscriptionMetadata: SubscriptionMetadata(id: UUID(), logo: "bills", tintColor: "#AAAAAA", backgroundColor: "#FFFFFF", notificationIdentifier: nil))
+        
+    }
     
     
     var body: some View {
@@ -110,20 +119,7 @@ struct SubscriptionUpdateView: View {
                     .tint(.red)
                 
                 Button {
-                    dismiss()
-                    
-                    var valueToSave: Float {
-
-                        let replacingMoneySing = self.subscriptionPrice.replacingOccurrences(of: "$", with: "")
-                        
-                        let newValue = replacingMoneySing.replacingOccurrences(of: ",", with: ".")
-                        
-                        return Float(newValue) ?? 0.0
-                    }
-                    
-                    self.subscription.price = valueToSave
-                    
-                    notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
+                    saveData()
                     
                 } label: {
                     ButtonCustom(title: "Save", color: Color("buttonBackgroundColor"))
@@ -159,7 +155,7 @@ struct SubscriptionUpdateView: View {
             .onChange(of: backgroundColor) { _, newValue in
                 self.subscription.subscriptionMetadata?.backgroundColor = newValue
             }
- 
+            
             
             .scrollDismissesKeyboard(.immediately)
             .sheet(isPresented: $selectIconSheet) {
@@ -172,28 +168,15 @@ struct SubscriptionUpdateView: View {
                 )
 
             }
+
             .toolbar {
-                Button("Save") {
-
-                    dismiss()
-                    
-                    var valueToSave: Float {
-
-                        let replacingMoneySing = self.subscriptionPrice.replacingOccurrences(of: "$", with: "")
-                        
-                        let newValue = replacingMoneySing.replacingOccurrences(of: ",", with: ".")
-                        
-                        return Float(newValue) ?? 0.0
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        saveData()
                     }
-                    
-                    self.subscription.price = valueToSave
-                    
-                    notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
-                        
-                    
                 }
-                
             }
+            
 
             
         }
@@ -211,11 +194,35 @@ struct SubscriptionUpdateView: View {
             
             Button("Delete", role: .destructive) {
                 dismiss()
+                notificationCenter.deleteRequest(identifier: subscription.subscriptionMetadata?.notificationIdentifier ?? "")
                 viewModel.deleteSubscription(subscription: subscriptionToDelete!)
             }
             
         }
     }
+
+    func saveData() -> Void {
+        
+        var valueToSave: Float {
+
+            let replacingMoneySing = self.subscriptionPrice.replacingOccurrences(of: "$", with: "")
+            
+            let newValue = replacingMoneySing.replacingOccurrences(of: ",", with: ".")
+            
+            return Float(newValue) ?? 0.0
+        }
+        
+        self.subscription.price = valueToSave
+        
+        notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
+            
+        
+        try? modelContext.save()
+        
+        dismiss()
+        
+    }
+    
     
     func formatPrice() -> Void {
         
@@ -233,6 +240,7 @@ struct SubscriptionUpdateView: View {
             self.subscription.price = 0.0
         }
     }
+
     
     func decimalPriceFormat(newValue: String) -> String {
         

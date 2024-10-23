@@ -142,6 +142,7 @@ struct PreferencesView: View {
         notificationHourString = dateFormatter.string(from: notificationHour)
                 
         notificationCenter.changeNotificationTime(newHour: newHour, newMinute: newMinute)
+        
         print("[D] updateNotificationTime executed")
     }
 }

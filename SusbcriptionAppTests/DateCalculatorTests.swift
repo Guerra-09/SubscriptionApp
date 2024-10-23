@@ -170,6 +170,24 @@ final class DateCalculatorTests: XCTestCase {
 
         XCTAssertEqual(sut1, expectedResult)
         
+        // Test 1.1: Caso excepcional
+        let startDate11 = formatter.date(from: "23-06-2024")!
+        let testDate11 = formatter.date(from: "23-09-2024")!
+        let expectedResult11 = 0
+        
+        let sut11 = dateCalculator.daysUntilThreeMonths(startDate: startDate11, testDate: testDate11)
+
+        XCTAssertEqual(sut11, expectedResult11)
+        
+        // Test 1.2: Caso excepcional
+        let startDate12 = formatter.date(from: "24-06-2024")!
+        let testDate12 = formatter.date(from: "23-09-2024")!
+        let expectedResult12 = 1
+        
+        let sut12 = dateCalculator.daysUntilThreeMonths(startDate: startDate12, testDate: testDate12)
+
+        XCTAssertEqual(sut12, expectedResult12)
+        
         
         // Test 2: Calcular los dias de un año a otro.
         let startDate2 = formatter.date(from: "15-10-2024")!

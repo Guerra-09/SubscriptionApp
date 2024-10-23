@@ -53,6 +53,8 @@ final class SubscriptionsViewModel: ObservableObject {
     @MainActor
     func deleteSubscription(subscription: Subscription) {
         modelContext.delete(subscription)
+        
+        subscriptions = []
         getSubscriptions()
     }
 

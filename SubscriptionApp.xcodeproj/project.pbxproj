@@ -74,6 +74,7 @@
 		6653BC5D2B9FE3C700BB9207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6653BC602B9FE3C700BB9207 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6653BC652B9FE3C700BB9207 /* SubscriptionApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubscriptionApp.xcdatamodel; sourceTree = "<group>"; };
+		666838CA2CC95AB900EE04BC /* SubscriptionApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SubscriptionApp.xctestplan; sourceTree = "<group>"; };
 		667C88472BB5C7A5008E9728 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		66906ACC2BBC9B420000CFE6 /* FloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
 		669BF8422BBB06A50030A9D0 /* SubscriptionUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpdateView.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		6653BC4D2B9FE3C500BB9207 = {
 			isa = PBXGroup;
 			children = (
+				666838CA2CC95AB900EE04BC /* SubscriptionApp.xctestplan */,
 				6653BC582B9FE3C500BB9207 /* SubscriptionApp */,
 				66BBFFEA2C33767F00141688 /* SubscriptionApp.app */,
 				66BBFFF12C33794000141688 /* SusbcriptionAppTests */,
@@ -621,7 +623,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SubscriptionApp/Preview Content\"";
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				ENABLE_PREVIEWS = YES;
@@ -658,7 +660,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SubscriptionApp/Preview Content\"";
 				DEVELOPMENT_TEAM = HKKAM4GN94;
 				ENABLE_PREVIEWS = YES;

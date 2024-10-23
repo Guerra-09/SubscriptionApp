@@ -30,23 +30,23 @@ struct SubscriptionUpdateView: View {
     @State var selectIconSheet: Bool = false
     
     let notificationCenter = NotificationCenter()
-    var modelContext: ModelContext
+//    var modelContext: ModelContext
     
     // Modifica el init para inicializar viewModel y showToolbar
-    init(subscriptionID: PersistentIdentifier, in container: ModelContainer, viewModel: SubscriptionsViewModel, showToolbar: Binding<Bool>) {
-        
-        // Inicializa viewModel y showToolbar al principio
-        self.viewModel = viewModel
-        self._showToolbar = showToolbar
-        
-        // Inicializa el contexto del modelo
-        modelContext = ModelContext(container)
-        modelContext.autosaveEnabled = false
-        
-        // Inicializa la suscripción
-        subscription = modelContext.model(for: subscriptionID) as? Subscription ?? Subscription(id: UUID(), name: "New subscription", price: 5.5, startDay: Date(), cycle: "monthly", descriptionText: "", reminder: false, reminderTime: "The same day", disableService: true, customSubscription: true, subscriptionMetadata: SubscriptionMetadata(id: UUID(), logo: "bills", tintColor: "#AAAAAA", backgroundColor: "#FFFFFF", notificationIdentifier: nil))
-        
-    }
+//    init(subscriptionID: PersistentIdentifier, in container: ModelContainer, viewModel: SubscriptionsViewModel, showToolbar: Binding<Bool>) {
+//        
+//        // Inicializa viewModel y showToolbar al principio
+//        self.viewModel = viewModel
+//        self._showToolbar = showToolbar
+//        
+//        // Inicializa el contexto del modelo
+//        modelContext = ModelContext(container)
+//        modelContext.autosaveEnabled = false
+//        
+//        // Inicializa la suscripción
+//        subscription = modelContext.model(for: subscriptionID) as? Subscription ?? Subscription(id: UUID(), name: "New subscription", price: 5.5, startDay: Date(), cycle: "monthly", descriptionText: "", reminder: false, reminderTime: "The same day", disableService: true, customSubscription: true, subscriptionMetadata: SubscriptionMetadata(id: UUID(), logo: "bills", tintColor: "#AAAAAA", backgroundColor: "#FFFFFF", notificationIdentifier: nil))
+//        
+//    }
     
     
     var body: some View {
@@ -128,6 +128,7 @@ struct SubscriptionUpdateView: View {
                 Button {
                     subscriptionToDelete = self.subscription
                     showingAlertDelete.toggle()
+                    
                 } label: {
                     Text("Delete")
                         .font(.system(size: 18))
@@ -193,9 +194,11 @@ struct SubscriptionUpdateView: View {
             Button("Cancel", role: .cancel) { print("Cancelling") }
             
             Button("Delete", role: .destructive) {
-                dismiss()
                 notificationCenter.deleteRequest(identifier: subscription.subscriptionMetadata?.notificationIdentifier ?? "")
+                
                 viewModel.deleteSubscription(subscription: subscriptionToDelete!)
+
+                dismiss()
             }
             
         }
@@ -215,9 +218,7 @@ struct SubscriptionUpdateView: View {
         self.subscription.price = valueToSave
         
         notificationCenter.modifyNotification(subscriptionName: subscription.name, reminderTime: subscription.reminderTime, startDate: subscription.startDay, cycle: subscription.cycle, metadata: subscription.subscriptionMetadata!) // UNSAFE UNWRAPPING
-            
         
-        try? modelContext.save()
         
         dismiss()
         

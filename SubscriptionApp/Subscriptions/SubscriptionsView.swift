@@ -91,8 +91,7 @@ struct SubscriptionsView: View {
                 }
                 .padding(.top, 25)
                 .navigationDestination(for: Subscription.self) { sub in
-//                    SubscriptionUpdateView(subscriptionID: sub.id, in: modelContext.container)
-                    SubscriptionUpdateView(subscriptionID: sub.id, in: viewModel.modelContext.container, viewModel: viewModel, showToolbar: $showToolbar)
+                    SubscriptionUpdateView(viewModel: viewModel, showToolbar: $showToolbar, subscription: sub)
                 }
             
             }

@@ -1,0 +1,40 @@
+{
+  "configurations" : [
+    {
+      "id" : "D8815FAA-E9FE-4265-83C3-0EEC49E54154",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "-com.apple.CoreData.SQLDebug 1"
+      }
+    ],
+    "environmentVariableEntries" : [
+      {
+        "key" : "IDELogRedirectionPolicy oslogToStdio\n\nIDELogRedirectionPolicy oslogToStdio\n\nIDELogRedirectionPolicy oslogToStdio\n\nIDELogRedirectionPolicy oslogToStdio\n\nIDELogRedirectionPolicy oslogToStdio\n\n",
+        "value" : "OS_ACTIVITY_MODE disable\n\n"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SubscriptionApp.xcodeproj",
+      "identifier" : "6653BC552B9FE3C500BB9207",
+      "name" : "SubscriptionApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SubscriptionApp.xcodeproj",
+        "identifier" : "663E73692BC70FBB003DFB6D",
+        "name" : "SubscriptionAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

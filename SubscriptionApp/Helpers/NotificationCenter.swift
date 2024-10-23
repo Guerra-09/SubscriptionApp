@@ -371,29 +371,25 @@ class NotificationCenter: ObservableObject {
                     newDateComponents.hour = newHour
                     newDateComponents.minute = newMinute
                     
-//                    // Eliminando la notificacion
-//                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
-//                    print("[D] Removing request with identifier: \(request.identifier)")
                     
                     // Agregandola nuevamente
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        
-                        let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: true)
-                        print("[D] New trigger created with date components: \(newDateComponents)") // <-- Log adicional
-                        let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
-                        
-                        print("[D] identifier edited: \(request.identifier)")
-                        
-                        UNUserNotificationCenter.current().add(newRequest) { error in
-                            if let error = error {
-                                print("[D] Error al agregar la notificación: \(error.localizedDescription)")
-                            } else {
-                                // Eliminando la notificación original después de agregar la nueva
-                                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
-                                print("[D] Notificación modificada correctamente a las \(newHour):\(newMinute)")
-                            }
+                    let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: true)
+                    print("[D] New trigger created with date components: \(newDateComponents)") // <-- Log adicional
+                    let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: newTrigger)
+                    
+                    print("[D] identifier edited: \(request.identifier)")
+                    
+                    UNUserNotificationCenter.current().add(newRequest) { error in
+                        if let error = error {
+                            print("[D] Error al agregar la notificación: \(error.localizedDescription)")
+                        } else {
+                            print("[D] Notificación de '\(request.content.title)' correctamente a \(newTrigger.dateComponents.day!)/  \(newTrigger.dateComponents.month!)/ /\(newTrigger.dateComponents.year!) a las \(newTrigger.dateComponents.hour!) :\(newTrigger.dateComponents.minute!) ") // al crear esto 3 meses antes para que toque dia de pago hoy, crea notificaciones para diciembre o.O
+                            
+                            // Funciona al crear y no mover nada
+                            //
                         }
                     }
+                    
                 }
             }
         }
